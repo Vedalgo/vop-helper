@@ -33,6 +33,11 @@ h3{font-size:16px;margin:16px 0 10px;color:var(--primary-dark)}
 .hero-tile .icon{font-size:24px;margin-bottom:8px}
 .hero-tile .title{font-weight:600;margin-bottom:4px;font-size:15px}
 .hero-tile .desc{font-size:13px;color:var(--muted)}
+
+/* Стили для главной страницы (категории) */
+.dashboard-category{margin-bottom:24px}
+.dashboard-category h3{margin-bottom:12px;font-size:18px;color:var(--text);border-bottom:2px solid var(--border);padding-bottom:8px;}
+
 .field{margin-bottom:14px}
 .field label{display:block;font-size:13px;font-weight:600;margin-bottom:6px;color:#334155}
 input[type=number],input[type=text],select,textarea{width:100%;padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-size:16px;font-family:inherit;background:#fff;color:var(--text);transition:.15s;}
@@ -73,7 +78,13 @@ textarea{min-height:70px;resize:vertical}
 .q-block:last-of-type{border-bottom:none}
 .q-title{font-weight:600;margin-bottom:10px;font-size:14px}
 
-/* ---------- Печатные формы (ACQ / CHA2DS2 / FINDRISK) ---------- */
+/* Табы */
+.tabs{display:flex;gap:8px;margin-bottom:16px;border-bottom:1px solid var(--border);padding-bottom:8px;}
+.tab{background:none;border:none;padding:8px 16px;cursor:pointer;font-size:14px;font-weight:600;color:var(--muted);border-radius:6px;font-family:inherit;transition:.15s;}
+.tab:hover{background:#f1f5f9;}
+.tab.active{background:#eff6ff;color:var(--primary-dark);}
+
+/* Печатные формы (ACQ / CHA2DS2 / FINDRISK) */
 .acq-print-view{display:none}
 .acq-print-title{font-size:12pt;font-weight:700;text-align:center;margin-bottom:6pt}
 .acq-print-row{display:flex;gap:4pt;padding:1pt 0;align-items:flex-end}
@@ -93,7 +104,7 @@ textarea{min-height:70px;resize:vertical}
 .acq-sign-line .line{flex:1;border-bottom:1px solid #000;min-height:14pt}
 .acq-sign-line .sig{font-size:8pt;color:#444}
 
-/* ---------- VKK ---------- */
+/* VKK */
 .vkk-print-view{display:none;font-family:"Times New Roman",Times,serif;color:#000;}
 .vkk-page-inner{font-size:7pt;line-height:1.3;}
 .vkk-title{font-size:1.3em;font-weight:700;font-style:normal;text-align:center;line-height:1.25;margin:0 0 0.4em 0;}
@@ -118,41 +129,31 @@ textarea{min-height:70px;resize:vertical}
 .vkk-sign-cap{font-size:0.8em;text-align:center;margin-top:0;white-space:nowrap;}
 .vkk-footer{margin-top:1em;font-size:0.8em;text-align:right;color:#333;}
 
-/* ---------- Счётчик символов ВКК ---------- */
+/* Счётчик символов ВКК */
 .char-counter{display:block;margin-top:2px;font-size:12px;color:var(--muted);text-align:right;font-weight:500;transition:color .15s;}
 .char-counter.warn{color:var(--orange);}
 .char-counter.over{color:var(--red);font-weight:700;}
 
-/* ---------- Print ---------- */
+/* Print */
 @media print{
   @page{size:A4 portrait;margin:5mm;}
-
   body{background:#fff}
-  .no-print,.app-header,.sidebar,.btn-row{display:none !important}
+  .no-print,.app-header,.sidebar,.btn-row,.tabs{display:none !important}
   .layout{display:block}
   main{padding:0;max-width:none;margin:0}
   .section{display:none !important}
   .section.active{display:block !important}
   .card{box-shadow:none;padding:0;margin:0;border:none;border-radius:0;background:transparent}
-
   body.printing-acq .acq-print-view{display:block !important;font-size:10.5pt;color:#000}
   body.printing-chads .acq-print-view{display:block !important;font-size:10.5pt;color:#000}
   body.printing-findrisk .acq-print-view{display:block !important;font-size:10.5pt;color:#000}
-
-  body.printing-vkk .vkk-print-view{
-    display:block !important;
-    font-family:"Times New Roman",Times,serif;
-    color:#000;
-  }
-  body.printing-vkk .vkk-page{
-    width:200mm;height:148mm;margin:0 auto;
-    page-break-after:always;break-after:page;overflow:hidden;
-  }
+  body.printing-vkk .vkk-print-view{display:block !important;font-family:"Times New Roman",Times,serif;color:#000;}
+  body.printing-vkk .vkk-page{width:200mm;height:148mm;margin:0 auto;page-break-after:always;break-after:page;overflow:hidden;}
   body.printing-vkk .vkk-page:last-child{page-break-after:auto;break-after:auto;}
   body.printing-vkk .vkk-page-inner{width:100%;height:100%;overflow:hidden;}
 }
 
-/* ---------- Mobile ---------- */
+/* Mobile */
 @media(max-width:768px){
   .burger{display:block}
   .sidebar{position:fixed;left:-100%;top:57px;bottom:0;transition:.2s;z-index:99;box-shadow:4px 0 12px rgba(0,0,0,.15)}
