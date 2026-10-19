@@ -4,156 +4,124 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ВОП-Helper</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%232563eb'/%3E%3Cstop offset='1' stop-color='%231e40af'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='20' fill='url(%23g)'/%3E%3Ctext x='50' y='75' font-family='Arial, sans-serif' font-size='70' fill='white' text-anchor='middle'%3E%E2%9A%95%3C/text%3E%3C/svg%3E">
-<link rel="stylesheet" href="styles.css?v=181026">
+<link rel="stylesheet" href="styles.css?v=1910261">
 </head>
 <body>
 
 <header class="app-header no-print">
   <div class="logo"><div class="logo-mark">⚕</div> ВОП-Helper</div>
-  <div class="header-controls">
-    <button id="theme-toggle" class="theme-toggle" aria-label="Сменить тему">🌙</button>
-    <button class="burger" id="burger" aria-label="Меню">☰</button>
-  </div>
+  <button class="burger" id="burger" aria-label="Меню">☰</button>
 </header>
 
 <div class="layout">
   <aside class="sidebar no-print" id="sidebar">
-    <nav id="main-nav">
+    <nav>
       <a href="#home" class="nav-link active" data-section="home">🏠 Главная</a>
+      
+      <div class="nav-group">Калькуляторы</div>
+      <a href="#egfr" class="nav-link" data-section="egfr">СКФ (eGFR)</a>
+      <a href="#crcl" class="nav-link" data-section="crcl">Клиренс креатинина</a>
+      <a href="#bmi" class="nav-link" data-section="bmi">ИМТ</a>
+      <a href="#bmi-amp" class="nav-link" data-section="bmi-amp">ИМТ с ампутацией</a>
+      <a href="#score2" class="nav-link" data-section="score2">SCORE2</a>
+      <a href="#score2op" class="nav-link" data-section="score2op">SCORE2-OP</a>
+      <a href="#score2dm" class="nav-link" data-section="score2dm">SCORE2-Diabetes</a>
+      <a href="#chads" class="nav-link" data-section="chads">CHA₂DS₂-VASc</a>
+      <a href="#hasbled" class="nav-link" data-section="hasbled">HAS-BLED</a>
+      <a href="#curb65" class="nav-link" data-section="curb65">CURB-65</a>
+      <a href="#gcs" class="nav-link" data-section="gcs">Шкала Глазго</a>
+      <a href="#charlson" class="nav-link" data-section="charlson">Charlson</a>
+      <a href="#sickleave" class="nav-link" data-section="sickleave">Больничный (дни)</a>
 
-      <div class="nav-accordion">
-        <button class="nav-accordion-btn" data-target="calc-group">🧮 Калькуляторы</button>
-        <div class="nav-accordion-content" id="calc-group">
-          <a href="#egfr" class="nav-link" data-section="egfr">СКФ (eGFR)</a>
-          <a href="#crcl" class="nav-link" data-section="crcl">Клиренс креатинина</a>
-          <a href="#bmi" class="nav-link" data-section="bmi">ИМТ</a>
-          <a href="#bmi-amp" class="nav-link" data-section="bmi-amp">ИМТ с ампутацией</a>
-          <a href="#score2" class="nav-link" data-section="score2">SCORE2</a>
-          <a href="#score2op" class="nav-link" data-section="score2op">SCORE2-OP</a>
-          <a href="#score2dm" class="nav-link" data-section="score2dm">SCORE2-Diabetes</a>
-          <a href="#chads" class="nav-link" data-section="chads">CHA₂DS₂-VASc</a>
-          <a href="#hasbled" class="nav-link" data-section="hasbled">HAS-BLED</a>
-          <a href="#curb65" class="nav-link" data-section="curb65">CURB-65</a>
-          <a href="#gcs" class="nav-link" data-section="gcs">Шкала Глазго</a>
-          <a href="#charlson" class="nav-link" data-section="charlson">Charlson</a>
-          <a href="#sickleave" class="nav-link" data-section="sickleave">Больничный (дни)</a>
-        </div>
-      </div>
+      <div class="nav-group">Опросники и шкалы</div>
+      <a href="#acq5" class="nav-link" data-section="acq5">ACQ-5 (астма)</a>
+      <a href="#findrisk" class="nav-link" data-section="findrisk">FINDRISK (диабет)</a>
 
-      <div class="nav-accordion">
-        <button class="nav-accordion-btn" data-target="quest-group">📝 Опросники</button>
-        <div class="nav-accordion-content" id="quest-group">
-          <a href="#acq5" class="nav-link" data-section="acq5">ACQ-5 (астма)</a>
-          <a href="#findrisk" class="nav-link" data-section="findrisk">FINDRISK (диабет)</a>
-        </div>
-      </div>
+      <div class="nav-group">Скрининги</div>
+      <a href="#screening" class="nav-link" data-section="screening">Диспансеризация и онкоскрининг</a>
 
-      <div class="nav-accordion">
-        <button class="nav-accordion-btn" data-target="screen-group">🔬 Скрининги</button>
-        <div class="nav-accordion-content" id="screen-group">
-          <a href="#screening" class="nav-link" data-section="screening">Диспансеризация</a>
-        </div>
-      </div>
+      <div class="nav-group">Справочники</div>
+      <a href="#protocols" class="nav-link" data-section="protocols">Клинические протоколы</a>
+      <a href="#medsafety" class="nav-link" data-section="medsafety">Безопасность ЛС</a>
 
-      <div class="nav-accordion">
-        <button class="nav-accordion-btn" data-target="ref-group">📚 Справочники</button>
-        <div class="nav-accordion-content" id="ref-group">
-          <a href="#protocols" class="nav-link" data-section="protocols">Клинические протоколы</a>
-          <a href="#medsafety" class="nav-link" data-section="medsafety">Безопасность ЛС</a>
-          <a href="#abx" class="nav-link" data-section="abx">Эмпирическая АБТ</a>
-        </div>
-      </div>
-
-      <div class="nav-accordion">
-        <button class="nav-accordion-btn" data-target="doc-group">📄 Документы</button>
-        <div class="nav-accordion-content" id="doc-group">
-          <a href="#vkk" class="nav-link" data-section="vkk">Протокол ВКК</a>
-          <a href="#history" class="nav-link" data-section="history">История печати</a>
-        </div>
-      </div>
+      <div class="nav-group">Документы</div>
+      <a href="#vkk" class="nav-link" data-section="vkk">Протокол ВКК</a>
     </nav>
-    <div class="sidebar-footer">
-      «ВОП-Helper»<br>
-      Автор: Виталий Гринич<br>
-      Для кабинета №302<br>
-      УЗ «Калинковичская центральная районная больница»,<br>
-      филиал «Районная поликлиника»
-    </div>
   </aside>
 
-  <main id="main-content">
+  <main>
+    <!-- ================= ГЛАВНАЯ ================= -->
     <section id="home" class="section active">
       <h1>ВОП-Helper</h1>
-      <p class="subtitle">Инструменты для врача общей практики.</p>
+      <p class="subtitle">Инструменты для врача общей практики. Выберите раздел.</p>
       
       <div class="dashboard-category">
-        <h3>Калькуляторы</h3>
+        <h3>🧮 Калькуляторы</h3>
         <div class="hero-grid">
-          <button class="hero-tile" onclick="go('egfr')"><div class="icon">🩺</div><div class="title">СКФ</div><div class="desc">CKD-EPI, MDRD</div></button>
-          <button class="hero-tile" onclick="go('crcl')"><div class="icon">💧</div><div class="title">Клиренс креатинина</div><div class="desc">Коррекция доз ЛС</div></button>
+          <button class="hero-tile" onclick="go('egfr')"><div class="icon">🩺</div><div class="title">СКФ (eGFR)</div><div class="desc">CKD-EPI, MDRD, Кокрофт-Голт</div></button>
+          <button class="hero-tile" onclick="go('crcl')"><div class="icon">💧</div><div class="title">Клиренс креатинина</div><div class="desc">Для коррекции доз ЛС</div></button>
           <button class="hero-tile" onclick="go('bmi')"><div class="icon">⚖️</div><div class="title">ИМТ</div><div class="desc">Индекс массы тела</div></button>
-          <button class="hero-tile" onclick="go('bmi-amp')"><div class="icon">🦿</div><div class="title">ИМТ при ампутации</div><div class="desc">С поправкой</div></button>
-          <button class="hero-tile" onclick="go('score2')"><div class="icon">📈</div><div class="title">SCORE2</div><div class="desc">Риск ССЗ (40–69)</div></button>
+          <button class="hero-tile" onclick="go('bmi-amp')"><div class="icon">🦿</div><div class="title">ИМТ при ампутации</div><div class="desc">С поправкой на сегмент</div></button>
+          <button class="hero-tile" onclick="go('score2')"><div class="icon">📈</div><div class="title">SCORE2</div><div class="desc">Риск ССЗ (40–69 лет)</div></button>
           <button class="hero-tile" onclick="go('score2op')"><div class="icon">📊</div><div class="title">SCORE2-OP</div><div class="desc">Риск ССЗ (70+)</div></button>
-          <button class="hero-tile" onclick="go('score2dm')"><div class="icon">🩸</div><div class="title">SCORE2-Diabetes</div><div class="desc">Риск при СД 2 типа</div></button>
-          <button class="hero-tile" onclick="go('chads')"><div class="icon">❤️</div><div class="title">CHA₂DS₂-VASc</div><div class="desc">Риск инсульта</div></button>
+          <button class="hero-tile" onclick="go('score2dm')"><div class="icon">🩸</div><div class="title">SCORE2-Diabetes</div><div class="desc">Риск ССЗ при СД 2 типа</div></button>
+          <button class="hero-tile" onclick="go('chads')"><div class="icon">❤️</div><div class="title">CHA₂DS₂-VASc</div><div class="desc">Риск инсульта при ФП</div></button>
           <button class="hero-tile" onclick="go('hasbled')"><div class="icon">🩸</div><div class="title">HAS-BLED</div><div class="desc">Риск кровотечений</div></button>
           <button class="hero-tile" onclick="go('curb65')"><div class="icon">🫁</div><div class="title">CURB-65</div><div class="desc">Тяжесть пневмонии</div></button>
           <button class="hero-tile" onclick="go('gcs')"><div class="icon">🧠</div><div class="title">Шкала Глазго</div><div class="desc">Оценка сознания</div></button>
-          <button class="hero-tile" onclick="go('charlson')"><div class="icon">📋</div><div class="title">Charlson</div><div class="desc">Коморбидность</div></button>
-          <button class="hero-tile" onclick="go('sickleave')"><div class="icon">📅</div><div class="title">Больничный</div><div class="desc">Расчёт дней</div></button>
+          <button class="hero-tile" onclick="go('charlson')"><div class="icon">📋</div><div class="title">Charlson</div><div class="desc">Индекс коморбидности</div></button>
+          <button class="hero-tile" onclick="go('sickleave')"><div class="icon">📅</div><div class="title">Больничный</div><div class="desc">Расчёт дней и дат</div></button>
         </div>
       </div>
 
       <div class="dashboard-category">
-        <h3>Опросники и шкалы</h3>
+        <h3>📝 Опросники и шкалы</h3>
         <div class="hero-grid">
           <button class="hero-tile" onclick="go('acq5')"><div class="icon">🫁</div><div class="title">ACQ-5</div><div class="desc">Контроль над БА</div></button>
-          <button class="hero-tile" onclick="go('findrisk')"><div class="icon">🩸</div><div class="title">FINDRISK</div><div class="desc">Риск диабета</div></button>
+          <button class="hero-tile" onclick="go('findrisk')"><div class="icon">🩸</div><div class="title">FINDRISK</div><div class="desc">Риск диабета 2 типа</div></button>
         </div>
       </div>
 
       <div class="dashboard-category">
-        <h3>Скрининги и профилактика</h3>
+        <h3>🩺 Скрининги и профилактика</h3>
         <div class="hero-grid">
-          <button class="hero-tile" onclick="go('screening')"><div class="icon">🔬</div><div class="title">Диспансеризация</div><div class="desc">Онкоскрининг</div></button>
+          <button class="hero-tile" onclick="go('screening')"><div class="icon">🔬</div><div class="title">Диспансеризация</div><div class="desc">Онкоскрининг по возрасту</div></button>
         </div>
       </div>
 
       <div class="dashboard-category">
-        <h3>Справочники и безопасность</h3>
+        <h3>📚 Справочники и безопасность</h3>
         <div class="hero-grid">
-          <button class="hero-tile" onclick="go('protocols')"><div class="icon">📋</div><div class="title">Протоколы</div><div class="desc">АГ, СД 2 типа</div></button>
-          <button class="hero-tile" onclick="go('medsafety')"><div class="icon">💊</div><div class="title">Безопасность ЛС</div><div class="desc">Дозы, взаимодействия</div></button>
-          <button class="hero-tile" onclick="go('abx')"><div class="icon">🦠</div><div class="title">Антибиотики</div><div class="desc">Эмпирическая АБТ</div></button>
+          <button class="hero-tile" onclick="go('protocols')"><div class="icon">📋</div><div class="title">Клинические протоколы</div><div class="desc">Алгоритмы АГ, СД 2 типа</div></button>
+          <button class="hero-tile" onclick="go('medsafety')"><div class="icon">💊</div><div class="title">Безопасность ЛС</div><div class="desc">Дозы и взаимодействия</div></button>
         </div>
       </div>
-      
+
       <div class="dashboard-category">
-        <h3>Документы</h3>
+        <h3>📄 Документы</h3>
         <div class="hero-grid">
           <button class="hero-tile" onclick="go('vkk')"><div class="icon">📄</div><div class="title">Протокол ВКК</div><div class="desc">Печать A4</div></button>
-          <button class="hero-tile" onclick="go('history')"><div class="icon">📜</div><div class="title">История</div><div class="desc">Загрузка черновиков</div></button>
         </div>
       </div>
     </section>
 
+    <!-- ================= КАЛЬКУЛЯТОРЫ ================= -->
+    <!-- СКФ -->
     <section id="egfr" class="section">
-      <h2>СКФ (eGFR)</h2>
+      <h2>Скорость клубочковой фильтрации (СКФ / eGFR)</h2>
       <div class="card">
         <div class="grid-2">
           <div class="field"><label>Возраст, лет</label><input type="number" id="egfr-age" min="18" max="120" value="60"></div>
           <div class="field"><label>Пол</label><select id="egfr-sex"><option value="m">Мужской</option><option value="f">Женский</option></select></div>
           <div class="field"><label>Креатинин сыворотки</label><input type="number" id="egfr-cr" step="0.1" value="80"></div>
-          <div class="field"><label>Единицы</label><select id="egfr-unit"><option value="umol">мкмоль/л</option><option value="mgdl">мг/дл</option></select></div>
+          <div class="field"><label>Единицы креатинина</label><select id="egfr-unit"><option value="umol">мкмоль/л</option><option value="mgdl">мг/дл</option></select></div>
         </div>
         <div class="field"><label>Формула</label>
           <select id="egfr-formula">
-            <option value="ckdepi2021">CKD-EPI 2021</option>
-            <option value="ckdepi2009">CKD-EPI 2009</option>
+            <option value="ckdepi2021">CKD-EPI 2021 (без расы)</option>
+            <option value="ckdepi2009">CKD-EPI 2009 (с расой)</option>
             <option value="mdrd">MDRD</option>
-            <option value="cg">Кокрофт-Голт</option>
+            <option value="cg">Кокрофт-Голт (CrCl)</option>
           </select>
         </div>
         <div class="field" id="egfr-race-wrap" style="display:none">
@@ -171,8 +139,10 @@
       </div>
     </section>
 
+    <!-- Клиренс креатинина -->
     <section id="crcl" class="section">
-      <h2>Клиренс креатинина (Кокрофт-Голт)</h2>
+      <h2>Клиренс креатинина (по Кокрофту-Голту)</h2>
+      <p class="subtitle">Используется для коррекции доз лекарственных средств.</p>
       <div class="card">
         <div class="grid-2">
           <div class="field"><label>Возраст, лет</label><input type="number" id="crcl-age" min="18" max="120" value="60"></div>
@@ -180,11 +150,14 @@
           <div class="field"><label>Вес, кг</label><input type="number" id="crcl-weight" step="0.1" value="70"></div>
           <div class="field"><label>Креатинин сыворотки, мкмоль/л</label><input type="number" id="crcl-cr" step="0.1" value="80"></div>
         </div>
-        <div class="btn-row"><button class="btn btn-primary" onclick="calcCrCl()">Рассчитать</button></div>
+        <div class="btn-row">
+          <button class="btn btn-primary" onclick="calcCrCl()">Рассчитать</button>
+        </div>
         <div class="result-box empty" id="crcl-result"></div>
       </div>
     </section>
 
+    <!-- ИМТ -->
     <section id="bmi" class="section">
       <h2>Индекс массы тела (ИМТ)</h2>
       <div class="card">
@@ -197,6 +170,7 @@
       </div>
     </section>
 
+    <!-- ИМТ с ампутацией -->
     <section id="bmi-amp" class="section">
       <h2>ИМТ с поправкой на ампутацию</h2>
       <div class="card">
@@ -211,86 +185,96 @@
       </div>
     </section>
 
+    <!-- SCORE2 -->
     <section id="score2" class="section">
-      <h2>SCORE2</h2>
-      <p class="subtitle">Риск ССЗ для лиц 40–69 лет.</p>
+      <h2>SCORE2 — 10-летний риск ССЗ</h2>
+      <p class="subtitle">Для лиц 40–69 лет без установленных ССЗ и без СД.</p>
       <div class="card">
         <div class="grid-2">
-          <div class="field"><label>Возраст</label><input type="number" id="s2-age" min="40" max="69" value="55"></div>
+          <div class="field"><label>Возраст, лет (40–69)</label><input type="number" id="s2-age" min="40" max="69" value="55"></div>
           <div class="field"><label>Пол</label><select id="s2-sex"><option value="m">Мужской</option><option value="f">Женский</option></select></div>
           <div class="field"><label>САД, мм рт. ст.</label><input type="number" id="s2-sbp" value="130"></div>
-          <div class="field"><label>Общий холестерин</label><input type="number" id="s2-tc" step="0.1" value="5.0"></div>
-          <div class="field"><label>ХС ЛПВП</label><input type="number" id="s2-hdl" step="0.1" value="1.3"></div>
-          <div class="field"><label>Регион</label>
+          <div class="field"><label>Общий холестерин, ммоль/л</label><input type="number" id="s2-tc" step="0.1" value="5.0"></div>
+          <div class="field"><label>ХС ЛПВП, ммоль/л</label><input type="number" id="s2-hdl" step="0.1" value="1.3"></div>
+          <div class="field"><label>Регион риска (ESC)</label>
             <select id="s2-region">
               <option value="low">Низкий</option>
               <option value="mod">Умеренный</option>
-              <option value="high" selected>Высокий</option>
+              <option value="high" selected>Высокий (Беларусь)</option>
               <option value="vhigh">Очень высокий</option>
             </select>
           </div>
         </div>
-        <div class="field"><label class="checkbox-row"><input type="checkbox" id="s2-smoke"> Курение</label></div>
+        <div class="field"><label class="checkbox-row"><input type="checkbox" id="s2-smoke"> Текущее курение</label></div>
         <div class="btn-row"><button class="btn btn-primary" onclick="calcScore2()">Рассчитать</button></div>
         <div class="result-box empty" id="s2-result"></div>
       </div>
     </section>
 
+    <!-- SCORE2-OP -->
     <section id="score2op" class="section">
-      <h2>SCORE2-OP</h2>
-      <p class="subtitle">Риск ССЗ для лиц 70 лет и старше.</p>
+      <h2>SCORE2-OP — 10-летний риск ССЗ у пожилых</h2>
+      <p class="subtitle">Для лиц 70 лет и старше.</p>
       <div class="card">
         <div class="grid-2">
-          <div class="field"><label>Возраст</label><input type="number" id="s2op-age" min="70" max="89" value="75"></div>
+          <div class="field"><label>Возраст, лет (70–89)</label><input type="number" id="s2op-age" min="70" max="89" value="75"></div>
           <div class="field"><label>Пол</label><select id="s2op-sex"><option value="m">Мужской</option><option value="f">Женский</option></select></div>
           <div class="field"><label>САД, мм рт. ст.</label><input type="number" id="s2op-sbp" value="140"></div>
-          <div class="field"><label>Общий холестерин</label><input type="number" id="s2op-tc" step="0.1" value="5.0"></div>
-          <div class="field"><label>ХС ЛПВП</label><input type="number" id="s2op-hdl" step="0.1" value="1.3"></div>
-          <div class="field"><label>Регион</label>
+          <div class="field"><label>Общий холестерин, ммоль/л</label><input type="number" id="s2op-tc" step="0.1" value="5.0"></div>
+          <div class="field"><label>ХС ЛПВП, ммоль/л</label><input type="number" id="s2op-hdl" step="0.1" value="1.3"></div>
+          <div class="field"><label>Регион риска (ESC)</label>
             <select id="s2op-region">
               <option value="low">Низкий</option>
               <option value="mod">Умеренный</option>
-              <option value="high" selected>Высокий</option>
+              <option value="high" selected>Высокий (Беларусь)</option>
               <option value="vhigh">Очень высокий</option>
             </select>
           </div>
         </div>
-        <div class="field"><label class="checkbox-row"><input type="checkbox" id="s2op-smoke"> Курение</label></div>
+        <div class="field"><label class="checkbox-row"><input type="checkbox" id="s2op-smoke"> Текущее курение</label></div>
         <div class="btn-row"><button class="btn btn-primary" onclick="calcScore2Op()">Рассчитать</button></div>
         <div class="result-box empty" id="s2op-result"></div>
       </div>
     </section>
 
+    <!-- SCORE2-Diabetes -->
     <section id="score2dm" class="section">
-      <h2>SCORE2-Diabetes</h2>
-      <p class="subtitle">Риск ССЗ при СД 2 типа (40–69 лет).</p>
+      <h2>SCORE2-Diabetes — риск ССЗ при СД 2 типа</h2>
+      <p class="subtitle">Для пациентов с СД 2 типа в возрасте 40–69 лет без установленных ССЗ и тяжёлого поражения органов-мишеней.</p>
       <div class="card">
         <div class="grid-2">
-          <div class="field"><label>Возраст</label><input type="number" id="s2dm-age" min="40" max="69" value="55"></div>
+          <div class="field"><label>Возраст, лет (40–69)</label><input type="number" id="s2dm-age" min="40" max="69" value="55"></div>
           <div class="field"><label>Пол</label><select id="s2dm-sex"><option value="m">Мужской</option><option value="f">Женский</option></select></div>
-          <div class="field"><label>САД</label><input type="number" id="s2dm-sbp" value="130"></div>
-          <div class="field"><label>Общий холестерин</label><input type="number" id="s2dm-tc" step="0.1" value="5.0"></div>
-          <div class="field"><label>ХС ЛПВП</label><input type="number" id="s2dm-hdl" step="0.1" value="1.3"></div>
-          <div class="field"><label>Возраст диагностики СД</label><input type="number" id="s2dm-agedm" value="50"></div>
+          <div class="field"><label>САД, мм рт. ст.</label><input type="number" id="s2dm-sbp" value="130"></div>
+          <div class="field"><label>Общий холестерин, ммоль/л</label><input type="number" id="s2dm-tc" step="0.1" value="5.0"></div>
+          <div class="field"><label>ХС ЛПВП, ммоль/л</label><input type="number" id="s2dm-hdl" step="0.1" value="1.3"></div>
+          <div class="field"><label>Возраст диагностики СД 2 типа, лет</label><input type="number" id="s2dm-agedm" min="20" max="69" value="50"></div>
           <div class="field"><label>HbA1c, %</label><input type="number" id="s2dm-hba1c" step="0.1" value="7.0"></div>
-          <div class="field"><label>eGFR</label><input type="number" id="s2dm-egfr" step="1" value="90"></div>
-          <div class="field"><label>Регион</label>
+          <div class="field"><label>eGFR (СКФ), мл/мин/1.73м²</label><input type="number" id="s2dm-egfr" step="1" value="90"></div>
+          <div class="field"><label>Регион риска (ESC)</label>
             <select id="s2dm-region">
               <option value="low">Низкий</option>
               <option value="mod">Умеренный</option>
-              <option value="high" selected>Высокий</option>
+              <option value="high" selected>Высокий (Беларусь)</option>
               <option value="vhigh">Очень высокий</option>
             </select>
           </div>
         </div>
-        <div class="field"><label class="checkbox-row"><input type="checkbox" id="s2dm-smoke"> Курение</label></div>
+        <div class="field"><label class="checkbox-row"><input type="checkbox" id="s2dm-smoke"> Текущее курение</label></div>
         <div class="btn-row"><button class="btn btn-primary" onclick="calcScore2Dm()">Рассчитать</button></div>
         <div class="result-box empty" id="s2dm-result"></div>
+        <div class="formula-list">
+          <div style="font-size:12px;color:#64748b">
+            <b>Важно:</b> при наличии установленных ССЗ или тяжёлого поражения органов-мишеней риск считается очень высоким без расчёта.
+          </div>
+        </div>
       </div>
     </section>
 
+    <!-- CHA2DS2-VASc -->
     <section id="chads" class="section">
       <h2 class="no-print">CHA₂DS₂-VASc</h2>
+      <p class="subtitle no-print">Риск тромбоэмболических осложнений при фибрилляции предсердий.</p>
       <div class="card no-print">
         <div id="chads-list"></div>
         <div class="btn-row">
@@ -300,20 +284,21 @@
         <div class="result-box empty" id="chads-result"></div>
       </div>
       <div class="card no-print">
-        <h3>Печать формы (A5)</h3>
+        <h3>Экспорт в печатную форму (A5)</h3>
         <div class="grid-2">
           <div class="field"><label>ФИО пациента</label><input type="text" id="chads-fio"></div>
-          <div class="field"><label>Дата</label><input type="text" id="chads-date" placeholder="дд.мм.гггг" inputmode="numeric"></div>
+          <div class="field"><label>Дата обследования</label><input type="text" id="chads-date" placeholder="дд.мм.гггг" inputmode="numeric"></div>
         </div>
-        <div class="btn-row"><button class="btn btn-primary" onclick="printChads()">🖨 Печать</button></div>
+        <div class="btn-row"><button class="btn btn-primary" onclick="printChads()">🖨 Печать формы (A5)</button></div>
       </div>
       <div class="acq-print-view" id="chads-print-view">
-        <div class="acq-print-title">Шкала CHA₂DS₂-VASc</div>
-        <div class="acq-print-row"><span class="lbl">ФИО:</span><span class="val" id="p-chads-fio"></span></div>
-        <div class="acq-print-row"><span class="lbl">Дата:</span><span class="val" id="p-chads-date"></span></div>
+        <div class="acq-print-title">Шкала CHA₂DS₂-VASc — оценка риска инсульта при ФП</div>
+        <div class="acq-print-row"><span class="lbl">ФИО пациента:</span><span class="val" id="p-chads-fio"></span></div>
+        <div class="acq-print-row"><span class="lbl">Дата обследования:</span><span class="val" id="p-chads-date"></span></div>
+        <div class="acq-print-instr">Отметьте все признаки, имеющиеся у пациента.</div>
         <div id="p-chads-questions"></div>
         <div class="acq-print-summary">
-          <div class="acq-sum-row"><span>Сумма:</span><b id="p-chads-sum">—</b></div>
+          <div class="acq-sum-row"><span>Сумма баллов:</span><b id="p-chads-sum">—</b></div>
           <div class="acq-sum-row"><span>Интерпретация:</span><b id="p-chads-interp">—</b></div>
           <div class="acq-sum-row"><span>Рекомендация:</span><b id="p-chads-rec">—</b></div>
         </div>
@@ -321,6 +306,7 @@
       </div>
     </section>
 
+    <!-- HAS-BLED -->
     <section id="hasbled" class="section">
       <h2>HAS-BLED</h2>
       <div class="card">
@@ -330,6 +316,7 @@
       </div>
     </section>
 
+    <!-- CURB-65 -->
     <section id="curb65" class="section">
       <h2>CURB-65</h2>
       <div class="card">
@@ -339,6 +326,7 @@
       </div>
     </section>
 
+    <!-- GCS -->
     <section id="gcs" class="section">
       <h2>Шкала комы Глазго</h2>
       <div class="card">
@@ -356,11 +344,12 @@
       </div>
     </section>
 
+    <!-- Charlson -->
     <section id="charlson" class="section">
-      <h2>Индекс Charlson</h2>
+      <h2>Индекс коморбидности Charlson</h2>
       <div class="card">
         <div class="field" style="max-width:220px">
-          <label>Возраст</label><input type="number" id="charlson-age" min="0" max="120" value="60">
+          <label>Возраст, лет</label><input type="number" id="charlson-age" min="0" max="120" value="60">
         </div>
         <div id="charlson-list"></div>
         <div class="btn-row"><button class="btn btn-primary" onclick="calcCharlson()">Рассчитать</button></div>
@@ -368,12 +357,14 @@
       </div>
     </section>
 
+    <!-- Больничный -->
     <section id="sickleave" class="section">
       <h2>Калькулятор листа нетрудоспособности</h2>
+      <p class="subtitle">Помощник для расчёта дней больничного и даты выхода на работу.</p>
       <div class="card">
         <div class="tabs">
-          <button class="tab active" onclick="switchSickMode('calc_days', this)">Дни по датам</button>
-          <button class="tab" onclick="switchSickMode('calc_end', this)">Дата окончания</button>
+          <button class="tab active" onclick="switchSickMode('calc_days', this)">Посчитать дни по датам</button>
+          <button class="tab" onclick="switchSickMode('calc_end', this)">Вычислить дату окончания</button>
         </div>
         <div id="sick-mode-days">
           <div class="grid-2">
@@ -399,31 +390,35 @@
       </div>
     </section>
 
+    <!-- ================= ОПРОСНИКИ ================= -->
+    <!-- ACQ-5 -->
     <section id="acq5" class="section">
       <h2 class="no-print">Опросник ACQ-5</h2>
+      <p class="subtitle no-print">Контроль над симптомами бронхиальной астмы за последнюю неделю.</p>
       <div class="card no-print">
         <div id="acq-list"></div>
         <div class="btn-row">
-          <button class="btn btn-primary" onclick="calcAcq()">Рассчитать</button>
+          <button class="btn btn-primary" onclick="calcAcq()">Рассчитать результат</button>
           <button class="btn btn-secondary" onclick="resetAcq()">Очистить</button>
         </div>
         <div class="result-box empty" id="acq-result"></div>
       </div>
       <div class="card no-print">
-        <h3>Печать формы (A5)</h3>
+        <h3>Экспорт в печатную форму (A5)</h3>
         <div class="grid-2">
           <div class="field"><label>ФИО пациента</label><input type="text" id="acq-fio"></div>
-          <div class="field"><label>Дата</label><input type="text" id="acq-date" placeholder="дд.мм.гггг" inputmode="numeric"></div>
+          <div class="field"><label>Дата обследования</label><input type="text" id="acq-date" placeholder="дд.мм.гггг" inputmode="numeric"></div>
         </div>
-        <div class="btn-row"><button class="btn btn-primary" onclick="printAcq()">🖨 Печать</button></div>
+        <div class="btn-row"><button class="btn btn-primary" onclick="printAcq()">🖨 Печать формы (A5)</button></div>
       </div>
       <div class="acq-print-view" id="acq-print-view">
-        <div class="acq-print-title">Опросник ACQ-5</div>
-        <div class="acq-print-row"><span class="lbl">ФИО:</span><span class="val" id="p-acq-fio"></span></div>
-        <div class="acq-print-row"><span class="lbl">Дата:</span><span class="val" id="p-acq-date"></span></div>
+        <div class="acq-print-title">Опросник по контролю над симптомами БА (ACQ-5)</div>
+        <div class="acq-print-row"><span class="lbl">ФИО пациента:</span><span class="val" id="p-acq-fio"></span></div>
+        <div class="acq-print-row"><span class="lbl">Дата обследования:</span><span class="val" id="p-acq-date"></span></div>
+        <div class="acq-print-instr">Впишите цифру, соответствующую номеру ответа.</div>
         <div id="p-acq-questions"></div>
         <div class="acq-print-summary">
-          <div class="acq-sum-row"><span>Сумма:</span><b id="p-acq-sum">—</b></div>
+          <div class="acq-sum-row"><span>Сумма баллов:</span><b id="p-acq-sum">—</b></div>
           <div class="acq-sum-row"><span>Средний балл:</span><b id="p-acq-avg">—</b></div>
           <div class="acq-sum-row"><span>Интерпретация:</span><b id="p-acq-interp">—</b></div>
         </div>
@@ -431,160 +426,113 @@
       </div>
     </section>
 
+    <!-- FINDRISK -->
     <section id="findrisk" class="section">
       <h2 class="no-print">Шкала FINDRISK</h2>
+      <p class="subtitle no-print">Расчёт 10-летнего риска развития сахарного диабета 2 типа.</p>
       <div class="card no-print">
         <div id="findrisk-list"></div>
         <div class="btn-row">
-          <button class="btn btn-primary" onclick="calcFindrisk()">Рассчитать</button>
+          <button class="btn btn-primary" onclick="calcFindrisk()">Рассчитать результат</button>
           <button class="btn btn-secondary" onclick="resetFindrisk()">Очистить</button>
         </div>
         <div class="result-box empty" id="findrisk-result"></div>
       </div>
       <div class="card no-print">
-        <h3>Печать формы (A5)</h3>
+        <h3>Экспорт в печатную форму (A5)</h3>
         <div class="grid-2">
           <div class="field"><label>ФИО пациента</label><input type="text" id="findrisk-fio"></div>
-          <div class="field"><label>Дата</label><input type="text" id="findrisk-date" placeholder="дд.мм.гггг" inputmode="numeric"></div>
+          <div class="field"><label>Дата анкетирования</label><input type="text" id="findrisk-date" placeholder="дд.мм.гггг" inputmode="numeric"></div>
         </div>
-        <div class="btn-row"><button class="btn btn-primary" onclick="printFindrisk()">🖨 Печать</button></div>
+        <div class="btn-row"><button class="btn btn-primary" onclick="printFindrisk()">🖨 Печать формы (A5)</button></div>
       </div>
       <div class="acq-print-view" id="findrisk-print-view">
         <div class="acq-print-title">Шкала FINDRISK</div>
-        <div class="acq-print-row"><span class="lbl">ФИО:</span><span class="val" id="p-findrisk-fio"></span></div>
-        <div class="acq-print-row"><span class="lbl">Дата:</span><span class="val" id="p-findrisk-date"></span></div>
+        <div class="acq-print-row"><span class="lbl">ФИО пациента:</span><span class="val" id="p-findrisk-fio"></span></div>
+        <div class="acq-print-row"><span class="lbl">Дата анкетирования:</span><span class="val" id="p-findrisk-date"></span></div>
         <div id="p-findrisk-questions"></div>
         <div class="acq-print-summary">
-          <div class="acq-sum-row"><span>Баллы:</span><b id="p-findrisk-sum">—</b></div>
-          <div class="acq-sum-row"><span>Риск:</span><b id="p-findrisk-interp">—</b></div>
+          <div class="acq-sum-row"><span>Общее количество баллов:</span><b id="p-findrisk-sum">—</b></div>
+          <div class="acq-sum-row"><span>Степень риска:</span><b id="p-findrisk-interp">—</b></div>
         </div>
         <div class="acq-print-sign"><div class="acq-sign-line"><span>Врач:</span><span class="line"></span><span class="sig">(подпись)</span></div></div>
       </div>
     </section>
 
+    <!-- ================= СКРИНИНГИ ================= -->
     <section id="screening" class="section">
       <h2>Диспансеризация и онкоскрининг</h2>
-      <p class="subtitle">Согласно Постановлению МЗ РБ от 16.12.2024 № 173.</p>
+      <p class="subtitle">Согласно Постановлению МЗ РБ № 173 от 16.12.2024. Отметьте возраст и пол пациента, чтобы увидеть положенные исследования.</p>
       <div class="card">
-        <div class="tabs">
-          <button class="tab active" onclick="switchScreenTab('screen-base', this)">Базовые</button>
-          <button class="tab" onclick="switchScreenTab('screen-onco', this)">Онкоскрининг</button>
-          <button class="tab" onclick="switchScreenTab('screen-add', this)">Дополнительные</button>
+        <div class="grid-2">
+          <div class="field"><label>Возраст пациента, лет</label><input type="number" id="screen-age" min="18" max="100" value="45"></div>
+          <div class="field"><label>Пол</label><select id="screen-sex"><option value="m">Мужской</option><option value="f">Женский</option></select></div>
         </div>
-        <div id="screen-base" class="screen-tab active">
-          <div class="grid-2">
-            <div class="field"><label>Возраст</label><input type="number" id="screen-age-base" min="18" max="100" value="45"></div>
-            <div class="field"><label>Пол</label><select id="screen-sex-base"><option value="m">Мужской</option><option value="f">Женский</option></select></div>
-          </div>
-          <button class="btn btn-primary" onclick="calcScreenBase()">Показать базовые</button>
-          <div class="result-box empty" id="screen-base-result"></div>
-        </div>
-        <div id="screen-onco" class="screen-tab" style="display:none;">
-          <div class="grid-2">
-            <div class="field"><label>Возраст</label><input type="number" id="screen-age-onco" min="18" max="100" value="45"></div>
-            <div class="field"><label>Пол</label><select id="screen-sex-onco"><option value="m">Мужской</option><option value="f">Женский</option></select></div>
-          </div>
-          <button class="btn btn-primary" onclick="calcScreenOnco()">Показать онкоскрининг</button>
-          <div class="result-box empty" id="screen-onco-result"></div>
-        </div>
-        <div id="screen-add" class="screen-tab" style="display:none;">
-          <div class="grid-2">
-            <div class="field"><label>Возраст</label><input type="number" id="screen-age-add" min="18" max="100" value="45"></div>
-          </div>
-          <button class="btn btn-primary" onclick="calcScreenAdd()">Показать дополнительные</button>
-          <div class="result-box empty" id="screen-add-result"></div>
-        </div>
+        <div class="btn-row"><button class="btn btn-primary" onclick="calcScreening()">Показать скрининги</button></div>
+        <div class="result-box empty" id="screening-result" style="border-left-color:var(--primary); background:#eff6ff;"></div>
       </div>
     </section>
 
+    <!-- ================= СПРАВОЧНИКИ ================= -->
     <section id="protocols" class="section">
-      <h2>Клинические протоколы</h2>
+      <h2>Клинические протоколы (краткие алгоритмы)</h2>
+      <p class="subtitle">Ключевые шаги диагностики и лечения частых состояний согласно протоколам МЗ РБ.</p>
       <div class="card">
-        <div class="tabs">
-          <button class="tab active" onclick="switchProtoTab('proto-ag', this)">Артериальная гипертензия</button>
-          <button class="tab" onclick="switchProtoTab('proto-dm', this)">Сахарный диабет 2 типа</button>
-        </div>
-        <div id="proto-ag" class="proto-tab active">
-          <h3>Артериальная гипертензия</h3>
-          <p class="subtitle">Постановление МЗ РБ от 25.04.2026 № 38</p>
-          <ul class="info-list">
-            <li><b>Диагностика:</b> не менее двух измерений офисного АД в ходе ≥2 визитов с интервалом 1–2 недели. Диагноз при АД ≥140/90 мм рт. ст. При АД ≥180/110 и признаках поражения органов-мишеней — в ходе одного визита.</li>
-            <li><b>Целевые уровни АД:</b> &lt;140/90 мм рт. ст.; при хорошей переносимости — 130/80. Для пациентов ≥80 лет — &lt;150/90.</li>
-            <li><b>Стартовая терапия:</b> комбинация из 2 препаратов (иАПФ/АРА + БКК или тиазидный диуретик).</li>
-            <li><b>Обследование:</b> ОАК, ОАМ, глюкоза, креатинин, липидный профиль, ЭКГ, измерение АД на обеих руках.</li>
-          </ul>
-        </div>
-        <div id="proto-dm" class="proto-tab" style="display:none;">
-          <h3>Сахарный диабет 2 типа</h3>
-          <p class="subtitle">Постановление МЗ РБ от 21.06.2021 № 85</p>
-          <ul class="info-list">
-            <li><b>Диагностические критерии:</b> глюкоза натощак ≥7.0 ммоль/л; HbA1c ≥6.5%; случайная глюкоза ≥11.1 ммоль/л с симптомами.</li>
-            <li><b>Целевой HbA1c:</b> &lt;7.0% для большинства; &lt;8.0% для пожилых/коморбидных.</li>
-            <li><b>Скрининг осложнений:</b> осмотр стоп, глазное дно, альбуминурия, липидный профиль, креатинин (с расчётом СКФ) — 1 раз в год.</li>
-            <li><b>Стартовая фармакотерапия:</b> метформин (при СКФ ≥30). При HbA1c ≥7.5% — возможен старт с комбинации.</li>
-          </ul>
-        </div>
+        <h3>Артериальная гипертензия (АГ)</h3>
+        <p><strong>Диагностика:</strong> Не менее 2 измерений офисного АД в ходе ≥2 визитов с интервалом 1–2 недели. Диагноз АГ при АД ≥140/90 мм рт. ст. (или ≥180/110 при однократном измерении с признаками поражения органов-мишеней).</p>
+        <p><strong>Целевые уровни АД:</strong> &lt;140/90 мм рт. ст. (при хорошей переносимости — 130/80). Для пациентов ≥80 лет — &lt;150/90.</p>
+        <p><strong>Стартовая терапия:</strong> Обычно комбинация из 2 препаратов: иАПФ/АРА + БКК (амлодипин) или тиазидный диуретик.</p>
+        <hr style="margin: 12px 0; border: none; border-top: 1px solid var(--border);">
+        <h3>Сахарный диабет 2 типа (СД 2)</h3>
+        <p><strong>Диагностические критерии:</strong> Глюкоза натощак ≥7.0 ммоль/л; HbA1c ≥6.5%; случайная глюкоза ≥11.1 ммоль/л с симптомами.</p>
+        <p><strong>Целевой HbA1c:</strong> &lt;7.0% для большинства; &lt;8.0% для пожилых/коморбидных.</p>
+        <p><strong>Скрининг осложнений:</strong> Осмотр стоп, глазное дно, альбуминурия, липидный профиль, креатинин (с расчётом СКФ) — 1 раз в год.</p>
+        <p><strong>Стартовая фармакотерапия:</strong> Метформин (при отсутствии противопоказаний и СКФ ≥30). При HbA1c ≥7.5% — возможен старт с комбинации.</p>
       </div>
     </section>
 
     <section id="medsafety" class="section">
       <h2>Безопасность лекарственных средств</h2>
+      <p class="subtitle">Краткие напоминания по дозированию и взаимодействиям.</p>
       <div class="card">
-        <div class="tabs">
-          <button class="tab active" onclick="switchMedTab('med-renal', this)">Коррекция при СКФ</button>
-          <button class="tab" onclick="switchMedTab('med-interact', this)">Взаимодействия</button>
-        </div>
-        <div id="med-renal" class="med-tab active">
-          <h3>Коррекция доз при снижении функции почек</h3>
-          <p class="subtitle">Коррекция осуществляется в соответствии с показателем клиренса креатинина</p>
-          <ul class="info-list">
-            <li><b>Метформин:</b> противопоказан при СКФ &lt;30 мл/мин/1.73м².</li>
-            <li><b>Эноксапарин:</b> при КК &lt;30 мл/мин — 1 мг/кг 1 раз в сутки.</li>
-            <li><b>Прямые оральные антикоагулянты:</b> коррекция или противопоказаны при КК &lt;15–30 мл/мин.</li>
-            <li><b>НПВС:</b> избегать при СКФ &lt;30; с осторожностью при 30–59.</li>
-          </ul>
-        </div>
-        <div id="med-interact" class="med-tab" style="display:none;">
-          <h3>Опасные взаимодействия</h3>
-          <ul class="info-list">
-            <li><b>Варфарин + НПВС / аспирин:</b> резкое повышение риска желудочно-кишечных кровотечений.</li>
-            <li><b>Клопидогрел + омепразол:</b> снижение антиагрегантного эффекта (предпочтительнее пантопразол).</li>
-            <li><b>иАПФ/АРА + спиронолактон:</b> риск гиперкалиемии, особенно при СКФ &lt;45.</li>
-            <li><b>Симвастатин + амиодарон / верапамил:</b> риск миопатии (ограничение дозы симвастатина до 20 мг).</li>
-          </ul>
-        </div>
+        <h3>Коррекция доз при снижении функции почек</h3>
+        <ul style="margin-left: 20px; line-height: 1.8;">
+          <li><strong>Метформин:</strong> Противопоказан при СКФ &lt;30 мл/мин/1.73м². При СКФ 30–45 — не начинать, при уже принимаемом — рассмотреть снижение дозы.</li>
+          <li><strong>Эноксапарин (НМГ):</strong> При КК &lt;30 мл/мин — требуется коррекция дозы (обычно 1 мг/кг 1 раз в сутки вместо 2 раз).</li>
+          <li><strong>Прямые оральные антикоагулянты (апиксабан, ривароксабан):</strong> Требуют коррекции дозы или противопоказаны при КК &lt;15–30 мл/мин (зависит от препарата).</li>
+          <li><strong>НПВС:</strong> Избегать при СКФ &lt;30, с осторожностью при 30–59 (риск острого повреждения почек).</li>
+        </ul>
+        <hr style="margin: 12px 0; border: none; border-top: 1px solid var(--border);">
+        <h3>Опасные взаимодействия</h3>
+        <ul style="margin-left: 20px; line-height: 1.8;">
+          <li><strong>Варфарин + НПВС / аспирин:</strong> Резкое повышение риска желудочно-кишечных кровотечений.</li>
+          <li><strong>Клопидогрел + омепразол:</strong> Снижение антиагрегантного эффекта клопидогрела (предпочтительнее пантопразол).</li>
+          <li><strong>иАПФ/АРА + калийсберегающие диуретики (спиронолактон):</strong> Риск гиперкалиемии, особенно при СКФ &lt;45.</li>
+          <li><strong>Симвастатин + амиодарон / верапамил / дилтиазем:</strong> Повышение риска миопатии (ограничение дозы симвастатина до 20 мг).</li>
+        </ul>
       </div>
     </section>
 
-    <section id="abx" class="section">
-      <h2>Эмпирическая антибиотикотерапия</h2>
-      <p class="subtitle">Препараты первого выбора согласно клиническим протоколам МЗ РБ.</p>
-      <div class="card" id="abx-list"></div>
-    </section>
-
-    <section id="history" class="section">
-      <h2>История печати</h2>
-      <p class="subtitle">Нажмите «Загрузить», чтобы восстановить данные документа для редактирования.</p>
-      <div class="card" id="history-list"></div>
-    </section>
-
+    <!-- ================= ДОКУМЕНТЫ ================= -->
+    <!-- ВКК -->
     <section id="vkk" class="section">
-      <h2 class="no-print">Протокол ВКК</h2>
+      <h2 class="no-print">Протокол заседания ВКК</h2>
+      <p class="subtitle no-print">Заполните поля. № протокола, пункт 10 и подписи — от руки на распечатанном бланке.</p>
       <div class="card vkk-form no-print">
-        <div class="field" style="max-width:240px"><label>Дата</label><input type="text" id="vkk-date" placeholder="дд.мм.гггг" inputmode="numeric"></div>
-        <div class="field"><label>ФИО</label><input type="text" id="vkk-fio"></div>
-        <div class="field"><label>Цель направления</label><textarea id="vkk-purpose"></textarea></div>
+        <div class="field" style="max-width:240px"><label>1. Дата</label><input type="text" id="vkk-date" placeholder="дд.мм.гггг" inputmode="numeric"></div>
+        <div class="field"><label>2. Фамилия, собственное имя, отчество</label><input type="text" id="vkk-fio"></div>
+        <div class="field"><label>3. Цель направления на заседание ВКК</label><textarea id="vkk-purpose"></textarea></div>
         <div class="grid-2">
-          <div class="field"><label>Начало нетрудоспособности</label><input type="text" id="vkk-start" placeholder="дд.мм.гггг" inputmode="numeric"></div>
-          <div class="field"><label>Дней (непрерывно)</label><input type="number" id="vkk-days"></div>
+          <div class="field"><label>4. Начало случая временной нетрудоспособности с</label><input type="text" id="vkk-start" placeholder="дд.мм.гггг" inputmode="numeric"></div>
+          <div class="field"><label>5. Временная нетрудоспособность, непрерывная, календарных дней</label><input type="number" id="vkk-days"></div>
         </div>
-        <div class="field"><label>Дней (за 12 мес)</label><input type="number" id="vkk-days-total"></div>
-        <div class="field"><label>Жалобы</label><textarea id="vkk-complaints"></textarea></div>
-        <div class="field"><label>Анамнез</label><textarea id="vkk-anamnesis"></textarea></div>
-        <div class="field"><label>Данные осмотра</label><textarea id="vkk-exam"></textarea></div>
-        <div class="field"><label>Диагноз</label><textarea id="vkk-diagnosis"></textarea></div>
+        <div class="field"><label>5б. Суммарная нетрудоспособность за последние 12 месяцев, календарных дней</label><input type="number" id="vkk-days-total"></div>
+        <div class="field"><label>6. Жалобы пациента</label><textarea id="vkk-complaints"></textarea></div>
+        <div class="field"><label>7. Краткий анамнез жизни и заболевания</label><textarea id="vkk-anamnesis"></textarea></div>
+        <div class="field"><label>8. Данные медицинского осмотра пациента</label><textarea id="vkk-exam"></textarea></div>
+        <div class="field"><label>9. Клинико-функциональный диагноз</label><textarea id="vkk-diagnosis"></textarea></div>
         <div class="btn-row no-print">
-          <button class="btn btn-primary" onclick="printVkk()">🖨 Печать</button>
+          <button class="btn btn-primary" onclick="printVkk()">🖨 Печать / Сохранить PDF</button>
           <button class="btn btn-secondary" onclick="clearVkk()">Очистить</button>
         </div>
       </div>
@@ -594,27 +542,27 @@
           <div class="vkk-page-inner">
             <h1 class="vkk-title">Протокол заседания врачебно-консультационной комиссии № <span class="vkk-num"></span></h1>
             <div class="vkk-label-own"><span class="vkk-lbl">1. Дата: <span class="vkk-val" id="p-vkk-date"></span><span class="vkk-sfx">г.</span></span></div>
-            <div class="vkk-label-own"><span class="vkk-lbl">2. ФИО: <span class="vkk-val" id="p-vkk-fio"></span></span></div>
-            <div class="vkk-label-own">3. Цель направления: <div class="vkk-ruled-value" style="--min-lines:1"><span id="p-vkk-purpose"></span></div></div>
-            <div class="vkk-label-own"><span class="vkk-lbl">4. Начало: с <span class="vkk-val" id="p-vkk-start"></span><span class="vkk-sfx">г.</span></span></div>
+            <div class="vkk-label-own"><span class="vkk-lbl">2. Фамилия, собственное имя, отчество (если таковое имеется): <span class="vkk-val" id="p-vkk-fio"></span></span></div>
+            <div class="vkk-label-own">3. Цель направления на заседание врачебно-консультационной комиссии: <div class="vkk-ruled-value" style="--min-lines:1"><span id="p-vkk-purpose"></span></div></div>
+            <div class="vkk-label-own"><span class="vkk-lbl">4. Начало случая временной нетрудоспособности: с <span class="vkk-val" id="p-vkk-start"></span><span class="vkk-sfx">г.</span></span></div>
             <div class="vkk-label-own">5. Временная нетрудоспособность: </div>
             <div class="vkk-inline vkk-inline-indent">
-              <span class="vkk-lbl">непрерывная: <span class="vkk-val" id="p-vkk-days"></span><span class="vkk-sfx">дней;</span></span>
+              <span class="vkk-lbl">непрерывная: <span class="vkk-val" id="p-vkk-days"></span><span class="vkk-sfx">календарных дней;</span></span>
             </div>
             <div class="vkk-inline vkk-inline-indent">
-              <span class="vkk-lbl">суммарная: <span class="vkk-val" id="p-vkk-days-total"></span><span class="vkk-sfx">дней.</span></span>
+              <span class="vkk-lbl">суммарная за последние 12 месяцев: <span class="vkk-val" id="p-vkk-days-total"></span><span class="vkk-sfx">календарных дней.</span></span>
             </div>
-            <div class="vkk-ruled-field"><span class="vkk-lbl">6. Жалобы: </span><span class="vkk-val" id="p-vkk-complaints"></span></div>
-            <div class="vkk-ruled-field"><span class="vkk-lbl">7. Анамнез: </span><span class="vkk-val" id="p-vkk-anamnesis"></span></div>
-            <div class="vkk-ruled-field"><span class="vkk-lbl">8. Осмотр: </span><span class="vkk-val" id="p-vkk-exam"></span></div>
+            <div class="vkk-ruled-field"><span class="vkk-lbl">6. Жалобы пациента: </span><span class="vkk-val" id="p-vkk-complaints"></span></div>
+            <div class="vkk-ruled-field"><span class="vkk-lbl">7. Краткий анамнез жизни и заболевания: </span><span class="vkk-val" id="p-vkk-anamnesis"></span></div>
+            <div class="vkk-ruled-field"><span class="vkk-lbl">8. Данные медицинского осмотра пациента: </span><span class="vkk-val" id="p-vkk-exam"></span></div>
           </div>
         </div>
         <div class="vkk-page">
           <div class="vkk-page-inner">
             <div class="vkk-ruled-field" style="--min-lines:4">
-              <span class="vkk-lbl">9. Диагноз: </span><span class="vkk-val" id="p-vkk-diagnosis"></span>
+              <span class="vkk-lbl">9. Клинико-функциональный диагноз: </span><span class="vkk-val" id="p-vkk-diagnosis"></span>
             </div>
-            <div class="vkk-label-own">10. Решение ВКК:</div>
+            <div class="vkk-label-own">10. Решение врачебно-консультационной комиссии (при выдаче заключения указать нормативный(ые) правовой(ые) акт(ы), на основании которого(ых) выдается заключение ВКК):</div>
             <div class="vkk-lines-block">
               <div class="vkk-line-item"></div><div class="vkk-line-item"></div><div class="vkk-line-item"></div>
               <div class="vkk-line-item"></div><div class="vkk-line-item"></div><div class="vkk-line-item"></div>
@@ -623,20 +571,25 @@
               <div class="vkk-sign-row">
                 <div class="vkk-sign-role">Председатель</div>
                 <div class="vkk-sign-field"><div class="vkk-sign-line"></div><div class="vkk-sign-cap">(подпись)</div></div>
-                <div class="vkk-sign-field"><div class="vkk-sign-line"></div><div class="vkk-sign-cap">(ФИО)</div></div>
+                <div class="vkk-sign-field"><div class="vkk-sign-line"></div><div class="vkk-sign-cap">(инициалы, фамилия)</div></div>
               </div>
               <div class="vkk-sign-row">
                 <div class="vkk-sign-role">Члены</div>
                 <div class="vkk-sign-field"><div class="vkk-sign-line"></div><div class="vkk-sign-cap">(подпись)</div></div>
-                <div class="vkk-sign-field"><div class="vkk-sign-line"></div><div class="vkk-sign-cap">(ФИО)</div></div>
+                <div class="vkk-sign-field"><div class="vkk-sign-line"></div><div class="vkk-sign-cap">(инициалы, фамилия)</div></div>
               </div>
               <div class="vkk-sign-row">
                 <div class="vkk-sign-role"></div>
                 <div class="vkk-sign-field"><div class="vkk-sign-line"></div><div class="vkk-sign-cap">(подпись)</div></div>
-                <div class="vkk-sign-field"><div class="vkk-sign-line"></div><div class="vkk-sign-cap">(ФИО)</div></div>
+                <div class="vkk-sign-field"><div class="vkk-sign-line"></div><div class="vkk-sign-cap">(инициалы, фамилия)</div></div>
+              </div>
+              <div class="vkk-sign-row">
+                <div class="vkk-sign-role"></div>
+                <div class="vkk-sign-field"><div class="vkk-sign-line"></div><div class="vkk-sign-cap">(подпись)</div></div>
+                <div class="vkk-sign-field"><div class="vkk-sign-line"></div><div class="vkk-sign-cap">(инициалы, фамилия)</div></div>
               </div>
             </div>
-            <div class="vkk-footer">ОДО "Центр оперативной печати", 2025</div>
+            <div class="vkk-footer">ОДО "Центр оперативной печати", т. 30 05 74, зак. №870/86, т.3000, ф.а5, 2025</div>
           </div>
         </div>
       </div>
@@ -645,6 +598,6 @@
   </main>
 </div>
 
-<script src="app.js?v=181026"></script>
+<script src="app.js?v=1910261"></script>
 </body>
 </html>
