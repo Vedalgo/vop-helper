@@ -4,49 +4,93 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ВОП-Helper</title>
-<link rel="stylesheet" href="styles.css?v=1910261">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%232563eb'/%3E%3Cpath d='M26 14h12v12h12v12H38v12H26V38H14V26h12V14z' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
 <header class="app-header no-print">
   <div class="logo"><div class="logo-mark">⚕</div> ВОП-Helper</div>
-  <button class="burger" id="burger" aria-label="Меню">☰</button>
+  <div class="header-controls">
+    <select id="doctor-select" class="doctor-select" title="Выберите врача для анкет">
+      <!-- <option value="Гринич Анастасия Александровна">Гринич Анастасия Александровна</option> -->
+    </select>
+    <button class="theme-toggle" id="theme-toggle" title="Переключить тему">🌙</button>
+    <button class="burger" id="burger" aria-label="Меню">☰</button>
+  </div>
 </header>
 
 <div class="layout">
   <aside class="sidebar no-print" id="sidebar">
     <nav>
-      <a href="#home" class="nav-link active" data-section="home">🏠 Главная</a>
+      <a href="#home" class="nav-link active" data-section="home" style="margin: 0 10px 10px;">🏠 Главная</a>
       
-      <div class="nav-group">Калькуляторы</div>
-      <a href="#egfr" class="nav-link" data-section="egfr">СКФ (eGFR)</a>
-      <a href="#crcl" class="nav-link" data-section="crcl">Клиренс креатинина</a>
-      <a href="#bmi" class="nav-link" data-section="bmi">ИМТ</a>
-      <a href="#bmi-amp" class="nav-link" data-section="bmi-amp">ИМТ с ампутацией</a>
-      <a href="#score2" class="nav-link" data-section="score2">SCORE2</a>
-      <a href="#score2op" class="nav-link" data-section="score2op">SCORE2-OP</a>
-      <a href="#score2dm" class="nav-link" data-section="score2dm">SCORE2-Diabetes</a>
-      <a href="#chads" class="nav-link" data-section="chads">CHA₂DS₂-VASc</a>
-      <a href="#hasbled" class="nav-link" data-section="hasbled">HAS-BLED</a>
-      <a href="#curb65" class="nav-link" data-section="curb65">CURB-65</a>
-      <a href="#gcs" class="nav-link" data-section="gcs">Шкала Глазго</a>
-      <a href="#charlson" class="nav-link" data-section="charlson">Charlson</a>
-      <a href="#sickleave" class="nav-link" data-section="sickleave">Больничный (дни)</a>
+      <details class="nav-dropdown" open>
+        <summary class="nav-group">🧮 Калькуляторы</summary>
+        <div class="nav-items">
+          <a href="#egfr" class="nav-link" data-section="egfr">СКФ (eGFR)</a>
+          <a href="#crcl" class="nav-link" data-section="crcl">Клиренс креатинина</a>
+          <a href="#bmi" class="nav-link" data-section="bmi">ИМТ</a>
+          <a href="#bmi-amp" class="nav-link" data-section="bmi-amp">ИМТ с ампутацией</a>
+          <a href="#score2" class="nav-link" data-section="score2">SCORE2</a>
+          <a href="#score2op" class="nav-link" data-section="score2op">SCORE2-OP</a>
+          <a href="#score2dm" class="nav-link" data-section="score2dm">SCORE2-Diabetes</a>
+          <a href="#chads" class="nav-link" data-section="chads">CHA₂DS₂-VASc</a>
+          <a href="#hasbled" class="nav-link" data-section="hasbled">HAS-BLED</a>
+          <a href="#curb65" class="nav-link" data-section="curb65">CURB-65</a>
+          <a href="#gcs" class="nav-link" data-section="gcs">Шкала Глазго</a>
+          <a href="#charlson" class="nav-link" data-section="charlson">Charlson</a>
+          <a href="#sickleave" class="nav-link" data-section="sickleave">Больничный (дни)</a>
+        </div>
+      </details>
 
-      <div class="nav-group">Опросники и шкалы</div>
-      <a href="#acq5" class="nav-link" data-section="acq5">ACQ-5 (астма)</a>
-      <a href="#findrisk" class="nav-link" data-section="findrisk">FINDRISK (диабет)</a>
+      <details class="nav-dropdown">
+        <summary class="nav-group">📝 Опросники и шкалы</summary>
+        <div class="nav-items">
+          <a href="#acq5" class="nav-link" data-section="acq5">ACQ-5 (астма)</a>
+          <a href="#findrisk" class="nav-link" data-section="findrisk">FINDRISK (диабет)</a>
+          <a href="#hads" class="nav-link" data-section="hads">HADS (тревога/депрессия)</a>
+          <a href="#auditc" class="nav-link" data-section="auditc">AUDIT-C (алкоголь)</a>
+          <a href="#mmse" class="nav-link" data-section="mmse">MMSE (когнитивный статус)</a>
+          <a href="#bdi" class="nav-link" data-section="bdi">Шкала Бека (BDI)</a>
+          <a href="#mmrc" class="nav-link" data-section="mmrc">mMRC (одышка)</a>
+          <a href="#cat" class="nav-link" data-section="cat">CAT-тест (ХОБЛ)</a>
+          <a href="#rivermead" class="nav-link" data-section="rivermead">Шкала Ривермид</a>
+          <a href="#light" class="nav-link" data-section="light">Критерии Light</a>
+        </div>
+      </details>
 
-      <div class="nav-group">Скрининги</div>
-      <a href="#screening" class="nav-link" data-section="screening">Диспансеризация и онкоскрининг</a>
+      <details class="nav-dropdown">
+        <summary class="nav-group">🩺 Скрининги</summary>
+        <div class="nav-items">
+          <a href="#screening" class="nav-link" data-section="screening">Диспансеризация и онкоскрининг</a>
+        </div>
+      </details>
 
-      <div class="nav-group">Справочники</div>
-      <a href="#protocols" class="nav-link" data-section="protocols">Клинические протоколы</a>
-      <a href="#medsafety" class="nav-link" data-section="medsafety">Безопасность ЛС</a>
+      <details class="nav-dropdown">
+        <summary class="nav-group">📚 Справочники</summary>
+        <div class="nav-items">
+          <a href="#protocols" class="nav-link" data-section="protocols">Клинические протоколы</a>
+          <a href="#medsafety" class="nav-link" data-section="medsafety">Безопасность ЛС</a>
+        </div>
+      </details>
 
-      <div class="nav-group">Документы</div>
-      <a href="#vkk" class="nav-link" data-section="vkk">Протокол ВКК</a>
+      <details class="nav-dropdown">
+        <summary class="nav-group">📄 Документы</summary>
+        <div class="nav-items">
+          <a href="#vkk" class="nav-link" data-section="vkk">Протокол ВКК</a>
+        </div>
+      </details>
     </nav>
+    
+    <div class="author-plate">
+      <strong>ВОП-Helper</strong><br>
+      by Гринич Виталий<br>
+      для кабинета №302<br>
+      УЗ "Калинковичская ЦРБ"<br>
+      филиал "Районная поликлиника"<br>
+      2026
+    </div>
   </aside>
 
   <main>
@@ -79,6 +123,14 @@
         <div class="hero-grid">
           <button class="hero-tile" onclick="go('acq5')"><div class="icon">🫁</div><div class="title">ACQ-5</div><div class="desc">Контроль над БА</div></button>
           <button class="hero-tile" onclick="go('findrisk')"><div class="icon">🩸</div><div class="title">FINDRISK</div><div class="desc">Риск диабета 2 типа</div></button>
+          <button class="hero-tile" onclick="go('hads')"><div class="icon">😟</div><div class="title">HADS</div><div class="desc">Тревога и депрессия</div></button>
+          <button class="hero-tile" onclick="go('auditc')"><div class="icon">🍷</div><div class="title">AUDIT-C</div><div class="desc">Опасное потребление алкоголя</div></button>
+          <button class="hero-tile" onclick="go('mmse')"><div class="icon">🧠</div><div class="title">MMSE</div><div class="desc">Когнитивный статус</div></button>
+          <button class="hero-tile" onclick="go('bdi')"><div class="icon">📉</div><div class="title">Шкала Бека</div><div class="desc">Оценка депрессии</div></button>
+          <button class="hero-tile" onclick="go('mmrc')"><div class="icon">💨</div><div class="title">mMRC</div><div class="desc">Одышка при ХОБЛ</div></button>
+          <button class="hero-tile" onclick="go('cat')"><div class="icon">📋</div><div class="title">CAT-тест</div><div class="desc">Влияние симптомов ХОБЛ</div></button>
+          <button class="hero-tile" onclick="go('rivermead')"><div class="icon">🚶</div><div class="title">Ривермид</div><div class="desc">Мобильность после инсульта</div></button>
+          <button class="hero-tile" onclick="go('light')"><div class="icon">🫁</div><div class="title">Критерии Light</div><div class="desc">Плевральный выпот</div></button>
         </div>
       </div>
 
@@ -92,7 +144,7 @@
       <div class="dashboard-category">
         <h3>📚 Справочники и безопасность</h3>
         <div class="hero-grid">
-          <button class="hero-tile" onclick="go('protocols')"><div class="icon">📋</div><div class="title">Клинические протоколы</div><div class="desc">Алгоритмы АГ, СД 2 типа</div></button>
+          <button class="hero-tile" onclick="go('protocols')"><div class="icon">📋</div><div class="title">Клинические протоколы</div><div class="desc">АГ, СД, ХБП, ХОБЛ, инсульт, ревматология</div></button>
           <button class="hero-tile" onclick="go('medsafety')"><div class="icon">💊</div><div class="title">Безопасность ЛС</div><div class="desc">Дозы и взаимодействия</div></button>
         </div>
       </div>
@@ -100,7 +152,7 @@
       <div class="dashboard-category">
         <h3>📄 Документы</h3>
         <div class="hero-grid">
-          <button class="hero-tile" onclick="go('vkk')"><div class="icon">📄</div><div class="title">Протокол ВКК</div><div class="desc">Печать A4</div></button>
+          <button class="hero-tile" onclick="go('vkk')"><div class="icon">📄</div><div class="title">Протокол ВКК</div><div class="desc">Печать A5 + история</div></button>
         </div>
       </div>
     </section>
@@ -148,7 +200,10 @@
           <div class="field"><label>Возраст, лет</label><input type="number" id="crcl-age" min="18" max="120" value="60"></div>
           <div class="field"><label>Пол</label><select id="crcl-sex"><option value="m">Мужской</option><option value="f">Женский</option></select></div>
           <div class="field"><label>Вес, кг</label><input type="number" id="crcl-weight" step="0.1" value="70"></div>
-          <div class="field"><label>Креатинин сыворотки, мкмоль/л</label><input type="number" id="crcl-cr" step="0.1" value="80"></div>
+          <div class="field"><label>Креатинин сыворотки</label><input type="number" id="crcl-cr" step="0.1" value="80"></div>
+        </div>
+        <div class="field"><label>Единицы креатинина</label>
+          <select id="crcl-unit"><option value="umol">мкмоль/л</option><option value="mgdl">мг/дл</option></select>
         </div>
         <div class="btn-row">
           <button class="btn btn-primary" onclick="calcCrCl()">Рассчитать</button>
@@ -264,7 +319,7 @@
         <div class="btn-row"><button class="btn btn-primary" onclick="calcScore2Dm()">Рассчитать</button></div>
         <div class="result-box empty" id="s2dm-result"></div>
         <div class="formula-list">
-          <div style="font-size:12px;color:#64748b">
+          <div style="font-size:12px;color:var(--muted)">
             <b>Важно:</b> при наличии установленных ССЗ или тяжёлого поражения органов-мишеней риск считается очень высоким без расчёта.
           </div>
         </div>
@@ -291,7 +346,7 @@
         </div>
         <div class="btn-row"><button class="btn btn-primary" onclick="printChads()">🖨 Печать формы (A5)</button></div>
       </div>
-      <div class="acq-print-view" id="chads-print-view">
+      <div class="acq-print-view acq-print-document" id="chads-print-view">
         <div class="acq-print-title">Шкала CHA₂DS₂-VASc — оценка риска инсульта при ФП</div>
         <div class="acq-print-row"><span class="lbl">ФИО пациента:</span><span class="val" id="p-chads-fio"></span></div>
         <div class="acq-print-row"><span class="lbl">Дата обследования:</span><span class="val" id="p-chads-date"></span></div>
@@ -302,7 +357,18 @@
           <div class="acq-sum-row"><span>Интерпретация:</span><b id="p-chads-interp">—</b></div>
           <div class="acq-sum-row"><span>Рекомендация:</span><b id="p-chads-rec">—</b></div>
         </div>
-        <div class="acq-print-sign"><div class="acq-sign-line"><span>Врач:</span><span class="line"></span><span class="sig">(подпись)</span></div></div>
+        <div class="acq-print-sign">
+          <div class="acq-sign-flex">
+            <div class="acq-sign-input">
+              <div class="acq-sign-field">
+                <span>Врач:</span>
+                <span class="line"><span class="doctor-name" id="p-chads-doctor-sign"></span></span>
+              </div>
+              <div class="acq-sign-caption">(подпись)</div>
+            </div>
+            <div class="acq-stamp-box">М.П.</div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -411,7 +477,7 @@
         </div>
         <div class="btn-row"><button class="btn btn-primary" onclick="printAcq()">🖨 Печать формы (A5)</button></div>
       </div>
-      <div class="acq-print-view" id="acq-print-view">
+      <div class="acq-print-view acq-print-document" id="acq-print-view">
         <div class="acq-print-title">Опросник по контролю над симптомами БА (ACQ-5)</div>
         <div class="acq-print-row"><span class="lbl">ФИО пациента:</span><span class="val" id="p-acq-fio"></span></div>
         <div class="acq-print-row"><span class="lbl">Дата обследования:</span><span class="val" id="p-acq-date"></span></div>
@@ -422,7 +488,18 @@
           <div class="acq-sum-row"><span>Средний балл:</span><b id="p-acq-avg">—</b></div>
           <div class="acq-sum-row"><span>Интерпретация:</span><b id="p-acq-interp">—</b></div>
         </div>
-        <div class="acq-print-sign"><div class="acq-sign-line"><span>Врач:</span><span class="line"></span><span class="sig">(подпись)</span></div></div>
+        <div class="acq-print-sign">
+          <div class="acq-sign-flex">
+            <div class="acq-sign-input">
+              <div class="acq-sign-field">
+                <span>Врач:</span>
+                <span class="line"><span class="doctor-name" id="p-acq-doctor-sign"></span></span>
+              </div>
+              <div class="acq-sign-caption">(подпись)</div>
+            </div>
+            <div class="acq-stamp-box">М.П.</div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -446,7 +523,7 @@
         </div>
         <div class="btn-row"><button class="btn btn-primary" onclick="printFindrisk()">🖨 Печать формы (A5)</button></div>
       </div>
-      <div class="acq-print-view" id="findrisk-print-view">
+      <div class="acq-print-view acq-print-document" id="findrisk-print-view">
         <div class="acq-print-title">Шкала FINDRISK</div>
         <div class="acq-print-row"><span class="lbl">ФИО пациента:</span><span class="val" id="p-findrisk-fio"></span></div>
         <div class="acq-print-row"><span class="lbl">Дата анкетирования:</span><span class="val" id="p-findrisk-date"></span></div>
@@ -455,39 +532,348 @@
           <div class="acq-sum-row"><span>Общее количество баллов:</span><b id="p-findrisk-sum">—</b></div>
           <div class="acq-sum-row"><span>Степень риска:</span><b id="p-findrisk-interp">—</b></div>
         </div>
-        <div class="acq-print-sign"><div class="acq-sign-line"><span>Врач:</span><span class="line"></span><span class="sig">(подпись)</span></div></div>
+        <div class="acq-print-sign">
+          <div class="acq-sign-flex">
+            <div class="acq-sign-input">
+              <div class="acq-sign-field">
+                <span>Врач:</span>
+                <span class="line"><span class="doctor-name" id="p-findrisk-doctor-sign"></span></span>
+              </div>
+              <div class="acq-sign-caption">(подпись)</div>
+            </div>
+            <div class="acq-stamp-box">М.П.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HADS -->
+    <section id="hads" class="section">
+      <h2 class="no-print">Госпитальная шкала тревоги и депрессии (HADS)</h2>
+      <p class="subtitle no-print">14 вопросов: 7 — тревога (A), 7 — депрессия (D).</p>
+      <div class="card no-print">
+        <div id="hads-list"></div>
+        <div class="btn-row">
+          <button class="btn btn-primary" onclick="calcHads()">Рассчитать результат</button>
+          <button class="btn btn-secondary" onclick="resetHads()">Очистить</button>
+        </div>
+        <div class="result-box empty" id="hads-result"></div>
+      </div>
+      <div class="card no-print">
+        <h3>Экспорт в печатную форму (A5)</h3>
+        <div class="grid-2">
+          <div class="field"><label>ФИО пациента</label><input type="text" id="hads-fio"></div>
+          <div class="field"><label>Дата обследования</label><input type="text" id="hads-date" placeholder="дд.мм.гггг" inputmode="numeric"></div>
+        </div>
+        <div class="btn-row"><button class="btn btn-primary" onclick="printHads()">🖨 Печать формы (A5)</button></div>
+      </div>
+      <div class="acq-print-view acq-print-document" id="hads-print-view">
+        <div class="acq-print-title">Госпитальная шкала тревоги и депрессии (HADS)</div>
+        <div class="acq-print-row"><span class="lbl">ФИО пациента:</span><span class="val" id="p-hads-fio"></span></div>
+        <div class="acq-print-row"><span class="lbl">Дата обследования:</span><span class="val" id="p-hads-date"></span></div>
+        <div id="p-hads-questions"></div>
+        <div class="acq-print-summary">
+          <div class="acq-sum-row"><span>Тревога (A):</span><b id="p-hads-a">—</b></div>
+          <div class="acq-sum-row"><span>Депрессия (D):</span><b id="p-hads-d">—</b></div>
+          <div class="acq-sum-row"><span>Интерпретация:</span><b id="p-hads-interp">—</b></div>
+        </div>
+        <div class="acq-print-sign">
+          <div class="acq-sign-flex">
+            <div class="acq-sign-input">
+              <div class="acq-sign-field">
+                <span>Врач:</span>
+                <span class="line"><span class="doctor-name" id="p-hads-doctor-sign"></span></span>
+              </div>
+              <div class="acq-sign-caption">(подпись)</div>
+            </div>
+            <div class="acq-stamp-box">М.П.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AUDIT-C -->
+    <section id="auditc" class="section">
+      <h2 class="no-print">AUDIT-C (скрининг алкоголя)</h2>
+      <p class="subtitle no-print">3 вопроса. Порог: ≥4 у мужчин, ≥3 у женщин.</p>
+      <div class="card no-print">
+        <div id="auditc-list"></div>
+        <div class="grid-2">
+          <div class="field"><label>Пол</label><select id="auditc-sex"><option value="m">Мужской</option><option value="f">Женский</option></select></div>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-primary" onclick="calcAuditC()">Рассчитать результат</button>
+          <button class="btn btn-secondary" onclick="resetAuditC()">Очистить</button>
+        </div>
+        <div class="result-box empty" id="auditc-result"></div>
+      </div>
+      <div class="card no-print">
+        <h3>Экспорт в печатную форму (A5)</h3>
+        <div class="grid-2">
+          <div class="field"><label>ФИО пациента</label><input type="text" id="auditc-fio"></div>
+          <div class="field"><label>Дата обследования</label><input type="text" id="auditc-date" placeholder="дд.мм.гггг" inputmode="numeric"></div>
+        </div>
+        <div class="btn-row"><button class="btn btn-primary" onclick="printAuditC()">🖨 Печать формы (A5)</button></div>
+      </div>
+      <div class="acq-print-view acq-print-document" id="auditc-print-view">
+        <div class="acq-print-title">AUDIT-C — скрининг опасного потребления алкоголя</div>
+        <div class="acq-print-row"><span class="lbl">ФИО пациента:</span><span class="val" id="p-auditc-fio"></span></div>
+        <div class="acq-print-row"><span class="lbl">Дата обследования:</span><span class="val" id="p-auditc-date"></span></div>
+        <div id="p-auditc-questions"></div>
+        <div class="acq-print-summary">
+          <div class="acq-sum-row"><span>Сумма баллов:</span><b id="p-auditc-sum">—</b></div>
+          <div class="acq-sum-row"><span>Интерпретация:</span><b id="p-auditc-interp">—</b></div>
+        </div>
+        <div class="acq-print-sign">
+          <div class="acq-sign-flex">
+            <div class="acq-sign-input">
+              <div class="acq-sign-field">
+                <span>Врач:</span>
+                <span class="line"><span class="doctor-name" id="p-auditc-doctor-sign"></span></span>
+              </div>
+              <div class="acq-sign-caption">(подпись)</div>
+            </div>
+            <div class="acq-stamp-box">М.П.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MMSE -->
+    <section id="mmse" class="section">
+      <h2 class="no-print">MMSE — краткая шкала оценки психического статуса</h2>
+      <p class="subtitle no-print">30 баллов. 28–30 — норма; 25–27 — ЛКН; 20–24 — легкая деменция; 10–19 — умеренная; <10 — тяжелая.</p>
+      <div class="card no-print">
+        <div id="mmse-list"></div>
+        <div class="btn-row">
+          <button class="btn btn-primary" onclick="calcMmse()">Рассчитать результат</button>
+          <button class="btn btn-secondary" onclick="resetMmse()">Очистить</button>
+        </div>
+        <div class="result-box empty" id="mmse-result"></div>
+      </div>
+      <div class="card no-print">
+        <h3>Экспорт в печатную форму (A5)</h3>
+        <div class="grid-2">
+          <div class="field"><label>ФИО пациента</label><input type="text" id="mmse-fio"></div>
+          <div class="field"><label>Дата обследования</label><input type="text" id="mmse-date" placeholder="дд.мм.гггг" inputmode="numeric"></div>
+        </div>
+        <div class="btn-row"><button class="btn btn-primary" onclick="printMmse()">🖨 Печать формы (A5)</button></div>
+      </div>
+      <div class="acq-print-view acq-print-document" id="mmse-print-view">
+        <div class="acq-print-title">MMSE — краткая шкала оценки психического статуса</div>
+        <div class="acq-print-row"><span class="lbl">ФИО пациента:</span><span class="val" id="p-mmse-fio"></span></div>
+        <div class="acq-print-row"><span class="lbl">Дата обследования:</span><span class="val" id="p-mmse-date"></span></div>
+        <div id="p-mmse-questions"></div>
+        <div class="acq-print-summary">
+          <div class="acq-sum-row"><span>Сумма баллов:</span><b id="p-mmse-sum">—</b></div>
+          <div class="acq-sum-row"><span>Интерпретация:</span><b id="p-mmse-interp">—</b></div>
+        </div>
+        <div class="acq-print-sign">
+          <div class="acq-sign-flex">
+            <div class="acq-sign-input">
+              <div class="acq-sign-field">
+                <span>Врач:</span>
+                <span class="line"><span class="doctor-name" id="p-mmse-doctor-sign"></span></span>
+              </div>
+              <div class="acq-sign-caption">(подпись)</div>
+            </div>
+            <div class="acq-stamp-box">М.П.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BDI -->
+    <section id="bdi" class="section">
+      <h2 class="no-print">Шкала депрессии Бека (BDI, 21 пункт)</h2>
+      <p class="subtitle no-print">0–63 балла. 0–9 — нет; 10–15 — легкая; 16–19 — умеренная; 20–29 — выраженная; 30+ — тяжелая.</p>
+      <div class="card no-print">
+        <div id="bdi-list"></div>
+        <div class="btn-row">
+          <button class="btn btn-primary" onclick="calcBdi()">Рассчитать результат</button>
+          <button class="btn btn-secondary" onclick="resetBdi()">Очистить</button>
+        </div>
+        <div class="result-box empty" id="bdi-result"></div>
+      </div>
+      <div class="card no-print">
+        <h3>Экспорт в печатную форму (A5)</h3>
+        <div class="grid-2">
+          <div class="field"><label>ФИО пациента</label><input type="text" id="bdi-fio"></div>
+          <div class="field"><label>Дата обследования</label><input type="text" id="bdi-date" placeholder="дд.мм.гггг" inputmode="numeric"></div>
+        </div>
+        <div class="btn-row"><button class="btn btn-primary" onclick="printBdi()">🖨 Печать формы (A5)</button></div>
+      </div>
+      <div class="acq-print-view acq-print-document" id="bdi-print-view">
+        <div class="acq-print-title">Шкала депрессии Бека (BDI)</div>
+        <div class="acq-print-row"><span class="lbl">ФИО пациента:</span><span class="val" id="p-bdi-fio"></span></div>
+        <div class="acq-print-row"><span class="lbl">Дата обследования:</span><span class="val" id="p-bdi-date"></span></div>
+        <div id="p-bdi-questions"></div>
+        <div class="acq-print-summary">
+          <div class="acq-sum-row"><span>Сумма баллов:</span><b id="p-bdi-sum">—</b></div>
+          <div class="acq-sum-row"><span>Интерпретация:</span><b id="p-bdi-interp">—</b></div>
+        </div>
+        <div class="acq-print-sign">
+          <div class="acq-sign-flex">
+            <div class="acq-sign-input">
+              <div class="acq-sign-field">
+                <span>Врач:</span>
+                <span class="line"><span class="doctor-name" id="p-bdi-doctor-sign"></span></span>
+              </div>
+              <div class="acq-sign-caption">(подпись)</div>
+            </div>
+            <div class="acq-stamp-box">М.П.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- mMRC -->
+    <section id="mmrc" class="section">
+      <h2>mMRC — шкала одышки</h2>
+      <p class="subtitle">0–4 балла. 0–1 — легкая, 2 — средняя, 3–4 — тяжелая.</p>
+      <div class="card">
+        <div class="field"><label>Степень одышки</label>
+          <select id="mmrc-value">
+            <option value="0">0 — Одышка только при очень интенсивной нагрузке</option>
+            <option value="1">1 — Одышка при быстрой ходьбе или подъеме на небольшое возвышение</option>
+            <option value="2">2 — Одышка при ходьбе в среднем темпе, необходимость остановки</option>
+            <option value="3">3 — Одышка при медленной ходьбе, остановка через 100 м</option>
+            <option value="4">4 — Одышка в покое или при одевании</option>
+          </select>
+        </div>
+        <div class="btn-row"><button class="btn btn-primary" onclick="calcMmrc()">Рассчитать</button></div>
+        <div class="result-box empty" id="mmrc-result"></div>
+      </div>
+    </section>
+
+    <!-- CAT -->
+    <section id="cat" class="section">
+      <h2 class="no-print">CAT-тест (COPD Assessment Test)</h2>
+      <p class="subtitle no-print">8 вопросов, 0–40 баллов. ≥10 — значимое влияние на качество жизни.</p>
+      <div class="card no-print">
+        <div id="cat-list"></div>
+        <div class="btn-row">
+          <button class="btn btn-primary" onclick="calcCat()">Рассчитать результат</button>
+          <button class="btn btn-secondary" onclick="resetCat()">Очистить</button>
+        </div>
+        <div class="result-box empty" id="cat-result"></div>
+      </div>
+      <div class="card no-print">
+        <h3>Экспорт в печатную форму (A5)</h3>
+        <div class="grid-2">
+          <div class="field"><label>ФИО пациента</label><input type="text" id="cat-fio"></div>
+          <div class="field"><label>Дата обследования</label><input type="text" id="cat-date" placeholder="дд.мм.гггг" inputmode="numeric"></div>
+        </div>
+        <div class="btn-row"><button class="btn btn-primary" onclick="printCat()">🖨 Печать формы (A5)</button></div>
+      </div>
+      <div class="acq-print-view acq-print-document" id="cat-print-view">
+        <div class="acq-print-title">CAT-тест — оценка влияния ХОБЛ на качество жизни</div>
+        <div class="acq-print-row"><span class="lbl">ФИО пациента:</span><span class="val" id="p-cat-fio"></span></div>
+        <div class="acq-print-row"><span class="lbl">Дата обследования:</span><span class="val" id="p-cat-date"></span></div>
+        <div id="p-cat-questions"></div>
+        <div class="acq-print-summary">
+          <div class="acq-sum-row"><span>Сумма баллов:</span><b id="p-cat-sum">—</b></div>
+          <div class="acq-sum-row"><span>Интерпретация:</span><b id="p-cat-interp">—</b></div>
+        </div>
+        <div class="acq-print-sign">
+          <div class="acq-sign-flex">
+            <div class="acq-sign-input">
+              <div class="acq-sign-field">
+                <span>Врач:</span>
+                <span class="line"><span class="doctor-name" id="p-cat-doctor-sign"></span></span>
+              </div>
+              <div class="acq-sign-caption">(подпись)</div>
+            </div>
+            <div class="acq-stamp-box">М.П.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ривермид -->
+    <section id="rivermead" class="section">
+      <h2>Шкала мобильности Ривермид</h2>
+      <p class="subtitle">0–15 баллов. Оценивает способность к передвижению и самообслуживанию.</p>
+      <div class="card">
+        <div id="rivermead-list"></div>
+        <div class="btn-row"><button class="btn btn-primary" onclick="calcRivermead()">Рассчитать</button></div>
+        <div class="result-box empty" id="rivermead-result"></div>
+      </div>
+    </section>
+
+    <!-- Критерии Light -->
+    <section id="light" class="section">
+      <h2>Критерии Light (плевральный выпот)</h2>
+      <p class="subtitle">Экссудат при выполнении хотя бы одного критерия.</p>
+      <div class="card">
+        <div class="grid-2">
+          <div class="field"><label>Белок плевральной жидкости, г/л</label><input type="number" id="light-prot-fluid" step="0.1"></div>
+          <div class="field"><label>Белок сыворотки, г/л</label><input type="number" id="light-prot-serum" step="0.1"></div>
+          <div class="field"><label>ЛДГ плевральной жидкости, Ед/л</label><input type="number" id="light-ldh-fluid" step="1"></div>
+          <div class="field"><label>ЛДГ сыворотки, Ед/л</label><input type="number" id="light-ldh-serum" step="1"></div>
+          <div class="field"><label>Верхняя граница нормы ЛДГ сыворотки, Ед/л</label><input type="number" id="light-ldh-uln" step="1" value="250"></div>
+        </div>
+        <div class="btn-row"><button class="btn btn-primary" onclick="calcLight()">Рассчитать</button></div>
+        <div class="result-box empty" id="light-result"></div>
       </div>
     </section>
 
     <!-- ================= СКРИНИНГИ ================= -->
     <section id="screening" class="section">
       <h2>Диспансеризация и онкоскрининг</h2>
-      <p class="subtitle">Согласно Постановлению МЗ РБ № 173 от 16.12.2024. Отметьте возраст и пол пациента, чтобы увидеть положенные исследования.</p>
+      <p class="subtitle">Согласно Постановлению МЗ РБ № 173 от 16.12.2024 (с изменениями от 26.02.2026).</p>
       <div class="card">
         <div class="grid-2">
           <div class="field"><label>Возраст пациента, лет</label><input type="number" id="screen-age" min="18" max="100" value="45"></div>
           <div class="field"><label>Пол</label><select id="screen-sex"><option value="m">Мужской</option><option value="f">Женский</option></select></div>
         </div>
         <div class="btn-row"><button class="btn btn-primary" onclick="calcScreening()">Показать скрининги</button></div>
-        <div class="result-box empty" id="screening-result" style="border-left-color:var(--primary); background:#eff6ff;"></div>
+        <div class="result-box empty" id="screening-result" style="border-left-color:var(--primary); background:var(--primary-light);"></div>
       </div>
     </section>
 
     <!-- ================= СПРАВОЧНИКИ ================= -->
     <section id="protocols" class="section">
-      <h2>Клинические протоколы (краткие алгоритмы)</h2>
-      <p class="subtitle">Ключевые шаги диагностики и лечения частых состояний согласно протоколам МЗ РБ.</p>
+      <h2>Клинические протоколы МЗ РБ (2025–2026)</h2>
+      <p class="subtitle">Ключевые алгоритмы для ВОП. Каждый блок — краткая выжимка из действующего постановления.</p>
       <div class="card">
         <h3>Артериальная гипертензия (АГ)</h3>
-        <p><strong>Диагностика:</strong> Не менее 2 измерений офисного АД в ходе ≥2 визитов с интервалом 1–2 недели. Диагноз АГ при АД ≥140/90 мм рт. ст. (или ≥180/110 при однократном измерении с признаками поражения органов-мишеней).</p>
-        <p><strong>Целевые уровни АД:</strong> &lt;140/90 мм рт. ст. (при хорошей переносимости — 130/80). Для пациентов ≥80 лет — &lt;150/90.</p>
-        <p><strong>Стартовая терапия:</strong> Обычно комбинация из 2 препаратов: иАПФ/АРА + БКК (амлодипин) или тиазидный диуретик.</p>
-        <hr style="margin: 12px 0; border: none; border-top: 1px solid var(--border);">
+        <p><strong>Диагностика:</strong> Не менее 2 измерений офисного АД в ходе ≥2 визитов с интервалом 1–2 недели. Диагноз АГ при АД ≥140/90 мм рт. ст.</p>
+        <p><strong>Целевые уровни:</strong> &lt;140/90 мм рт. ст. (при хорошей переносимости — 130/80). Для ≥80 лет — &lt;150/90.</p>
+        <p><strong>Стартовая терапия:</strong> Комбинация из 2 препаратов: иАПФ/АРА + БКК (амлодипин) или тиазидный диуретик.</p>
+        <hr style="margin:12px 0; border:none; border-top:1px solid var(--border);">
         <h3>Сахарный диабет 2 типа (СД 2)</h3>
         <p><strong>Диагностические критерии:</strong> Глюкоза натощак ≥7.0 ммоль/л; HbA1c ≥6.5%; случайная глюкоза ≥11.1 ммоль/л с симптомами.</p>
         <p><strong>Целевой HbA1c:</strong> &lt;7.0% для большинства; &lt;8.0% для пожилых/коморбидных.</p>
-        <p><strong>Скрининг осложнений:</strong> Осмотр стоп, глазное дно, альбуминурия, липидный профиль, креатинин (с расчётом СКФ) — 1 раз в год.</p>
-        <p><strong>Стартовая фармакотерапия:</strong> Метформин (при отсутствии противопоказаний и СКФ ≥30). При HbA1c ≥7.5% — возможен старт с комбинации.</p>
+        <p><strong>Стартовая фармакотерапия:</strong> Метформин (при СКФ ≥30). При HbA1c ≥7.5% — возможен старт с комбинации.</p>
+        <hr style="margin:12px 0; border:none; border-top:1px solid var(--border);">
+        <h3>Хроническая болезнь почек (ХБП) — Постановление № 49 от 22.05.2025</h3>
+        <p><strong>Диагностика:</strong> СКФ &lt;60 мл/мин/1.73м² и/или альбуминурия (А/Кр &gt;30 мг/г) в течение ≥3 месяцев.</p>
+        <p><strong>Целевые показатели:</strong> АД &lt;140/90 (при протеинурии — &lt;130/80); HbA1c &lt;7.0%; LDL &lt;1.8 ммоль/л.</p>
+        <p><strong>Тактика:</strong> При СКФ &lt;30 — направление к нефрологу; коррекция доз ЛС; избегать НПВС и нефротоксичных препаратов.</p>
+        <hr style="margin:12px 0; border:none; border-top:1px solid var(--border);">
+        <h3>ХОБЛ: медицинская реабилитация — Постановление № 4 от 21.01.2026</h3>
+        <p><strong>Оценка:</strong> mMRC, CAT-тест, спирометрия с постбронходилатационной ОФВ1/ФЖЕЛ &lt;0.70.</p>
+        <p><strong>Реабилитация:</strong> Легочная реабилитация показана при mMRC ≥2 и/или CAT ≥10; длительность ≥6 недель.</p>
+        <p><strong>Базисная терапия:</strong> ДДБА/ДДАХ или ДДБА + ИГКС (при эозинофилии ≥300 или частых обострениях).</p>
+        <hr style="margin:12px 0; border:none; border-top:1px solid var(--border);">
+        <h3>Ишемический инсульт и ТИА — Постановление № 1 от 05.01.2026</h3>
+        <p><strong>Окно тромболизиса:</strong> ≤4.5 часа от начала симптомов (алтеплаза 0.9 мг/кг).</p>
+        <p><strong>Тромбэктомия:</strong> ≤6 часов при окклюзии крупной артерии (при mismatch — до 24 часов).</p>
+        <p><strong>Вторичная профилактика:</strong> Антиагреганты (аспирин/клопидогрел), статины (LDL &lt;1.8), контроль АД, каротидная эндартерэктомия при стенозе ≥70%.</p>
+        <hr style="margin:12px 0; border:none; border-top:1px solid var(--border);">
+        <h3>Заболевания пищевода, желудка и ДПК — Постановление № 185 от 11.11.2025</h3>
+        <p><strong>Эрадикация H. pylori:</strong> Квадротерапия (ИПП + висмут + 2 антибиотика) 10–14 дней; контроль через 4–6 недель.</p>
+        <p><strong>ГЭРБ:</strong> ИПП 8 недель; при рефрактерности — удвоение дозы, прокинетики, хирургическое лечение.</p>
+        <p><strong>Диспепсия:</strong> При отсутствии «сигнальных» симптомов — эмпирическая терапия ИПП; при наличии — ЭГДС.</p>
+        <hr style="margin:12px 0; border:none; border-top:1px solid var(--border);">
+        <h3>Реактивный и ревматоидный артрит — Постановление № 3 от 14.01.2026</h3>
+        <p><strong>Ревматоидный артрит:</strong> Ранняя диагностика (RF, анти-CCP, СОЭ/СРБ); старт метотрексата в первые 3 месяца.</p>
+        <p><strong>Реактивный артрит:</strong> Связь с урогенитальной/кишечной инфекцией; НПВС + антибиотики при подтвержденной инфекции.</p>
+        <hr style="margin:12px 0; border:none; border-top:1px solid var(--border);">
+        <h3>Брадиаритмии и нарушения проводимости — Постановление № 34 от 25.04.2026</h3>
+        <p><strong>Показания к ЭКС:</strong> Симптомная брадикардия &lt;40 уд/мин; АВ-блокада II–III ст.; синоатриальная блокада с синкопе.</p>
+        <p><strong>Тактика:</strong> При острых состояниях — атропин 0.5–1 мг в/в; при неэффективности — временная ЭКС.</p>
       </div>
     </section>
 
@@ -496,19 +882,19 @@
       <p class="subtitle">Краткие напоминания по дозированию и взаимодействиям.</p>
       <div class="card">
         <h3>Коррекция доз при снижении функции почек</h3>
-        <ul style="margin-left: 20px; line-height: 1.8;">
-          <li><strong>Метформин:</strong> Противопоказан при СКФ &lt;30 мл/мин/1.73м². При СКФ 30–45 — не начинать, при уже принимаемом — рассмотреть снижение дозы.</li>
-          <li><strong>Эноксапарин (НМГ):</strong> При КК &lt;30 мл/мин — требуется коррекция дозы (обычно 1 мг/кг 1 раз в сутки вместо 2 раз).</li>
-          <li><strong>Прямые оральные антикоагулянты (апиксабан, ривароксабан):</strong> Требуют коррекции дозы или противопоказаны при КК &lt;15–30 мл/мин (зависит от препарата).</li>
+        <ul style="margin-left:20px; line-height:1.8;">
+          <li><strong>Метформин:</strong> Противопоказан при СКФ &lt;30. При СКФ 30–45 — не начинать, при уже принимаемом — рассмотреть снижение дозы.</li>
+          <li><strong>Эноксапарин (НМГ):</strong> При КК &lt;30 мл/мин — коррекция дозы (обычно 1 мг/кг 1 раз в сутки).</li>
+          <li><strong>Прямые оральные антикоагулянты:</strong> Коррекция дозы или противопоказаны при КК &lt;15–30 мл/мин (зависит от препарата).</li>
           <li><strong>НПВС:</strong> Избегать при СКФ &lt;30, с осторожностью при 30–59 (риск острого повреждения почек).</li>
         </ul>
-        <hr style="margin: 12px 0; border: none; border-top: 1px solid var(--border);">
+        <hr style="margin:12px 0; border:none; border-top:1px solid var(--border);">
         <h3>Опасные взаимодействия</h3>
-        <ul style="margin-left: 20px; line-height: 1.8;">
+        <ul style="margin-left:20px; line-height:1.8;">
           <li><strong>Варфарин + НПВС / аспирин:</strong> Резкое повышение риска желудочно-кишечных кровотечений.</li>
-          <li><strong>Клопидогрел + омепразол:</strong> Снижение антиагрегантного эффекта клопидогрела (предпочтительнее пантопразол).</li>
-          <li><strong>иАПФ/АРА + калийсберегающие диуретики (спиронолактон):</strong> Риск гиперкалиемии, особенно при СКФ &lt;45.</li>
-          <li><strong>Симвастатин + амиодарон / верапамил / дилтиазем:</strong> Повышение риска миопатии (ограничение дозы симвастатина до 20 мг).</li>
+          <li><strong>Клопидогрел + омепразол:</strong> Снижение антиагрегантного эффекта (предпочтительнее пантопразол).</li>
+          <li><strong>иАПФ/АРА + спиронолактон:</strong> Риск гиперкалиемии, особенно при СКФ &lt;45.</li>
+          <li><strong>Симвастатин + амиодарон / верапамил / дилтиазем:</strong> Ограничение дозы симвастатина до 20 мг (риск миопатии).</li>
         </ul>
       </div>
     </section>
@@ -517,30 +903,43 @@
     <!-- ВКК -->
     <section id="vkk" class="section">
       <h2 class="no-print">Протокол заседания ВКК</h2>
-      <p class="subtitle no-print">Заполните поля. № протокола, пункт 10 и подписи — от руки на распечатанном бланке.</p>
+      <p class="subtitle no-print">Заполните поля. Пункт 10 и подписи — от руки на распечатанном бланке.</p>
+      
       <div class="card vkk-form no-print">
-        <div class="field" style="max-width:240px"><label>1. Дата</label><input type="text" id="vkk-date" placeholder="дд.мм.гггг" inputmode="numeric"></div>
+        <div class="grid-2">
+          <div class="field"><label>№ протокола</label><input type="text" id="vkk-protocol-num" placeholder="Например: 12"></div>
+          <div class="field">
+            <label style="display:flex; justify-content:space-between; align-items:center;">
+              1. Дата 
+              <button class="btn btn-secondary btn-sm" type="button" onclick="setVkkToday()">Сегодня</button>
+            </label>
+            <input type="text" id="vkk-date" placeholder="дд.мм.гггг" inputmode="numeric">
+          </div>
+        </div>
         <div class="field"><label>2. Фамилия, собственное имя, отчество</label><input type="text" id="vkk-fio"></div>
-        <div class="field"><label>3. Цель направления на заседание ВКК</label><textarea id="vkk-purpose"></textarea></div>
+        <div class="field"><label>3. Цель направления на заседание ВКК</label><textarea id="vkk-purpose" class="auto-resize"></textarea></div>
         <div class="grid-2">
           <div class="field"><label>4. Начало случая временной нетрудоспособности с</label><input type="text" id="vkk-start" placeholder="дд.мм.гггг" inputmode="numeric"></div>
           <div class="field"><label>5. Временная нетрудоспособность, непрерывная, календарных дней</label><input type="number" id="vkk-days"></div>
         </div>
         <div class="field"><label>5б. Суммарная нетрудоспособность за последние 12 месяцев, календарных дней</label><input type="number" id="vkk-days-total"></div>
-        <div class="field"><label>6. Жалобы пациента</label><textarea id="vkk-complaints"></textarea></div>
-        <div class="field"><label>7. Краткий анамнез жизни и заболевания</label><textarea id="vkk-anamnesis"></textarea></div>
-        <div class="field"><label>8. Данные медицинского осмотра пациента</label><textarea id="vkk-exam"></textarea></div>
-        <div class="field"><label>9. Клинико-функциональный диагноз</label><textarea id="vkk-diagnosis"></textarea></div>
+        <div class="field"><label>6. Жалобы пациента</label><textarea id="vkk-complaints" class="auto-resize"></textarea></div>
+        <div class="field"><label>7. Краткий анамнез жизни и заболевания</label><textarea id="vkk-anamnesis" class="auto-resize"></textarea></div>
+        <div class="field"><label>8. Данные медицинского осмотра пациента</label><textarea id="vkk-exam" class="auto-resize"></textarea></div>
+        <div class="field"><label>9. Клинико-функциональный диагноз</label><textarea id="vkk-diagnosis" class="auto-resize"></textarea></div>
+        
         <div class="btn-row no-print">
           <button class="btn btn-primary" onclick="printVkk()">🖨 Печать / Сохранить PDF</button>
-          <button class="btn btn-secondary" onclick="clearVkk()">Очистить</button>
+          <button class="btn btn-secondary" onclick="openVkkHistory()">🕘 История ВКК</button>
+          <button class="btn btn-secondary" onclick="copyVkkToClipboard()">📋 Скопировать текст</button>
+          <button class="btn btn-secondary" style="color:var(--red); border:1px solid var(--red);" onclick="clearVkk()">Очистить</button>
         </div>
       </div>
 
-      <div class="vkk-print-view" id="vkk-print-view">
+      <div class="vkk-print-view vkk-print-document" id="vkk-print-view">
         <div class="vkk-page">
           <div class="vkk-page-inner">
-            <h1 class="vkk-title">Протокол заседания врачебно-консультационной комиссии № <span class="vkk-num"></span></h1>
+            <h1 class="vkk-title">Протокол заседания врачебно-консультационной комиссии № <span class="vkk-num" id="p-vkk-protocol-num"></span></h1>
             <div class="vkk-label-own"><span class="vkk-lbl">1. Дата: <span class="vkk-val" id="p-vkk-date"></span><span class="vkk-sfx">г.</span></span></div>
             <div class="vkk-label-own"><span class="vkk-lbl">2. Фамилия, собственное имя, отчество (если таковое имеется): <span class="vkk-val" id="p-vkk-fio"></span></span></div>
             <div class="vkk-label-own">3. Цель направления на заседание врачебно-консультационной комиссии: <div class="vkk-ruled-value" style="--min-lines:1"><span id="p-vkk-purpose"></span></div></div>
@@ -593,11 +992,25 @@
           </div>
         </div>
       </div>
+
+      <!-- Модальное окно истории ВКК -->
+      <div id="vkk-history-modal" class="modal-overlay" onclick="closeVkkHistory(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+          <div class="modal-header">
+            <h3>История протоколов ВКК</h3>
+            <button class="close-btn" onclick="closeVkkHistory()">✖</button>
+          </div>
+          <div class="modal-body" id="vkk-history-list">
+            <!-- Items injected here -->
+          </div>
+        </div>
+      </div>
+
     </section>
 
   </main>
 </div>
 
-<script src="app.js?v=1910261"></script>
+<script src="app.js"></script>
 </body>
 </html>
