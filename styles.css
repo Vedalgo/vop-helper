@@ -232,50 +232,121 @@ textarea.auto-resize{overflow:hidden;resize:none;}
 .history-item .actions{display:flex;gap:8px;}
 
 /* =========================================
-   ПЕЧАТЬ (PRINT)
+   ПЕЧАТЬ (PRINT) - ИСПРАВЛЕНО
    ========================================= */
-@media print{
+/* =========================================
+   ПЕЧАТЬ (PRINT) - ИСПРАВЛЕНО
+   ========================================= */
+/* =========================================
+   ПЕЧАТЬ (PRINT) - ИСПРАВЛЕНО
+   ========================================= */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+  
   html, body { overflow: visible !important; height: auto !important; }
   .layout { display: block !important; height: auto !important; }
   
-  @page vkk-a5 { size: A5 landscape; margin: 5mm; }
-  body.printing-vkk { background: #fff; }
-  body.printing-vkk .no-print, 
-  body.printing-vkk .app-header, 
-  body.printing-vkk .sidebar, 
-  body.printing-vkk .btn-row { display: none !important; }
-  body.printing-vkk main { padding: 0; max-width: none; margin: 0; overflow: visible; }
-  body.printing-vkk .section { display: none !important; }
-  body.printing-vkk .section.active { display: block !important; }
-  body.printing-vkk .card { box-shadow: none; padding: 0; margin: 0; border: none; background: transparent; }
+  body.printing-acq .no-print, body.printing-acq .app-header, body.printing-acq .sidebar, body.printing-acq .btn-row,
+  body.printing-vkk .no-print, body.printing-vkk .app-header, body.printing-vkk .sidebar, body.printing-vkk .btn-row {
+    display: none !important;
+  }
+  body.printing-acq .layout, body.printing-vkk .layout { display: block; }
+  body.printing-acq main, body.printing-vkk main { padding: 0; max-width: none; margin: 0; overflow: visible; }
+  body.printing-acq .section, body.printing-vkk .section { display: none !important; }
+  body.printing-acq .section.active, body.printing-vkk .section.active { display: block !important; }
+  body.printing-acq .card, body.printing-vkk .card { box-shadow: none; padding: 0; margin: 0; border: none; background: transparent; }
+
+  .vkk-print-document, .acq-print-document {
+    display: block !important;
+    width: 210mm;
+    margin: 0 auto;
+  }
+
+  .vkk-page, .acq-print-document {
+    width: 210mm;
+    height: 148.5mm; /* Ровно половина А4 */
+    padding: 5mm;
+    box-sizing: border-box;
+    page-break-after: always;
+    break-after: page;
+    overflow: hidden; 
+    position: relative;
+    background: #fff;
+    color: #000;
+  }
+
+  .vkk-page:last-child, .acq-print-document:last-child {
+    page-break-after: auto;
+    break-after: auto;
+  }
+
+  /* --- ВКК --- */
+  body.printing-vkk .vkk-print-document {
+    font-family: "Times New Roman", Times, serif;
+  }
   
-  body.printing-vkk .vkk-print-document { display: block !important; page: vkk-a5; font-family: "Times New Roman", Times, serif; color: #000; }
-  body.printing-vkk .vkk-page { width: 200mm; min-height: 138mm; margin: 0 auto; page-break-after: always; break-after: page; position: relative; overflow: visible; background: #fff; }
-  body.printing-vkk .vkk-page:last-child { page-break-after: auto; break-after: auto; }
-  body.printing-vkk .vkk-page-inner { width: 100%; height: auto; overflow: visible; }
+  /* Flexbox для распределения контента */
+  body.printing-vkk .vkk-page-inner {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-size: 9pt; /* ЖЕСТКО ЗАДАННЫЙ РАЗМЕР ШРИФТА */
+    line-height: 1.3;
+  }
+  
+  /* Прижимаем подписи к самому низу страницы (на 2-й странице) */
+  body.printing-vkk .vkk-page:last-child .vkk-signs {
+    margin-top: auto;
+    padding-top: 10pt;
+  }
 
-  @page acq-page { size: A5 landscape; margin: 4mm; }
-  body.printing-acq { background: #fff; }
-  body.printing-acq .no-print, 
-  body.printing-acq .app-header, 
-  body.printing-acq .sidebar, 
-  body.printing-acq .btn-row { display: none !important; }
-  body.printing-acq main { padding: 0; max-width: none; margin: 0; overflow: visible; }
-  body.printing-acq .section { display: none !important; }
-  body.printing-acq .section.active { display: block !important; }
-  body.printing-acq .card { box-shadow: none; padding: 0; margin: 0; border: none; background: transparent; }
+  /* Жесткие размеры шрифтов без 1em масштабирования */
+  body.printing-vkk .vkk-inline, 
+  body.printing-vkk .vkk-label-own, 
+  body.printing-vkk .vkk-ruled-value, 
+  body.printing-vkk .vkk-ruled-field,
+  body.printing-vkk .vkk-val,
+  body.printing-vkk .vkk-lbl,
+  body.printing-vkk .vkk-sfx,
+  body.printing-vkk .vkk-num { 
+    font-size: 9pt !important; 
+    line-height: 1.3 !important;
+  }
+  
+  body.printing-vkk .vkk-sign-cap, 
+  body.printing-vkk .vkk-footer { 
+    font-size: 0.8em !important; 
+  }
+  
+  body.printing-vkk .vkk-title {
+    font-size: 1.3em !important;
+  }
 
-  body.printing-acq .acq-print-document{ display:block !important; page: acq-page; font-size: 8pt !important; line-height: 1.15 !important; color: #000 !important; width: 100%; height: 100%; margin: 0; padding: 0; }
-  body.printing-acq .acq-print-title{ font-size: 10pt !important; margin-bottom: 2pt !important; }
-  body.printing-acq .acq-print-row{ padding: 1pt 0 !important; font-size: 8pt !important; }
-  body.printing-acq .acq-print-instr{ margin: 2pt 0 !important; padding: 2pt !important; font-size: 7pt !important; }
-  body.printing-acq .acq-print-q{ margin-bottom: 2pt !important; padding: 1pt 0 !important; }
-  body.printing-acq .q-text{ font-size: 8pt !important; margin-bottom: 1pt !important; }
-  body.printing-acq .q-opts{ font-size: 7pt !important; line-height: 1.1 !important; }
-  body.printing-acq .q-answer{ margin-top: 0 !important; font-size: 8pt !important; display: inline-block; }
-  body.printing-acq .q-answer .mark{ width: 10pt !important; height: 10pt !important; line-height: 10pt !important; font-size: 7pt !important; margin-right: 2pt !important; }
-  body.printing-acq .acq-print-summary{ margin-top: 4pt !important; padding: 3pt !important; }
-  body.printing-acq .acq-sum-row{ padding: 1pt 0 !important; font-size: 8pt !important; }
+  /* Возвращаем жесткие миллиметры для линий рукописного текста */
+  body.printing-vkk .vkk-line-item {
+    height: 6mm !important; 
+  }
+
+  /* --- АНКЕТЫ --- */
+  body.printing-acq .acq-print-document {
+    font-size: 8pt !important;
+    line-height: 1.15 !important;
+  }
+  body.printing-acq .acq-print-title { font-size: 10pt !important; margin-bottom: 2pt !important; }
+  body.printing-acq .acq-print-row { padding: 1pt 0 !important; font-size: 8pt !important; }
+  body.printing-acq .acq-print-instr { margin: 2pt 0 !important; padding: 2pt !important; font-size: 7pt !important; }
+  body.printing-acq .acq-print-q { margin-bottom: 2pt !important; padding: 1pt 0 !important; }
+  body.printing-acq .q-text { font-size: 8pt !important; margin-bottom: 1pt !important; }
+  body.printing-acq .q-opts { font-size: 7pt !important; line-height: 1.1 !important; }
+  body.printing-acq .q-answer { margin-top: 0 !important; font-size: 8pt !important; display: inline-block; }
+  body.printing-acq .q-answer .mark { width: 10pt !important; height: 10pt !important; line-height: 10pt !important; font-size: 7pt !important; margin-right: 2pt !important; }
+  body.printing-acq .acq-print-summary { margin-top: 4pt !important; padding: 3pt !important; }
+  body.printing-acq .acq-sum-row { padding: 1pt 0 !important; font-size: 8pt !important; }
   body.printing-acq .acq-print-sign { margin-top: 6pt !important; }
   body.printing-acq .acq-sign-field { font-size: 8pt !important; }
   body.printing-acq .acq-sign-field .line { min-height: 12pt !important; }
@@ -283,7 +354,6 @@ textarea.auto-resize{overflow:hidden;resize:none;}
   body.printing-acq .acq-stamp-box { width: 45pt !important; height: 25pt !important; font-size: 7pt !important; margin-left: 10pt !important; }
   body.printing-acq .doctor-name { font-size: 7.5pt !important; }
 }
-
 /* =========================================
    МОБИЛЬНАЯ ВЕРСИЯ
    ========================================= */

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ВОП-Helper</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%232563eb'/%3E%3Cpath d='M26 14h12v12h12v12H38v12H26V38H14V26h12V14z' fill='%23fff'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="styles.css?v=19101147">
+<link rel="stylesheet" href="styles.css?v=201026">
 </head>
 <body>
 
@@ -144,7 +144,7 @@
       <div class="dashboard-category">
         <h3>📚 Справочники и безопасность</h3>
         <div class="hero-grid">
-          <button class="hero-tile" onclick="go('protocols')"><div class="icon">📋</div><div class="title">Клинические протоколы</div><div class="desc">АГ, СД, ХБП, ХОБЛ, инсульт, ревматология</div></button>
+          <button class="hero-tile" onclick="go('protocols')"><div class="icon">📋</div><div class="title">Клинические протоколы</div><div class="desc">Актуальные постановления МЗ РБ</div></button>
           <button class="hero-tile" onclick="go('medsafety')"><div class="icon">💊</div><div class="title">Безопасность ЛС</div><div class="desc">Дозы и взаимодействия</div></button>
         </div>
       </div>
@@ -821,7 +821,7 @@
     <!-- ================= СКРИНИНГИ ================= -->
     <section id="screening" class="section">
       <h2>Диспансеризация и онкоскрининг</h2>
-      <p class="subtitle">Согласно Постановлению МЗ РБ № 173 от 16.12.2024 (с изменениями от 26.02.2026).</p>
+      <p class="subtitle">Согласно Постановлению МЗ РБ № 173 от 16.12.2024 (с изменениями от 26.02.2026 № 13).</p>
       <div class="card">
         <div class="grid-2">
           <div class="field"><label>Возраст пациента, лет</label><input type="number" id="screen-age" min="18" max="100" value="45"></div>
@@ -836,45 +836,112 @@
     <section id="protocols" class="section">
       <h2>Клинические протоколы МЗ РБ (2025–2026)</h2>
       <p class="subtitle">Ключевые алгоритмы для ВОП. Каждый блок — краткая выжимка из действующего постановления.</p>
-      <div class="card">
-        <h3>Артериальная гипертензия (АГ)</h3>
-        <p><strong>Диагностика:</strong> Не менее 2 измерений офисного АД в ходе ≥2 визитов с интервалом 1–2 недели. Диагноз АГ при АД ≥140/90 мм рт. ст.</p>
-        <p><strong>Целевые уровни:</strong> &lt;140/90 мм рт. ст. (при хорошей переносимости — 130/80). Для ≥80 лет — &lt;150/90.</p>
-        <p><strong>Стартовая терапия:</strong> Комбинация из 2 препаратов: иАПФ/АРА + БКК (амлодипин) или тиазидный диуретик.</p>
-        <hr style="margin:12px 0; border:none; border-top:1px solid var(--border);">
-        <h3>Сахарный диабет 2 типа (СД 2)</h3>
-        <p><strong>Диагностические критерии:</strong> Глюкоза натощак ≥7.0 ммоль/л; HbA1c ≥6.5%; случайная глюкоза ≥11.1 ммоль/л с симптомами.</p>
-        <p><strong>Целевой HbA1c:</strong> &lt;7.0% для большинства; &lt;8.0% для пожилых/коморбидных.</p>
-        <p><strong>Стартовая фармакотерапия:</strong> Метформин (при СКФ ≥30). При HbA1c ≥7.5% — возможен старт с комбинации.</p>
-        <hr style="margin:12px 0; border:none; border-top:1px solid var(--border);">
-        <h3>Хроническая болезнь почек (ХБП) — Постановление № 49 от 22.05.2025</h3>
-        <p><strong>Диагностика:</strong> СКФ &lt;60 мл/мин/1.73м² и/или альбуминурия (А/Кр &gt;30 мг/г) в течение ≥3 месяцев.</p>
-        <p><strong>Целевые показатели:</strong> АД &lt;140/90 (при протеинурии — &lt;130/80); HbA1c &lt;7.0%; LDL &lt;1.8 ммоль/л.</p>
-        <p><strong>Тактика:</strong> При СКФ &lt;30 — направление к нефрологу; коррекция доз ЛС; избегать НПВС и нефротоксичных препаратов.</p>
-        <hr style="margin:12px 0; border:none; border-top:1px solid var(--border);">
-        <h3>ХОБЛ: медицинская реабилитация — Постановление № 4 от 21.01.2026</h3>
-        <p><strong>Оценка:</strong> mMRC, CAT-тест, спирометрия с постбронходилатационной ОФВ1/ФЖЕЛ &lt;0.70.</p>
-        <p><strong>Реабилитация:</strong> Легочная реабилитация показана при mMRC ≥2 и/или CAT ≥10; длительность ≥6 недель.</p>
-        <p><strong>Базисная терапия:</strong> ДДБА/ДДАХ или ДДБА + ИГКС (при эозинофилии ≥300 или частых обострениях).</p>
-        <hr style="margin:12px 0; border:none; border-top:1px solid var(--border);">
-        <h3>Ишемический инсульт и ТИА — Постановление № 1 от 05.01.2026</h3>
-        <p><strong>Окно тромболизиса:</strong> ≤4.5 часа от начала симптомов (алтеплаза 0.9 мг/кг).</p>
-        <p><strong>Тромбэктомия:</strong> ≤6 часов при окклюзии крупной артерии (при mismatch — до 24 часов).</p>
-        <p><strong>Вторичная профилактика:</strong> Антиагреганты (аспирин/клопидогрел), статины (LDL &lt;1.8), контроль АД, каротидная эндартерэктомия при стенозе ≥70%.</p>
-        <hr style="margin:12px 0; border:none; border-top:1px solid var(--border);">
-        <h3>Заболевания пищевода, желудка и ДПК — Постановление № 185 от 11.11.2025</h3>
-        <p><strong>Эрадикация H. pylori:</strong> Квадротерапия (ИПП + висмут + 2 антибиотика) 10–14 дней; контроль через 4–6 недель.</p>
-        <p><strong>ГЭРБ:</strong> ИПП 8 недель; при рефрактерности — удвоение дозы, прокинетики, хирургическое лечение.</p>
-        <p><strong>Диспепсия:</strong> При отсутствии «сигнальных» симптомов — эмпирическая терапия ИПП; при наличии — ЭГДС.</p>
-        <hr style="margin:12px 0; border:none; border-top:1px solid var(--border);">
-        <h3>Реактивный и ревматоидный артрит — Постановление № 3 от 14.01.2026</h3>
-        <p><strong>Ревматоидный артрит:</strong> Ранняя диагностика (RF, анти-CCP, СОЭ/СРБ); старт метотрексата в первые 3 месяца.</p>
-        <p><strong>Реактивный артрит:</strong> Связь с урогенитальной/кишечной инфекцией; НПВС + антибиотики при подтвержденной инфекции.</p>
-        <hr style="margin:12px 0; border:none; border-top:1px solid var(--border);">
-        <h3>Брадиаритмии и нарушения проводимости — Постановление № 34 от 25.04.2026</h3>
-        <p><strong>Показания к ЭКС:</strong> Симптомная брадикардия &lt;40 уд/мин; АВ-блокада II–III ст.; синоатриальная блокада с синкопе.</p>
-        <p><strong>Тактика:</strong> При острых состояниях — атропин 0.5–1 мг в/в; при неэффективности — временная ЭКС.</p>
-      </div>
+      
+      <details class="nav-dropdown" open style="background:var(--card); border:1px solid var(--border); border-radius:12px; margin-bottom:12px; padding:10px;">
+        <summary style="font-size:16px; color:var(--text); text-transform:none; letter-spacing:0; padding:8px 12px;">Терапия и кардиология</summary>
+        <div style="padding: 0 16px 16px;">
+            <p><strong>Артериальная гипертензия (АГ)</strong><br>
+            <em>Диагностика:</em> Не менее 2 измерений офисного АД в ходе ≥2 визитов с интервалом 1–2 недели. Диагноз АГ при АД ≥140/90 мм рт. ст.<br>
+            <em>Целевые уровни:</em> &lt;140/90 мм рт. ст. (при хорошей переносимости — 130/80). Для ≥80 лет — &lt;150/90.<br>
+            <em>Стартовая терапия:</em> Комбинация из 2 препаратов: иАПФ/АРА + БКК (амлодипин) или тиазидный диуретик.</p>
+            <hr style="margin:12px 0; border:none; border-top:1px solid var(--border);">
+            <p><strong>Хроническая сердечная недостаточность (ХСН)</strong><br>
+            <em>Диагностика:</em> Симптомы и признаки ХСН + повышение натрийуретических пептидов (BNP/NT-proBNP) + структурно-функциональные изменения сердца по ЭхоКГ.<br>
+            <em>Целевые препараты:</em> иАПФ/АРА/АРНИ, бета-блокаторы, антагонисты минералокортикоидных рецепторов (АМКР), дапаглифлозин/эмпаглифлозин.<br>
+            <em>Тактика:</em> Контроль диуреза, ограничение соли, коррекция сопутствующей патологии. При ФВ ≤35% — оценка целесообразности ИКД/АРМ.</p>
+            <hr style="margin:12px 0; border:none; border-top:1px solid var(--border);">
+            <p><strong>Фибрилляция предсердий (ФП)</strong><br>
+            <em>Диагностика:</em> Подтверждение ФП по ЭКГ. Оценка риска инсульта по шкале CHA₂DS₂-VASc.<br>
+            <em>Антикоагуляция:</em> Показана при CHA₂DS₂-VASc ≥2 у мужчин и ≥3 у женщин. Препараты выбора — ПОАК (апиксабан, ривароксабан, дабигатран) или варфарин.<br>
+            <em>Контроль ритма:</em> Впервые выявленная ФП длительностью ≤48 ч — кардиоверсия. При постоянной форме — контроль ЧСС (бета-блокаторы, дигоксин).</p>
+        </div>
+      </details>
+
+      <details class="nav-dropdown" style="background:var(--card); border:1px solid var(--border); border-radius:12px; margin-bottom:12px; padding:10px;">
+        <summary style="font-size:16px; color:var(--text); text-transform:none; letter-spacing:0; padding:8px 12px;">Пульмонология</summary>
+        <div style="padding: 0 16px 16px;">
+            <p><strong>ХОБЛ (Постановление № 31 от 13.03.2025)</strong><br>
+            <em>Диагностика:</em> Постбронходилатационное отношение ОФВ1/ФЖЕЛ &lt;0,7.<br>
+            <em>Классификация:</em> Оценка симптомов (mMRC, CAT-тест) и частоты обострений.<br>
+            <em>Терапия:</em> Бронходилататоры (ДДБА, ДДАХ) — базовая терапия. ИГКС добавляются при эозинофилии ≥300 клеток/мкл или частых обострениях.<br>
+            <em>Реабилитация:</em> Легочная реабилитация показана при mMRC ≥2 и/или CAT ≥10.</p>
+            <hr style="margin:12px 0; border:none; border-top:1px solid var(--border);">
+            <p><strong>Бронхиальная астма</strong><br>
+            <em>Диагностика:</em> Обратимая бронхиальная обструкция (прирост ОФВ1 ≥12% и ≥200 мл после сальбутамола).<br>
+            <em>Терапия:</em> Базовая — ИГКС. При необходимости добавляются ДДБА, ДДАХ, антагонисты лейкотриеновых рецепторов.<br>
+            <em>Контроль:</em> Оценка по ACQ-5, дневник пикфлоуметрии.</p>
+        </div>
+      </details>
+
+      <details class="nav-dropdown" style="background:var(--card); border:1px solid var(--border); border-radius:12px; margin-bottom:12px; padding:10px;">
+        <summary style="font-size:16px; color:var(--text); text-transform:none; letter-spacing:0; padding:8px 12px;">Гастроэнтерология</summary>
+        <div style="padding: 0 16px 16px;">
+            <p><strong>Заболевания пищевода, желудка и ДПК (Постановление № 185 от 11.11.2025)</strong><br>
+            <em>Эрадикация H. pylori:</em> Квадротерапия (ИПП + висмут + 2 антибиотика) 10–14 дней; контроль через 4–6 недель.<br>
+            <em>ГЭРБ:</em> ИПП 8 недель; при рефрактерности — удвоение дозы, прокинетики, хирургическое лечение.<br>
+            <em>Диспепсия:</em> При отсутствии «сигнальных» симптомов — эмпирическая терапия ИПП; при наличии — ЭГДС.</p>
+            <hr style="margin:12px 0; border:none; border-top:1px solid var(--border);">
+            <p><strong>Заболевания печени и желчевыводящих путей</strong><br>
+            <em>Диагностика:</em> Биохимический анализ крови (АЛТ, АСТ, ГГТ, ЩФ, билирубин), УЗИ органов брюшной полости, эластография печени.<br>
+            <em>Тактика:</em> При повышении трансаминаз — исключение вирусных гепатитов, лекарственного поражения, алкогольной болезни печени. Направление к гастроэнтерологу/гепатологу при фиброзе ≥F2.</p>
+        </div>
+      </details>
+
+      <details class="nav-dropdown" style="background:var(--card); border:1px solid var(--border); border-radius:12px; margin-bottom:12px; padding:10px;">
+        <summary style="font-size:16px; color:var(--text); text-transform:none; letter-spacing:0; padding:8px 12px;">Нефрология</summary>
+        <div style="padding: 0 16px 16px;">
+            <p><strong>Нефрологические заболевания (Постановление № 49 от 22.05.2025)</strong><br>
+            <em>Диагностика ХБП:</em> СКФ &lt;60 мл/мин/1,73м² и/или альбуминурия (А/Кр &gt;30 мг/г) в течение ≥3 месяцев.<br>
+            <em>Целевые показатели:</em> АД &lt;140/90 (при протеинурии — &lt;130/80); HbA1c &lt;7.0%; LDL &lt;1.8 ммоль/л.<br>
+            <em>Тактика:</em> При СКФ &lt;30 — направление к нефрологу; коррекция доз ЛС; избегать НПВС и нефротоксичных препаратов.</p>
+        </div>
+      </details>
+
+      <details class="nav-dropdown" style="background:var(--card); border:1px solid var(--border); border-radius:12px; margin-bottom:12px; padding:10px;">
+        <summary style="font-size:16px; color:var(--text); text-transform:none; letter-spacing:0; padding:8px 12px;">Неврология и психиатрия</summary>
+        <div style="padding: 0 16px 16px;">
+            <p><strong>Заболевания нервной системы (Постановление № 72 от 08.08.2025)</strong><br>
+            <em>Ишемический инсульт:</em> Окно тромболизиса — ≤4.5 часа от начала симптомов. Тромбэктомия — ≤6 часов при окклюзии крупной артерии.<br>
+            <em>Вторичная профилактика:</em> Антиагреганты (аспирин/клопидогрел), статины (LDL &lt;1.8), контроль АД, каротидная эндартерэктомия при стенозе ≥70%.<br>
+            <em>Дорсопатии:</em> НПВС коротким курсом, миорелаксанты, физиотерапия. При стойком болевом синдроме — МРТ, консультация невролога.</p>
+            <hr style="margin:12px 0; border:none; border-top:1px solid var(--border);">
+            <p><strong>Наркологическая помощь (Постановление № 197 от 21.11.2025)</strong><br>
+            <em>Скрининг:</em> AUDIT-C для выявления опасного потребления алкоголя.<br>
+            <em>Тактика:</em> При положительном скрининге — краткое вмешательство, направление к наркологу при признаках зависимости.</p>
+        </div>
+      </details>
+
+      <details class="nav-dropdown" style="background:var(--card); border:1px solid var(--border); border-radius:12px; margin-bottom:12px; padding:10px;">
+        <summary style="font-size:16px; color:var(--text); text-transform:none; letter-spacing:0; padding:8px 12px;">Ревматология и эндокринология</summary>
+        <div style="padding: 0 16px 16px;">
+            <p><strong>Сахарный диабет 2 типа</strong><br>
+            <em>Диагностика:</em> Глюкоза натощак ≥7.0 ммоль/л; HbA1c ≥6.5%; случайная глюкоза ≥11.1 ммоль/л с симптомами.<br>
+            <em>Целевой HbA1c:</em> &lt;7.0% для большинства; &lt;8.0% для пожилых/коморбидных.<br>
+            <em>Стартовая терапия:</em> Метформин (при СКФ ≥30). При HbA1c ≥7.5% — возможен старт с комбинации.</p>
+            <hr style="margin:12px 0; border:none; border-top:1px solid var(--border);">
+            <p><strong>Вторичный остеопороз при ревматологических заболеваниях (Постановление № 3 от 14.01.2026)</strong><br>
+            <em>Диагностика:</em> Денситометрия (T-критерий ≤ -2.5), оценка риска переломов по FRAX.<br>
+            <em>Терапия:</em> Препараты кальция и витамина D, бисфосфонаты, денозумаб. Контроль приверженности терапии.</p>
+            <hr style="margin:12px 0; border:none; border-top:1px solid var(--border);">
+            <p><strong>Ревматоидный артрит</strong><br>
+            <em>Диагностика:</em> RF, анти-CCP, СОЭ/СРБ; рентгенография кистей и стоп.<br>
+            <em>Тактика:</em> Ранний старт метотрексата (в первые 3 месяца). При неэффективности — генно-инженерные биологические препараты.</p>
+        </div>
+      </details>
+
+      <details class="nav-dropdown" style="background:var(--card); border:1px solid var(--border); border-radius:12px; margin-bottom:12px; padding:10px;">
+        <summary style="font-size:16px; color:var(--text); text-transform:none; letter-spacing:0; padding:8px 12px;">Организация помощи</summary>
+        <div style="padding: 0 16px 16px;">
+            <p><strong>Диспансеризация взрослого населения (Постановление № 173 от 16.12.2024 с изменениями № 13 от 26.02.2026)</strong><br>
+            <em>Периодичность:</em> 18–39 лет — 1 раз в 3 года; 40 лет и старше — 1 раз в год.<br>
+            <em>Объем:</em> Анкетирование, антропометрия, измерение АД, ЭКГ, лабораторные исследования (глюкоза, холестерин, креатинин, АЛТ), онкоскрининги (ПАП-тест/ВПЧ, маммография, ПСА).<br>
+            <em>Тактика:</em> По результатам — формирование групп здоровья, профилактическое консультирование, направление на дообследование.</p>
+            <hr style="margin:12px 0; border:none; border-top:1px solid var(--border);">
+            <p><strong>Выдача листков нетрудоспособности</strong><br>
+            <em>Правила:</em> Согласно Инструкции о порядке выдачи и оформления листков нетрудоспособности и справок о временной нетрудоспособности.<br>
+            <em>Сроки:</em> Врач единолично — до 10 дней. Через ВКК — до 30 дней. При сроке ≥120 дней — направление на МРЭК.</p>
+        </div>
+      </details>
     </section>
 
     <section id="medsafety" class="section">
@@ -974,8 +1041,16 @@
               </div>
               <div class="vkk-sign-row">
                 <div class="vkk-sign-role">Члены</div>
-                <div class="vkk-sign-field"><div class="vkk-sign-line"></div><div class="vkk-sign-cap">(подпись)</div></div>
-                <div class="vkk-sign-field"><div class="vkk-sign-line"></div><div class="vkk-sign-cap">(инициалы, фамилия)</div></div>
+                <div class="vkk-sign-field">
+                  <div class="vkk-sign-line"></div>
+                  <div class="vkk-sign-cap">(подпись)</div>
+                </div>
+                <div class="vkk-sign-field">
+                  <div class="vkk-sign-line" style="display:flex; align-items:flex-end; justify-content:center;">
+                    <span id="p-vkk-member-1-name" style="font-family:'Times New Roman', Times, serif; font-size:9pt; line-height:1;"></span>
+                  </div>
+                  <div class="vkk-sign-cap">(инициалы, фамилия)</div>
+                </div>
               </div>
               <div class="vkk-sign-row">
                 <div class="vkk-sign-role"></div>
@@ -1011,6 +1086,6 @@
   </main>
 </div>
 
-<script src="app.js?v=19101147"></script>
+<script src="app.js?v=201026"></script>
 </body>
 </html>

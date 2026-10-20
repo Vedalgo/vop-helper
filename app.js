@@ -45,7 +45,7 @@ document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
 })();
 
 /* ---------- 3. Выбор врача ---------- */
-const DOCTORS = ['Гринич Анастасия Александровна'];
+const DOCTORS = ['Гринич Анастасия Александровна',''];
 const DOCTOR_STORAGE_KEY = 'vop_doctor';
 function initDoctorSelect(){
   const sel = document.getElementById('doctor-select');
@@ -67,9 +67,32 @@ function getCurrentDoctor(){
   const sel = document.getElementById('doctor-select');
   return sel ? sel.value : (DOCTORS[0] || '');
 }
+
+// ИСПРАВЛЕНО: Теперь генерирует "И.О. Фамилия"
+function getShortDoctorName(fullName) {
+  if (!fullName) return '';
+  const parts = fullName.trim().split(/\s+/);
+  if (parts.length >= 3) {
+    // Формат: Фамилия Имя Отчество -> И.О. Фамилия
+    return `${parts[1][0]}.${parts[2][0]}. ${parts[0]}`; 
+  }
+  if (parts.length === 2) {
+    return `${parts[1][0]}. ${parts[0]}`;
+  }
+  return fullName;
+}
+
 function fillDoctorFields(){
-  // Больше не заполняем поля в шапке, так как их убрали. 
-  // Заполнение будет происходить динамически в функциях печати.
+  // Синхронизация подписи врача во всех формах
+  const docFull = getCurrentDoctor();
+  ['acq-doctor-sign','chads-doctor-sign','findrisk-doctor-sign','hads-doctor-sign','auditc-doctor-sign','mmse-doctor-sign','bdi-doctor-sign','cat-doctor-sign'].forEach(id=>{
+    const el = document.getElementById(id);
+    if(el) el.textContent = docFull;
+  });
+  
+  // Синхронизация подписи врача для ВКК (член комиссии №1)
+  const memberEl = document.getElementById('p-vkk-member-1-name');
+  if(memberEl) memberEl.textContent = getShortDoctorName(docFull);
 }
 initDoctorSelect();
 
@@ -1350,15 +1373,9 @@ function fillRuledLines(){
   });
 }
 function autoFitVkk(){
-  const pages=document.querySelectorAll('#vkk-print-view .vkk-page');
-  pages.forEach(page=>{
-    const inner=page.querySelector('.vkk-page-inner'); if(!inner) return;
-    inner.style.fontSize='';
-    if(page.offsetParent===null && !document.body.classList.contains('printing-vkk')) return;
-    const maxH=page.clientHeight;
-    let pt=9;
-    while(inner.scrollHeight>maxH && pt>6){ pt-=0.25; inner.style.fontSize=pt+'pt'; }
-  });
+  // Функция отключена: размер шрифта зафиксирован в CSS (9pt). 
+  // Текст не будет автоматически сжиматься или растягиваться.
+  return;
 }
 function setVkkToday(){
   document.getElementById('vkk-date').value = todayStr();
@@ -1373,6 +1390,7 @@ function printVkk(){
   document.getElementById('p-vkk-days').textContent       = v('vkk-days');
   document.getElementById('p-vkk-days-total').textContent = v('vkk-days-total');
   fillRuledLines();
+  fillDoctorFields(); // заполняем ФИО врача в ВКК
   saveVkkHistory();
   document.body.classList.add('printing-vkk');
   autoFitVkk();
