@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ВОП-Helper</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%232563eb'/%3E%3Cpath d='M26 14h12v12h12v12H38v12H26V38H14V26h12V14z' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+<header class="app-header no-print">
+  <div class="logo"><div class="logo-mark">⚕</div> <a href="../index.html" style="color:inherit;text-decoration:none;">ВОП-Helper</a></div>
+  <div class="header-controls">
+    <select id="doctor-select" class="doctor-select" title="Выберите врача для анкет"></select>
+    <button class="theme-toggle" id="theme-toggle" title="Переключить тему">🌙</button>
+    <button class="burger" id="burger" aria-label="Меню">☰</button>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar no-print" id="sidebar">
+    <nav>
+      <a href="../index.html" class="nav-link" data-section="home" style="margin: 0 10px 10px;">🏠 Главная</a>
+      
+      <details class="nav-dropdown" >
+        <summary class="nav-group">🧮 Калькуляторы</summary>
+        <div class="nav-items">
+          <a href="../pages/egfr.html" class="nav-link" data-section="egfr">СКФ (eGFR)</a>
+          <a href="../pages/crcl.html" class="nav-link" data-section="crcl">Клиренс креатинина</a>
+          <a href="../pages/bmi.html" class="nav-link" data-section="bmi">ИМТ</a>
+          <a href="../pages/bmi-amp.html" class="nav-link" data-section="bmi-amp">ИМТ с ампутацией</a>
+          <a href="../pages/score2.html" class="nav-link" data-section="score2">SCORE2</a>
+          <a href="../pages/score2op.html" class="nav-link" data-section="score2op">SCORE2-OP</a>
+          <a href="../pages/score2dm.html" class="nav-link" data-section="score2dm">SCORE2-Diabetes</a>
+          <a href="../pages/chads.html" class="nav-link" data-section="chads">CHA₂DS₂-VASc</a>
+          <a href="../pages/hasbled.html" class="nav-link" data-section="hasbled">HAS-BLED</a>
+          <a href="../pages/chads-hasbled.html" class="nav-link" data-section="chads-hasbled">CHA₂DS₂-VASc + HAS-BLED</a>
+          <a href="../pages/curb65.html" class="nav-link" data-section="curb65">CURB-65</a>
+          <a href="../pages/gcs.html" class="nav-link" data-section="gcs">Шкала Глазго</a>
+          <a href="../pages/charlson.html" class="nav-link" data-section="charlson">Charlson</a>
+          <a href="../pages/sickleave.html" class="nav-link" data-section="sickleave">Больничный (дни)</a>
+        </div>
+      </details>
+
+      <details class="nav-dropdown" >
+        <summary class="nav-group">📝 Опросники и шкалы</summary>
+        <div class="nav-items">
+          <a href="../pages/acq5.html" class="nav-link" data-section="acq5">ACQ-5 (астма)</a>
+          <a href="../pages/findrisk.html" class="nav-link" data-section="findrisk">FINDRISK (диабет)</a>
+          <a href="../pages/hads.html" class="nav-link" data-section="hads">HADS (тревога/депрессия)</a>
+          <a href="../pages/auditc.html" class="nav-link" data-section="auditc">AUDIT-C (алкоголь)</a>
+          <a href="../pages/mmse.html" class="nav-link" data-section="mmse">MMSE (когнитивный статус)</a>
+          <a href="../pages/bdi.html" class="nav-link" data-section="bdi">Шкала Бека (BDI)</a>
+          <a href="../pages/mmrc.html" class="nav-link" data-section="mmrc">mMRC (одышка)</a>
+          <a href="../pages/cat.html" class="nav-link" data-section="cat">CAT-тест (ХОБЛ)</a>
+          <a href="../pages/rivermead.html" class="nav-link" data-section="rivermead">Шкала Ривермид</a>
+          <a href="../pages/light.html" class="nav-link" data-section="light">Критерии Light</a>
+        </div>
+      </details>
+
+      <details class="nav-dropdown" >
+        <summary class="nav-group">🩺 Скрининги</summary>
+        <div class="nav-items">
+          <a href="../pages/screening.html" class="nav-link" data-section="screening">Диспансеризация и онкоскрининг</a>
+        </div>
+      </details>
+
+      <details class="nav-dropdown" >
+        <summary class="nav-group">📚 Справочники</summary>
+        <div class="nav-items">
+          <a href="../pages/drugs.html" class="nav-link" data-section="drugs">💊 Перечень основных ЛС (2026)</a>
+          <a href="../pages/protocols.html" class="nav-link" data-section="protocols">Клинические протоколы</a>
+          <a href="../pages/medsafety.html" class="nav-link" data-section="medsafety">Безопасность ЛС</a>
+        </div>
+      </details>
+
+      <details class="nav-dropdown" open>
+        <summary class="nav-group">📄 Документы</summary>
+        <div class="nav-items">
+          <a href="../pages/vkk.html" class="nav-link active" data-section="vkk">Протокол ВКК</a>
+          <a href="../pages/consilium.html" class="nav-link" data-section="consilium">Протокол консилиума</a>
+          <a href="../pages/referral.html" class="nav-link" data-section="referral">Направление</a>
+        </div>
+      </details>
+    </nav>
+    
+    <div class="author-plate">
+      <strong>ВОП-Helper</strong><br>
+      by Гринич Виталий<br>
+      для кабинета №302<br>
+      УЗ "Калинковичская ЦРБ"<br>
+      филиал "Районная поликлиника"<br>
+      2026
+    </div>
+  </aside>
+
+  <main>
+
+<section id="vkk" class="section active">
+      <h2 class="no-print">Протокол заседания ВКК</h2>
+      <p class="subtitle no-print">Заполните поля. Пункт 10 и подписи — от руки на распечатанном бланке.</p>
+      
+      <div class="card vkk-form no-print">
+        <div class="grid-2">
+          <div class="field"><label>№ протокола</label><input type="text" id="vkk-protocol-num" placeholder="Например: 12"></div>
+          <div class="field">
+            <label style="display:flex; justify-content:space-between; align-items:center;">
+              1. Дата 
+              <button class="btn btn-secondary btn-sm" type="button" onclick="setVkkToday()">Сегодня</button>
+            </label>
+            <input type="text" id="vkk-date" placeholder="дд.мм.гггг" inputmode="numeric">
+          </div>
+        </div>
+        <div class="field"><label>2. Фамилия, собственное имя, отчество</label><input type="text" id="vkk-fio"></div>
+        <div class="field"><label>3. Цель направления на заседание ВКК</label><textarea id="vkk-purpose" class="auto-resize"></textarea></div>
+        <div class="grid-2">
+          <div class="field"><label>4. Начало случая временной нетрудоспособности с</label><input type="text" id="vkk-start" placeholder="дд.мм.гггг" inputmode="numeric"></div>
+          <div class="field"><label>5. Временная нетрудоспособность, непрерывная, календарных дней</label><input type="number" id="vkk-days"></div>
+        </div>
+        <div class="field"><label>5б. Суммарная нетрудоспособность за последние 12 месяцев, календарных дней</label><input type="number" id="vkk-days-total"></div>
+        <div class="field"><label>6. Жалобы пациента</label><textarea id="vkk-complaints" class="auto-resize"></textarea></div>
+        <div class="field"><label>7. Краткий анамнез жизни и заболевания</label><textarea id="vkk-anamnesis" class="auto-resize"></textarea></div>
+        <div class="field"><label>8. Данные медицинского осмотра пациента</label><textarea id="vkk-exam" class="auto-resize"></textarea></div>
+        <div class="field"><label>9. Клинико-функциональный диагноз</label><textarea id="vkk-diagnosis" class="auto-resize"></textarea></div>
+        
+        <div class="btn-row no-print">
+          <button class="btn btn-primary" onclick="printVkk()">🖨 Печать / Сохранить PDF</button>
+          <button class="btn btn-secondary" onclick="openVkkHistory()">🕘 История ВКК</button>
+          <button class="btn btn-secondary" onclick="copyVkkToClipboard()">📋 Скопировать текст</button>
+          <button class="btn btn-secondary" style="color:var(--red); border:1px solid var(--red);" onclick="clearVkk()">Очистить</button>
+        </div>
+      </div>
+
+      <div class="vkk-print-view vkk-print-document" id="vkk-print-view">
+        <div class="vkk-page">
+          <div class="vkk-page-inner">
+            <h1 class="vkk-title">Протокол заседания врачебно-консультационной комиссии № <span class="vkk-num" id="p-vkk-protocol-num"></span></h1>
+            <div class="vkk-label-own"><span class="vkk-lbl">1. Дата: <span class="vkk-val" id="p-vkk-date"></span><span class="vkk-sfx">г.</span></span></div>
+            <div class="vkk-label-own"><span class="vkk-lbl">2. Фамилия, собственное имя, отчество (если таковое имеется): <span class="vkk-val" id="p-vkk-fio"></span></span></div>
+            <div class="vkk-label-own">3. Цель направления на заседание врачебно-консультационной комиссии: <div class="vkk-ruled-value" style="--min-lines:1"><span id="p-vkk-purpose"></span></div></div>
+            <div class="vkk-label-own"><span class="vkk-lbl">4. Начало случая временной нетрудоспособности: с <span class="vkk-val" id="p-vkk-start"></span><span class="vkk-sfx">г.</span></span></div>
+            <div class="vkk-label-own">5. Временная нетрудоспособность: </div>
+            <div class="vkk-inline vkk-inline-indent">
+              <span class="vkk-lbl">непрерывная: <span class="vkk-val" id="p-vkk-days"></span><span class="vkk-sfx">календарных дней;</span></span>
+            </div>
+            <div class="vkk-inline vkk-inline-indent">
+              <span class="vkk-lbl">суммарная за последние 12 месяцев: <span class="vkk-val" id="p-vkk-days-total"></span><span class="vkk-sfx">календарных дней.</span></span>
+            </div>
+            <div class="vkk-ruled-field"><span class="vkk-lbl">6. Жалобы пациента: </span><span class="vkk-val" id="p-vkk-complaints"></span></div>
+            <div class="vkk-ruled-field"><span class="vkk-lbl">7. Краткий анамнез жизни и заболевания: </span><span class="vkk-val" id="p-vkk-anamnesis"></span></div>
+            <div class="vkk-ruled-field"><span class="vkk-lbl">8. Данные медицинского осмотра пациента: </span><span class="vkk-val" id="p-vkk-exam"></span></div>
+          </div>
+        </div>
+        <div class="vkk-page">
+          <div class="vkk-page-inner">
+            <div class="vkk-label-own" style="margin:0;padding:0;text-align:left;width:100%;">9. Клинико-функциональный диагноз: <span class="vkk-val" id="p-vkk-diagnosis" style="font-weight:400;"></span></div>
+            <div class="vkk-label-own">10. Решение врачебно-консультационной комиссии (при выдаче заключения указать нормативный(ые) правовой(ые) акт(ы), на основании которого(ых) выдается заключение ВКК):</div>
+            <div class="vkk-lines-block">
+              <div class="vkk-line-item"></div><div class="vkk-line-item"></div><div class="vkk-line-item"></div>
+              <div class="vkk-line-item"></div><div class="vkk-line-item"></div><div class="vkk-line-item"></div>
+            </div>
+            <div class="vkk-signs">
+              <div class="vkk-sign-row">
+                <div class="vkk-sign-role">Председатель</div>
+                <div class="vkk-sign-field"><div class="vkk-sign-line"></div><div class="vkk-sign-cap">(подпись)</div></div>
+                <div class="vkk-sign-field"><div class="vkk-sign-line"></div><div class="vkk-sign-cap">(инициалы, фамилия)</div></div>
+              </div>
+              <div class="vkk-sign-row">
+                <div class="vkk-sign-role">Члены</div>
+                <div class="vkk-sign-field">
+                  <div class="vkk-sign-line"></div>
+                  <div class="vkk-sign-cap">(подпись)</div>
+                </div>
+                <div class="vkk-sign-field">
+                  <div class="vkk-sign-line vkk-sign-line-name"><span id="p-vkk-member-1-name"></span></div>
+                  <div class="vkk-sign-cap">(инициалы, фамилия)</div>
+                </div>
+              </div>
+              <div class="vkk-sign-row">
+                <div class="vkk-sign-role"></div>
+                <div class="vkk-sign-field"><div class="vkk-sign-line"></div><div class="vkk-sign-cap">(подпись)</div></div>
+                <div class="vkk-sign-field"><div class="vkk-sign-line"></div><div class="vkk-sign-cap">(инициалы, фамилия)</div></div>
+              </div>
+              <div class="vkk-sign-row">
+                <div class="vkk-sign-role"></div>
+                <div class="vkk-sign-field"><div class="vkk-sign-line"></div><div class="vkk-sign-cap">(подпись)</div></div>
+                <div class="vkk-sign-field"><div class="vkk-sign-line"></div><div class="vkk-sign-cap">(инициалы, фамилия)</div></div>
+              </div>
+            </div>
+            <div class="vkk-footer">ОДО "Центр оперативной печати", т. 30 05 74, зак. №870/86, т.3000, ф.а5, 2025</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Модальное окно истории ВКК -->
+      <div id="vkk-history-modal" class="modal-overlay" onclick="closeVkkHistory(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+          <div class="modal-header">
+            <h3>История протоколов ВКК</h3>
+            <button class="close-btn" onclick="closeVkkHistory()">✖</button>
+          </div>
+          <div class="modal-body" id="vkk-history-list">
+            <!-- Items injected here -->
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </main>
+</div>
+
+<script src="../js/meds.js"></script>
+<script src="../js/core.js"></script>
+<script src="../js/calculators.js"></script>
+<script src="../js/questionnaires.js"></script>
+<script src="../js/screening.js"></script>
+<script src="../js/documents.js"></script>
+
+</body>
+</html>

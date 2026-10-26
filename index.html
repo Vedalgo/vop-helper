@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ВОП-Helper</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%232563eb'/%3E%3Cpath d='M26 14h12v12h12v12H38v12H26V38H14V26h12V14z' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header class="app-header no-print">
+  <div class="logo"><div class="logo-mark">⚕</div> <a href="index.html" style="color:inherit;text-decoration:none;">ВОП-Helper</a></div>
+  <div class="header-controls">
+    <select id="doctor-select" class="doctor-select" title="Выберите врача для анкет"></select>
+    <button class="theme-toggle" id="theme-toggle" title="Переключить тему">🌙</button>
+    <button class="burger" id="burger" aria-label="Меню">☰</button>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar no-print" id="sidebar">
+    <nav>
+      <a href="index.html" class="nav-link active" data-section="home" style="margin: 0 10px 10px;">🏠 Главная</a>
+      
+      <details class="nav-dropdown" >
+        <summary class="nav-group">🧮 Калькуляторы</summary>
+        <div class="nav-items">
+          <a href="pages/egfr.html" class="nav-link" data-section="egfr">СКФ (eGFR)</a>
+          <a href="pages/crcl.html" class="nav-link" data-section="crcl">Клиренс креатинина</a>
+          <a href="pages/bmi.html" class="nav-link" data-section="bmi">ИМТ</a>
+          <a href="pages/bmi-amp.html" class="nav-link" data-section="bmi-amp">ИМТ с ампутацией</a>
+          <a href="pages/score2.html" class="nav-link" data-section="score2">SCORE2</a>
+          <a href="pages/score2op.html" class="nav-link" data-section="score2op">SCORE2-OP</a>
+          <a href="pages/score2dm.html" class="nav-link" data-section="score2dm">SCORE2-Diabetes</a>
+          <a href="pages/chads.html" class="nav-link" data-section="chads">CHA₂DS₂-VASc</a>
+          <a href="pages/hasbled.html" class="nav-link" data-section="hasbled">HAS-BLED</a>
+          <a href="pages/chads-hasbled.html" class="nav-link" data-section="chads-hasbled">CHA₂DS₂-VASc + HAS-BLED</a>
+          <a href="pages/curb65.html" class="nav-link" data-section="curb65">CURB-65</a>
+          <a href="pages/gcs.html" class="nav-link" data-section="gcs">Шкала Глазго</a>
+          <a href="pages/charlson.html" class="nav-link" data-section="charlson">Charlson</a>
+          <a href="pages/sickleave.html" class="nav-link" data-section="sickleave">Больничный (дни)</a>
+        </div>
+      </details>
+
+      <details class="nav-dropdown" >
+        <summary class="nav-group">📝 Опросники и шкалы</summary>
+        <div class="nav-items">
+          <a href="pages/acq5.html" class="nav-link" data-section="acq5">ACQ-5 (астма)</a>
+          <a href="pages/findrisk.html" class="nav-link" data-section="findrisk">FINDRISK (диабет)</a>
+          <a href="pages/hads.html" class="nav-link" data-section="hads">HADS (тревога/депрессия)</a>
+          <a href="pages/auditc.html" class="nav-link" data-section="auditc">AUDIT-C (алкоголь)</a>
+          <a href="pages/mmse.html" class="nav-link" data-section="mmse">MMSE (когнитивный статус)</a>
+          <a href="pages/bdi.html" class="nav-link" data-section="bdi">Шкала Бека (BDI)</a>
+          <a href="pages/mmrc.html" class="nav-link" data-section="mmrc">mMRC (одышка)</a>
+          <a href="pages/cat.html" class="nav-link" data-section="cat">CAT-тест (ХОБЛ)</a>
+          <a href="pages/rivermead.html" class="nav-link" data-section="rivermead">Шкала Ривермид</a>
+          <a href="pages/light.html" class="nav-link" data-section="light">Критерии Light</a>
+        </div>
+      </details>
+
+      <details class="nav-dropdown" >
+        <summary class="nav-group">🩺 Скрининги</summary>
+        <div class="nav-items">
+          <a href="pages/screening.html" class="nav-link" data-section="screening">Диспансеризация и онкоскрининг</a>
+        </div>
+      </details>
+
+      <details class="nav-dropdown" >
+        <summary class="nav-group">📚 Справочники</summary>
+        <div class="nav-items">
+          <a href="pages/drugs.html" class="nav-link" data-section="drugs">💊 Перечень основных ЛС (2026)</a>
+          <a href="pages/protocols.html" class="nav-link" data-section="protocols">Клинические протоколы</a>
+          <a href="pages/medsafety.html" class="nav-link" data-section="medsafety">Безопасность ЛС</a>
+        </div>
+      </details>
+
+      <details class="nav-dropdown" >
+        <summary class="nav-group">📄 Документы</summary>
+        <div class="nav-items">
+          <a href="pages/vkk.html" class="nav-link" data-section="vkk">Протокол ВКК</a>
+          <a href="pages/consilium.html" class="nav-link" data-section="consilium">Протокол консилиума</a>
+          <a href="pages/referral.html" class="nav-link" data-section="referral">Направление</a>
+        </div>
+      </details>
+    </nav>
+    
+    <div class="author-plate">
+      <strong>ВОП-Helper</strong><br>
+      by Гринич Виталий<br>
+      для кабинета №302<br>
+      УЗ "Калинковичская ЦРБ"<br>
+      филиал "Районная поликлиника"<br>
+      2026
+    </div>
+  </aside>
+
+  <main>
+
+<section id="home" class="section active">
+      <h1>ВОП-Helper</h1>
+      <p class="subtitle">Инструменты для врача общей практики. Выберите раздел.</p>
+      
+      <div class="dashboard-category">
+        <h3>🧮 Калькуляторы</h3>
+        <div class="hero-grid">
+          <button class="hero-tile" onclick="location.href='pages/egfr.html'"><div class="icon">🩺</div><div class="title">СКФ (eGFR)</div><div class="desc">CKD-EPI, MDRD, Кокрофт-Голт</div></button>
+          <button class="hero-tile" onclick="location.href='pages/crcl.html'"><div class="icon">💧</div><div class="title">Клиренс креатинина</div><div class="desc">Для коррекции доз ЛС</div></button>
+          <button class="hero-tile" onclick="location.href='pages/bmi.html'"><div class="icon">⚖️</div><div class="title">ИМТ</div><div class="desc">Индекс массы тела</div></button>
+          <button class="hero-tile" onclick="location.href='pages/bmi-amp.html'"><div class="icon">🦿</div><div class="title">ИМТ при ампутации</div><div class="desc">С поправкой на сегмент</div></button>
+          <button class="hero-tile" onclick="location.href='pages/score2.html'"><div class="icon">📈</div><div class="title">SCORE2</div><div class="desc">Риск ССЗ (40–69 лет)</div></button>
+          <button class="hero-tile" onclick="location.href='pages/score2op.html'"><div class="icon">📊</div><div class="title">SCORE2-OP</div><div class="desc">Риск ССЗ (70+)</div></button>
+          <button class="hero-tile" onclick="location.href='pages/score2dm.html'"><div class="icon">🩸</div><div class="title">SCORE2-Diabetes</div><div class="desc">Риск ССЗ при СД 2 типа</div></button>
+          <button class="hero-tile" onclick="location.href='pages/chads.html'"><div class="icon">❤️</div><div class="title">CHA₂DS₂-VASc</div><div class="desc">Риск инсульта при ФП</div></button>
+          <button class="hero-tile" onclick="location.href='pages/hasbled.html'"><div class="icon">🩸</div><div class="title">HAS-BLED</div><div class="desc">Риск кровотечений</div></button>
+          <button class="hero-tile" onclick="location.href='pages/chads-hasbled.html'"><div class="icon">❤️🩸</div><div class="title">CHA₂DS₂-VASc + HAS-BLED</div><div class="desc">Два калькулятора на одном А5</div></button>
+          <button class="hero-tile" onclick="location.href='pages/curb65.html'"><div class="icon">🫁</div><div class="title">CURB-65</div><div class="desc">Тяжесть пневмонии</div></button>
+          <button class="hero-tile" onclick="location.href='pages/gcs.html'"><div class="icon">🧠</div><div class="title">Шкала Глазго</div><div class="desc">Оценка сознания</div></button>
+          <button class="hero-tile" onclick="location.href='pages/charlson.html'"><div class="icon">📋</div><div class="title">Charlson</div><div class="desc">Индекс коморбидности</div></button>
+          <button class="hero-tile" onclick="location.href='pages/sickleave.html'"><div class="icon">📅</div><div class="title">Больничный</div><div class="desc">Расчёт дней и дат</div></button>
+        </div>
+      </div>
+
+      <div class="dashboard-category">
+        <h3>📝 Опросники и шкалы</h3>
+        <div class="hero-grid">
+          <button class="hero-tile" onclick="location.href='pages/acq5.html'"><div class="icon">🫁</div><div class="title">ACQ-5</div><div class="desc">Контроль над БА</div></button>
+          <button class="hero-tile" onclick="location.href='pages/findrisk.html'"><div class="icon">🩸</div><div class="title">FINDRISK</div><div class="desc">Риск диабета 2 типа</div></button>
+          <button class="hero-tile" onclick="location.href='pages/hads.html'"><div class="icon">😟</div><div class="title">HADS</div><div class="desc">Тревога и депрессия</div></button>
+          <button class="hero-tile" onclick="location.href='pages/auditc.html'"><div class="icon">🍷</div><div class="title">AUDIT-C</div><div class="desc">Опасное потребление алкоголя</div></button>
+          <button class="hero-tile" onclick="location.href='pages/mmse.html'"><div class="icon">🧠</div><div class="title">MMSE</div><div class="desc">Когнитивный статус</div></button>
+          <button class="hero-tile" onclick="location.href='pages/bdi.html'"><div class="icon">📉</div><div class="title">Шкала Бека</div><div class="desc">Оценка депрессии</div></button>
+          <button class="hero-tile" onclick="location.href='pages/mmrc.html'"><div class="icon">💨</div><div class="title">mMRC</div><div class="desc">Одышка при ХОБЛ</div></button>
+          <button class="hero-tile" onclick="location.href='pages/cat.html'"><div class="icon">📋</div><div class="title">CAT-тест</div><div class="desc">Влияние симптомов ХОБЛ</div></button>
+          <button class="hero-tile" onclick="location.href='pages/rivermead.html'"><div class="icon">🚶</div><div class="title">Ривермид</div><div class="desc">Мобильность после инсульта</div></button>
+          <button class="hero-tile" onclick="location.href='pages/light.html'"><div class="icon">🫁</div><div class="title">Критерии Light</div><div class="desc">Плевральный выпот</div></button>
+        </div>
+      </div>
+
+      <div class="dashboard-category">
+        <h3>🩺 Скрининги и профилактика</h3>
+        <div class="hero-grid">
+          <button class="hero-tile" onclick="location.href='pages/screening.html'"><div class="icon">🔬</div><div class="title">Диспансеризация</div><div class="desc">Онкоскрининг по возрасту</div></button>
+        </div>
+      </div>
+
+      <div class="dashboard-category">
+        <h3>📚 Справочники и безопасность</h3>
+        <div class="hero-grid">
+          <button class="hero-tile" onclick="location.href='pages/drugs.html'"><div class="icon">💊</div><div class="title">Перечень основных ЛС</div><div class="desc">Поиск по Постановлению № 23</div></button>
+          <button class="hero-tile" onclick="location.href='pages/protocols.html'"><div class="icon">📋</div><div class="title">Клинические протоколы</div><div class="desc">Актуальные постановления МЗ РБ</div></button>
+          <button class="hero-tile" onclick="location.href='pages/medsafety.html'"><div class="icon">💊</div><div class="title">Безопасность ЛС</div><div class="desc">Дозы и взаимодействия</div></button>
+        </div>
+      </div>
+
+      <div class="dashboard-category">
+        <h3>📄 Документы</h3>
+        <div class="hero-grid">
+          <button class="hero-tile" onclick="location.href='pages/vkk.html'"><div class="icon">📄</div><div class="title">Протокол ВКК</div><div class="desc">Печать A5 + история</div></button>
+          <button class="hero-tile" onclick="location.href='pages/consilium.html'"><div class="icon">📝</div><div class="title">Протокол консилиума</div><div class="desc">Бланк консилиума (А4)</div></button>
+          <button class="hero-tile" onclick="location.href='pages/referral.html'"><div class="icon">🏥</div><div class="title">Направление</div><div class="desc">К кардиологу/кардиохирургу</div></button>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script src="js/meds.js"></script>
+<script src="js/core.js"></script>
+<script src="js/calculators.js"></script>
+<script src="js/questionnaires.js"></script>
+<script src="js/screening.js"></script>
+<script src="js/documents.js"></script>
+
+</body>
+</html>

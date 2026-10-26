@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ВОП-Helper</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%232563eb'/%3E%3Cpath d='M26 14h12v12h12v12H38v12H26V38H14V26h12V14z' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+<header class="app-header no-print">
+  <div class="logo"><div class="logo-mark">⚕</div> <a href="../index.html" style="color:inherit;text-decoration:none;">ВОП-Helper</a></div>
+  <div class="header-controls">
+    <select id="doctor-select" class="doctor-select" title="Выберите врача для анкет"></select>
+    <button class="theme-toggle" id="theme-toggle" title="Переключить тему">🌙</button>
+    <button class="burger" id="burger" aria-label="Меню">☰</button>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar no-print" id="sidebar">
+    <nav>
+      <a href="../index.html" class="nav-link" data-section="home" style="margin: 0 10px 10px;">🏠 Главная</a>
+      
+      <details class="nav-dropdown" >
+        <summary class="nav-group">🧮 Калькуляторы</summary>
+        <div class="nav-items">
+          <a href="../pages/egfr.html" class="nav-link" data-section="egfr">СКФ (eGFR)</a>
+          <a href="../pages/crcl.html" class="nav-link" data-section="crcl">Клиренс креатинина</a>
+          <a href="../pages/bmi.html" class="nav-link" data-section="bmi">ИМТ</a>
+          <a href="../pages/bmi-amp.html" class="nav-link" data-section="bmi-amp">ИМТ с ампутацией</a>
+          <a href="../pages/score2.html" class="nav-link" data-section="score2">SCORE2</a>
+          <a href="../pages/score2op.html" class="nav-link" data-section="score2op">SCORE2-OP</a>
+          <a href="../pages/score2dm.html" class="nav-link" data-section="score2dm">SCORE2-Diabetes</a>
+          <a href="../pages/chads.html" class="nav-link" data-section="chads">CHA₂DS₂-VASc</a>
+          <a href="../pages/hasbled.html" class="nav-link" data-section="hasbled">HAS-BLED</a>
+          <a href="../pages/chads-hasbled.html" class="nav-link" data-section="chads-hasbled">CHA₂DS₂-VASc + HAS-BLED</a>
+          <a href="../pages/curb65.html" class="nav-link" data-section="curb65">CURB-65</a>
+          <a href="../pages/gcs.html" class="nav-link" data-section="gcs">Шкала Глазго</a>
+          <a href="../pages/charlson.html" class="nav-link" data-section="charlson">Charlson</a>
+          <a href="../pages/sickleave.html" class="nav-link" data-section="sickleave">Больничный (дни)</a>
+        </div>
+      </details>
+
+      <details class="nav-dropdown" >
+        <summary class="nav-group">📝 Опросники и шкалы</summary>
+        <div class="nav-items">
+          <a href="../pages/acq5.html" class="nav-link" data-section="acq5">ACQ-5 (астма)</a>
+          <a href="../pages/findrisk.html" class="nav-link" data-section="findrisk">FINDRISK (диабет)</a>
+          <a href="../pages/hads.html" class="nav-link" data-section="hads">HADS (тревога/депрессия)</a>
+          <a href="../pages/auditc.html" class="nav-link" data-section="auditc">AUDIT-C (алкоголь)</a>
+          <a href="../pages/mmse.html" class="nav-link" data-section="mmse">MMSE (когнитивный статус)</a>
+          <a href="../pages/bdi.html" class="nav-link" data-section="bdi">Шкала Бека (BDI)</a>
+          <a href="../pages/mmrc.html" class="nav-link" data-section="mmrc">mMRC (одышка)</a>
+          <a href="../pages/cat.html" class="nav-link" data-section="cat">CAT-тест (ХОБЛ)</a>
+          <a href="../pages/rivermead.html" class="nav-link" data-section="rivermead">Шкала Ривермид</a>
+          <a href="../pages/light.html" class="nav-link" data-section="light">Критерии Light</a>
+        </div>
+      </details>
+
+      <details class="nav-dropdown" >
+        <summary class="nav-group">🩺 Скрининги</summary>
+        <div class="nav-items">
+          <a href="../pages/screening.html" class="nav-link" data-section="screening">Диспансеризация и онкоскрининг</a>
+        </div>
+      </details>
+
+      <details class="nav-dropdown" >
+        <summary class="nav-group">📚 Справочники</summary>
+        <div class="nav-items">
+          <a href="../pages/drugs.html" class="nav-link" data-section="drugs">💊 Перечень основных ЛС (2026)</a>
+          <a href="../pages/protocols.html" class="nav-link" data-section="protocols">Клинические протоколы</a>
+          <a href="../pages/medsafety.html" class="nav-link" data-section="medsafety">Безопасность ЛС</a>
+        </div>
+      </details>
+
+      <details class="nav-dropdown" open>
+        <summary class="nav-group">📄 Документы</summary>
+        <div class="nav-items">
+          <a href="../pages/vkk.html" class="nav-link" data-section="vkk">Протокол ВКК</a>
+          <a href="../pages/consilium.html" class="nav-link active" data-section="consilium">Протокол консилиума</a>
+          <a href="../pages/referral.html" class="nav-link" data-section="referral">Направление</a>
+        </div>
+      </details>
+    </nav>
+    
+    <div class="author-plate">
+      <strong>ВОП-Helper</strong><br>
+      by Гринич Виталий<br>
+      для кабинета №302<br>
+      УЗ "Калинковичская ЦРБ"<br>
+      филиал "Районная поликлиника"<br>
+      2026
+    </div>
+  </aside>
+
+  <main>
+
+<section id="consilium" class="section active">
+      <h2 class="no-print">Протокол консилиума</h2>
+      <p class="subtitle no-print">Заполните данные. Печать на листе А4.</p>
+      
+      <div class="card no-print">
+        <div class="grid-2">
+          <div class="field"><label>Дата консилиума</label><input type="text" id="cons-date" placeholder="дд.мм.гггг" inputmode="numeric"></div>
+          <div class="field"><label>Город</label><input type="text" id="cons-city" value="г. Калинковичи"></div>
+        </div>
+        
+        <div class="grid-2">
+          <div class="field">
+            <label>Лечащий врач (редактируемое)</label>
+            <input type="text" id="cons-doctor-input" placeholder="Фамилия И.О.">
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="field"><label>ФИО больного</label><input type="text" id="cons-patient-fio" placeholder="Иванов Иван Иванович"></div>
+          <div class="field"><label>Возраст (полных лет)</label><input type="number" id="cons-patient-age" min="1" max="120" placeholder="45"></div>
+        </div>
+        
+        <div class="field"><label>Объективные данные</label><textarea id="cons-objective" class="auto-resize"></textarea></div>
+        <div class="field"><label>Диагноз</label><textarea id="cons-diagnosis" class="auto-resize"></textarea></div>
+        <div class="field"><label>Лечение</label><textarea id="cons-treatment" class="auto-resize"></textarea></div>
+        
+        <div class="btn-row">
+          <button class="btn btn-primary" onclick="printConsilium()">🖨 Печать протокола</button>
+          <button class="btn btn-secondary" onclick="openConsHistory()">🕘 История</button>
+          <button class="btn btn-secondary" onclick="clearConsilium()">Очистить</button>
+        </div>
+      </div>
+
+      <!-- Печатная форма Консилиума (А4) -->
+      <div class="consilium-print-view print-document" id="consilium-print-view">
+        <div class="cons-page">
+          <h1 class="cons-title">КОНСИЛИУМ</h1>
+          
+          <div class="cons-header">
+            <div class="cons-date-line">«<span id="p-cons-day"></span>» <span id="p-cons-month"></span> <span id="p-cons-year"></span> г.</div>
+            <div class="cons-city-line"><span id="p-cons-city"></span></div>
+          </div>
+          
+          <div class="cons-field-row">
+            <span class="cons-text"><b>Состав:</b> зам.главного врача по медицинской части</span>
+            <span class="cons-line"></span>
+          </div>
+          <div class="cons-field-row">
+            <span class="cons-text">зав.отделениями:</span>
+            <span class="cons-line"></span>
+          </div>
+          <div class="cons-field-row"><span class="cons-line"></span></div>
+          <div class="cons-field-row"><span class="cons-line"></span></div>
+          
+          <div class="cons-field-row mt-10">
+            <span class="cons-lbl">Лечащий врач:</span> 
+            <span class="cons-val" id="p-cons-doctor-top"></span>
+          </div>
+          
+          <div class="cons-field-row">
+            <span class="cons-lbl">Проведён осмотр больного:</span> 
+            <span class="cons-val" id="p-cons-exam"></span>
+          </div>
+          
+          <div class="cons-block">
+            <span class="cons-lbl">Объективные данные:</span> <span class="cons-val multi" id="p-cons-objective"></span>
+          </div>
+          
+          <div class="cons-block">
+            <span class="cons-lbl">Диагноз:</span> <span class="cons-val multi" id="p-cons-diagnosis"></span>
+          </div>
+          
+          <div class="cons-block">
+            <span class="cons-lbl">Лечение:</span> <span class="cons-val multi" id="p-cons-treatment"></span>
+          </div>
+          
+          <div class="cons-signatures">
+            <div class="cons-sign-row">
+              <div class="cons-sign-role">Зам.главного врача<br>по медицинской части</div>
+              <div class="cons-sign-line"></div>
+            </div>
+            
+            <div class="cons-sign-row">
+              <div class="cons-sign-role">Зав. отделениями</div>
+              <div class="cons-sign-lines-group">
+                 <div class="cons-sign-line"></div>
+                 <div class="cons-sign-line"></div>
+                 <div class="cons-sign-line"></div>
+              </div>
+            </div>
+
+            <div class="cons-sign-row">
+              <div class="cons-sign-role">Лечащий врач</div>
+              <div class="cons-sign-line" style="display: flex; justify-content: flex-start; align-items: flex-end;">
+                <span id="p-cons-doctor-bottom" style="font-weight: normal; padding-left: 5px; font-size: 11pt; line-height: 1;"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Модальное окно истории консилиума -->
+      <div id="cons-history-modal" class="modal-overlay" onclick="closeConsHistory(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+          <div class="modal-header">
+            <h3>История протоколов консилиума</h3>
+            <button class="close-btn" onclick="closeConsHistory()">✖</button>
+          </div>
+          <div class="modal-body" id="cons-history-list"></div>
+        </div>
+      </div>
+
+    </section>
+  </main>
+</div>
+
+<script src="../js/meds.js"></script>
+<script src="../js/core.js"></script>
+<script src="../js/calculators.js"></script>
+<script src="../js/questionnaires.js"></script>
+<script src="../js/screening.js"></script>
+<script src="../js/documents.js"></script>
+
+</body>
+</html>

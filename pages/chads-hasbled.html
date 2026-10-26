@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ВОП-Helper — CHA₂DS₂-VASc + HAS-BLED</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%232563eb'/%3E%3Cpath d='M26 14h12v12h12v12H38v12H26V38H14V26h12V14z' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+<header class="app-header no-print">
+  <div class="logo"><div class="logo-mark">⚕</div> <a href="../index.html" style="color:inherit;text-decoration:none;">ВОП-Helper</a></div>
+  <div class="header-controls">
+    <select id="doctor-select" class="doctor-select" title="Выберите врача для анкет"></select>
+    <button class="theme-toggle" id="theme-toggle" title="Переключить тему">🌙</button>
+    <button class="burger" id="burger" aria-label="Меню">☰</button>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar no-print" id="sidebar">
+    <nav>
+      <a href="../index.html" class="nav-link" data-section="home" style="margin: 0 10px 10px;">🏠 Главная</a>
+      
+      <details class="nav-dropdown" open>
+        <summary class="nav-group">🧮 Калькуляторы</summary>
+        <div class="nav-items">
+          <a href="../pages/egfr.html" class="nav-link" data-section="egfr">СКФ (eGFR)</a>
+          <a href="../pages/crcl.html" class="nav-link" data-section="crcl">Клиренс креатинина</a>
+          <a href="../pages/bmi.html" class="nav-link" data-section="bmi">ИМТ</a>
+          <a href="../pages/bmi-amp.html" class="nav-link" data-section="bmi-amp">ИМТ с ампутацией</a>
+          <a href="../pages/score2.html" class="nav-link" data-section="score2">SCORE2</a>
+          <a href="../pages/score2op.html" class="nav-link" data-section="score2op">SCORE2-OP</a>
+          <a href="../pages/score2dm.html" class="nav-link" data-section="score2dm">SCORE2-Diabetes</a>
+          <a href="../pages/chads.html" class="nav-link" data-section="chads">CHA₂DS₂-VASc</a>
+          <a href="../pages/hasbled.html" class="nav-link" data-section="hasbled">HAS-BLED</a>
+          <a href="../pages/chads-hasbled.html" class="nav-link active" data-section="chads-hasbled">CHA₂DS₂-VASc + HAS-BLED</a>
+          <a href="../pages/curb65.html" class="nav-link" data-section="curb65">CURB-65</a>
+          <a href="../pages/gcs.html" class="nav-link" data-section="gcs">Шкала Глазго</a>
+          <a href="../pages/charlson.html" class="nav-link" data-section="charlson">Charlson</a>
+          <a href="../pages/sickleave.html" class="nav-link" data-section="sickleave">Больничный (дни)</a>
+        </div>
+      </details>
+
+      <details class="nav-dropdown" open >
+        <summary class="nav-group">📝 Опросники и шкалы</summary>
+        <div class="nav-items">
+          <a href="../pages/acq5.html" class="nav-link" data-section="acq5">ACQ-5 (астма)</a>
+          <a href="../pages/findrisk.html" class="nav-link" data-section="findrisk">FINDRISK (диабет)</a>
+          <a href="../pages/hads.html" class="nav-link" data-section="hads">HADS (тревога/депрессия)</a>
+          <a href="../pages/auditc.html" class="nav-link" data-section="auditc">AUDIT-C (алкоголь)</a>
+          <a href="../pages/mmse.html" class="nav-link" data-section="mmse">MMSE (когнитивный статус)</a>
+          <a href="../pages/bdi.html" class="nav-link" data-section="bdi">Шкала Бека (BDI)</a>
+          <a href="../pages/mmrc.html" class="nav-link" data-section="mmrc">mMRC (одышка)</a>
+          <a href="../pages/cat.html" class="nav-link" data-section="cat">CAT-тест (ХОБЛ)</a>
+          <a href="../pages/rivermead.html" class="nav-link" data-section="rivermead">Шкала Ривермид</a>
+          <a href="../pages/light.html" class="nav-link" data-section="light">Критерии Light</a>
+        </div>
+      </details>
+
+      <details class="nav-dropdown" >
+        <summary class="nav-group">🩺 Скрининги</summary>
+        <div class="nav-items">
+          <a href="../pages/screening.html" class="nav-link" data-section="screening">Диспансеризация и онкоскрининг</a>
+        </div>
+      </details>
+
+      <details class="nav-dropdown" >
+        <summary class="nav-group">📚 Справочники</summary>
+        <div class="nav-items">
+          <a href="../pages/drugs.html" class="nav-link" data-section="drugs">💊 Перечень основных ЛС (2026)</a>
+          <a href="../pages/protocols.html" class="nav-link" data-section="protocols">Клинические протоколы</a>
+          <a href="../pages/medsafety.html" class="nav-link" data-section="medsafety">Безопасность ЛС</a>
+        </div>
+      </details>
+
+      <details class="nav-dropdown" >
+        <summary class="nav-group">📄 Документы</summary>
+        <div class="nav-items">
+          <a href="../pages/vkk.html" class="nav-link" data-section="vkk">Протокол ВКК</a>
+          <a href="../pages/consilium.html" class="nav-link" data-section="consilium">Протокол консилиума</a>
+          <a href="../pages/referral.html" class="nav-link" data-section="referral">Направление</a>
+        </div>
+      </details>
+    </nav>
+    
+    <div class="author-plate">
+      <strong>ВОП-Helper</strong><br>
+      by Гринич Виталий<br>
+      для кабинета №302<br>
+      УЗ "Калинковичская ЦРБ"<br>
+      филиал "Районная поликлиника"<br>
+      2026
+    </div>
+  </aside>
+
+  <main>
+<section id="chads-hasbled" class="section active">
+  <h2 class="no-print">CHA₂DS₂-VASc + HAS-BLED</h2>
+  <p class="subtitle no-print">Оценка риска инсульта и кровотечений при ФП. Печать на одном листе А5: слева CHA₂DS₂-VASc, справа HAS-BLED.</p>
+
+  <div class="card no-print">
+    <div class="grid-2">
+      <div class="field"><label>ФИО пациента</label><input type="text" id="chads-hasbled-fio"></div>
+      <div class="field"><label>Дата</label><input type="text" id="chads-hasbled-date" placeholder="дд.мм.гггг" inputmode="numeric"></div>
+    </div>
+  </div>
+
+  <div class="grid-2" style="align-items:start;">
+    <div class="card no-print">
+      <h3>CHA₂DS₂-VASc</h3>
+      <div id="chads-list-combo"></div>
+      <div class="btn-row" style="margin-top:10px;">
+        <button class="btn btn-primary" onclick="calcChadsCombo()">Рассчитать</button>
+      </div>
+      <div class="result-box empty" id="chads-combo-result"></div>
+    </div>
+    <div class="card no-print">
+      <h3>HAS-BLED</h3>
+      <div id="hasbled-list-combo"></div>
+      <div class="btn-row" style="margin-top:10px;">
+        <button class="btn btn-primary" onclick="calcHasbledCombo()">Рассчитать</button>
+      </div>
+      <div class="result-box empty" id="hasbled-combo-result"></div>
+    </div>
+  </div>
+
+  <div class="card no-print">
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="printChadsHasbled()">🖨 Печать (А5, два столбца)</button>
+      <button class="btn btn-secondary" onclick="resetChadsHasbled()">Очистить</button>
+    </div>
+  </div>
+
+  <!-- Печать: один лист А5, два столбца -->
+  <div class="chads-hasbled-print-view print-document" id="chads-hasbled-print-view">
+    <div class="chads-hasbled-a5">
+      <div class="chb-header">
+        <div class="chb-title">CHA₂DS₂-VASc + HAS-BLED</div>
+        <div class="chb-meta">
+          <span>ФИО: <b id="p-chb-fio"></b></span>
+          <span>Дата: <b id="p-chb-date"></b></span>
+          <span>Врач: <b id="p-chb-doc"></b></span>
+        </div>
+      </div>
+      <div class="chb-columns">
+        <div class="chb-col">
+          <div class="chb-col-title">CHA₂DS₂-VASc (риск инсульта)</div>
+          <div id="p-chb-chads-q"></div>
+          <div class="chb-sum">
+            <div>Сумма: <b id="p-chb-chads-sum">—</b></div>
+            <div id="p-chb-chads-interp">—</div>
+            <div id="p-chb-chads-rec">—</div>
+          </div>
+        </div>
+        <div class="chb-col">
+          <div class="chb-col-title">HAS-BLED (риск кровотечений)</div>
+          <div id="p-chb-hasbled-q"></div>
+          <div class="chb-sum">
+            <div>Сумма: <b id="p-chb-hasbled-sum">—</b></div>
+            <div id="p-chb-hasbled-interp">—</div>
+          </div>
+        </div>
+      </div>
+      <div class="chb-footer">
+        <span>Подпись врача: ________________</span>
+        <span>М.П.</span>
+      </div>
+    </div>
+  </div>
+</section>
+  </main>
+</div>
+<script src="../js/meds.js"></script>
+<script src="../js/core.js"></script>
+<script src="../js/calculators.js"></script>
+<script src="../js/questionnaires.js"></script>
+<script src="../js/screening.js"></script>
+<script src="../js/documents.js"></script>
+</body>
+</html>

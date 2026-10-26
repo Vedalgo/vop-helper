@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ВОП-Helper — Направление</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%232563eb'/%3E%3Cpath d='M26 14h12v12h12v12H38v12H26V38H14V26h12V14z' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+<header class="app-header no-print">
+  <div class="logo"><div class="logo-mark">⚕</div> <a href="../index.html" style="color:inherit;text-decoration:none;">ВОП-Helper</a></div>
+  <div class="header-controls">
+    <select id="doctor-select" class="doctor-select" title="Выберите врача для анкет"></select>
+    <button class="theme-toggle" id="theme-toggle" title="Переключить тему">🌙</button>
+    <button class="burger" id="burger" aria-label="Меню">☰</button>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar no-print" id="sidebar">
+    <nav>
+      <a href="../index.html" class="nav-link" data-section="home" style="margin: 0 10px 10px;">🏠 Главная</a>
+      
+      <details class="nav-dropdown" >
+        <summary class="nav-group">🧮 Калькуляторы</summary>
+        <div class="nav-items">
+          <a href="../pages/egfr.html" class="nav-link" data-section="egfr">СКФ (eGFR)</a>
+          <a href="../pages/crcl.html" class="nav-link" data-section="crcl">Клиренс креатинина</a>
+          <a href="../pages/bmi.html" class="nav-link" data-section="bmi">ИМТ</a>
+          <a href="../pages/bmi-amp.html" class="nav-link" data-section="bmi-amp">ИМТ с ампутацией</a>
+          <a href="../pages/score2.html" class="nav-link" data-section="score2">SCORE2</a>
+          <a href="../pages/score2op.html" class="nav-link" data-section="score2op">SCORE2-OP</a>
+          <a href="../pages/score2dm.html" class="nav-link" data-section="score2dm">SCORE2-Diabetes</a>
+          <a href="../pages/chads.html" class="nav-link" data-section="chads">CHA₂DS₂-VASc</a>
+          <a href="../pages/hasbled.html" class="nav-link" data-section="hasbled">HAS-BLED</a>
+          <a href="../pages/chads-hasbled.html" class="nav-link" data-section="chads-hasbled">CHA₂DS₂-VASc + HAS-BLED</a>
+          <a href="../pages/curb65.html" class="nav-link" data-section="curb65">CURB-65</a>
+          <a href="../pages/gcs.html" class="nav-link" data-section="gcs">Шкала Глазго</a>
+          <a href="../pages/charlson.html" class="nav-link" data-section="charlson">Charlson</a>
+          <a href="../pages/sickleave.html" class="nav-link" data-section="sickleave">Больничный (дни)</a>
+        </div>
+      </details>
+
+      <details class="nav-dropdown" >
+        <summary class="nav-group">📝 Опросники и шкалы</summary>
+        <div class="nav-items">
+          <a href="../pages/acq5.html" class="nav-link" data-section="acq5">ACQ-5 (астма)</a>
+          <a href="../pages/findrisk.html" class="nav-link" data-section="findrisk">FINDRISK (диабет)</a>
+          <a href="../pages/hads.html" class="nav-link" data-section="hads">HADS (тревога/депрессия)</a>
+          <a href="../pages/auditc.html" class="nav-link" data-section="auditc">AUDIT-C (алкоголь)</a>
+          <a href="../pages/mmse.html" class="nav-link" data-section="mmse">MMSE (когнитивный статус)</a>
+          <a href="../pages/bdi.html" class="nav-link" data-section="bdi">Шкала Бека (BDI)</a>
+          <a href="../pages/mmrc.html" class="nav-link" data-section="mmrc">mMRC (одышка)</a>
+          <a href="../pages/cat.html" class="nav-link" data-section="cat">CAT-тест (ХОБЛ)</a>
+          <a href="../pages/rivermead.html" class="nav-link" data-section="rivermead">Шкала Ривермид</a>
+          <a href="../pages/light.html" class="nav-link" data-section="light">Критерии Light</a>
+        </div>
+      </details>
+
+      <details class="nav-dropdown" >
+        <summary class="nav-group">🩺 Скрининги</summary>
+        <div class="nav-items">
+          <a href="../pages/screening.html" class="nav-link" data-section="screening">Диспансеризация и онкоскрининг</a>
+        </div>
+      </details>
+
+      <details class="nav-dropdown" >
+        <summary class="nav-group">📚 Справочники</summary>
+        <div class="nav-items">
+          <a href="../pages/drugs.html" class="nav-link" data-section="drugs">💊 Перечень основных ЛС (2026)</a>
+          <a href="../pages/protocols.html" class="nav-link" data-section="protocols">Клинические протоколы</a>
+          <a href="../pages/medsafety.html" class="nav-link" data-section="medsafety">Безопасность ЛС</a>
+        </div>
+      </details>
+
+      <details class="nav-dropdown" open>
+        <summary class="nav-group">📄 Документы</summary>
+        <div class="nav-items">
+          <a href="../pages/vkk.html" class="nav-link" data-section="vkk">Протокол ВКК</a>
+          <a href="../pages/consilium.html" class="nav-link" data-section="consilium">Протокол консилиума</a>
+          <a href="../pages/referral.html" class="nav-link active" data-section="referral">Направление</a>
+        </div>
+      </details>
+    </nav>
+    
+    <div class="author-plate">
+      <strong>ВОП-Helper</strong><br>
+      by Гринич Виталий<br>
+      для кабинета №302<br>
+      УЗ "Калинковичская ЦРБ"<br>
+      филиал "Районная поликлиника"<br>
+      2026
+    </div>
+  </aside>
+
+  <main>
+<section id="referral" class="section active">
+      <h2 class="no-print">Направление на консультацию</h2>
+      <p class="subtitle no-print">Печать строго на 2 листах А4. Заполните поля ниже.</p>
+      
+      <div class="card no-print">
+        <div class="grid-2">
+          <div class="field"><label>Наименование учреждения (направляющего)</label><input type="text" id="ref-inst" value="УЗ «Калинковичская ЦРБ» поликлиника"></div>
+          <div class="field"><label>Дата направления</label><input type="text" id="ref-date" placeholder="дд.мм.гггг" inputmode="numeric"></div>
+        </div>
+        <div class="grid-2">
+          <div class="field"><label>Фраза направления</label><input type="text" id="ref-to-phrase" value="на консультацию" placeholder="на консультацию / на лечение / иное"></div>
+          <div class="field"><label>Учреждение (куда)</label><input type="text" id="ref-to-org" value="ГОККД" placeholder="ГОККД / другое учреждение"></div>
+        </div>
+        <div class="field"><label>К специалисту</label><input type="text" id="ref-to-specialist" value="кардиологу, кардиохирургу" placeholder="кардиологу, кардиохирургу / другому врачу"></div>
+        <div class="grid-2">
+          <div class="field"><label>ФИО пациента</label><input type="text" id="ref-fio"></div>
+          <div class="field"><label>Возраст</label><input type="text" id="ref-age"></div>
+        </div>
+        <div class="field"><label>Домашний адрес</label><input type="text" id="ref-address"></div>
+        <div class="field"><label>Диагноз</label><textarea id="ref-diagnosis" class="auto-resize"></textarea></div>
+        <div class="field"><label>Цель консультации</label><input type="text" id="ref-purpose"></div>
+        
+        <h3>Данные обследования (стр. 1 — пункты 1–11)</h3>
+        <div class="grid-2">
+          <div class="field"><label>1. Общий ан. крови</label><input type="text" id="ref-b1"></div>
+          <div class="field"><label>2. Общ. ан. мочи</label><input type="text" id="ref-b2"></div>
+          <div class="field"><label>3. Биохим. ан. крови</label><input type="text" id="ref-b3"></div>
+          <div class="field"><label>4. R-графия органов грудной клетки</label><input type="text" id="ref-b4"></div>
+          <div class="field"><label>5. Консультация гинеколога</label><input type="text" id="ref-b5"></div>
+          <div class="field"><label>6. Профиль АД</label><input type="text" id="ref-b6"></div>
+          <div class="field"><label>7. Ан. мочи по Нечипоренко</label><input type="text" id="ref-b7"></div>
+          <div class="field"><label>8. Консультация окулиста</label><input type="text" id="ref-b8"></div>
+          <div class="field"><label>9. Консультация невролога/уролога</label><input type="text" id="ref-b9"></div>
+          <div class="field"><label>10. ЭХО КГ</label><input type="text" id="ref-b10"></div>
+          <div class="field" style="grid-column:1/-1;"><label>11. УЗИ почек, органов брюшной полости</label><input type="text" id="ref-b11"></div>
+        </div>
+
+        <h3>Данные обследования (стр. 2 — пункты 12–19)</h3>
+        <div class="field"><label>12. ВЭП (по показаниям)</label><input type="text" id="ref-b12"></div>
+        <div class="field"><label>13. Факторы риска при ИБС</label><input type="text" id="ref-r1"></div>
+        <div class="field"><label>14. Объективизация степени риска при АГ</label><input type="text" id="ref-r2"></div>
+        <div class="field"><label>15. Данные анамнеза (начало, развитие)</label><textarea id="ref-anamnesis" class="auto-resize"></textarea></div>
+        <div class="field"><label>16. Лечение (дозы, длительность)</label><textarea id="ref-treatment" class="auto-resize"></textarea></div>
+        <div class="field"><label>17. Указание о госпитализации</label><input type="text" id="ref-hosp"></div>
+        <div class="field"><label>18. Сроки и причины ВН за 12 мес.</label><input type="text" id="ref-vn"></div>
+        <div class="field"><label>19. Дополнительные сведения</label><textarea id="ref-extra" class="auto-resize"></textarea></div>
+        
+        <div class="grid-2">
+          <div class="field"><label>Лечащий врач</label><input type="text" id="ref-doc"></div>
+          <div class="field"><label>Зав. отделения</label><input type="text" id="ref-head"></div>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn btn-primary" onclick="printReferral()">🖨 Печать направления</button>
+          <button class="btn btn-secondary" onclick="openRefHistory()">🕘 История</button>
+          <button class="btn btn-secondary" onclick="clearReferral()">Очистить</button>
+        </div>
+      </div>
+
+      <!-- Печатная форма Направления — 2 страницы А4 -->
+      <div class="referral-print-view print-document" id="referral-print-view">
+        <!-- СТРАНИЦА 1 -->
+        <div class="ref-page ref-page-1">
+          <h1 class="ref-title">Н А П Р А В Л Е Н И Е</h1>
+          <div class="ref-subtitle"><span id="p-ref-to-phrase">на консультацию</span> в <span id="p-ref-to-org"></span></div>
+          <div class="ref-subtitle2">к <span id="p-ref-to-specialist"></span></div>
+          
+          <div class="ref-field"><span class="lbl">Наименование лечебного учреждения, направляющего больного</span> <span class="val" id="p-ref-inst"></span></div>
+          <div class="ref-row">
+            <div class="ref-field" style="flex: 2;"><span class="lbl">Фамилия, и., о.</span> <span class="val" id="p-ref-fio"></span></div>
+            <div class="ref-field" style="flex: 1;"><span class="lbl">Возраст</span> <span class="val" id="p-ref-age"></span></div>
+          </div>
+          <div class="ref-field"><span class="lbl">Домашний адрес</span> <span class="val" id="p-ref-address"></span></div>
+          
+          <div class="ref-line ref-gap-after"><span class="ref-prefix">Диагноз:</span> <span class="ref-text" id="p-ref-diagnosis"></span></div>
+          
+          <div class="ref-line"><span class="ref-prefix">Цель консультации:</span> <span class="ref-text" id="p-ref-purpose"></span></div>
+          
+          <div class="ref-center" style="margin: 12px 0 8px;">Данные обследования:</div>
+          
+          <div class="ref-list">
+            <div class="ref-line"><span class="ref-prefix">1. Общий ан. крови:</span> <span class="ref-text" id="p-ref-b1"></span></div>
+            <div class="ref-line"><span class="ref-prefix">2. Общ. ан. мочи:</span> <span class="ref-text" id="p-ref-b2"></span></div>
+            <div class="ref-line ref-gap-after"><span class="ref-prefix">3. Биохим. ан. крови:</span> <span class="ref-text" id="p-ref-b3"></span></div>
+            <div class="ref-note">(согласно Протоколам обследования и лечения больных в амбулаторных и поликлинических условиях)</div>
+            <div class="ref-line"><span class="ref-prefix">4. R-графия органов грудной клетки:</span> <span class="ref-text" id="p-ref-b4"></span></div>
+            <div class="ref-line"><span class="ref-prefix">5. Консультация гинеколога:</span> <span class="ref-text" id="p-ref-b5"></span></div>
+            <div class="ref-line"><span class="ref-prefix">6. Профиль АД (при АГ с указанием даты):</span> <span class="ref-text" id="p-ref-b6"></span></div>
+            <div class="ref-line"><span class="ref-prefix">7. Ан. мочи по Нечипоренко (при АГ):</span> <span class="ref-text" id="p-ref-b7"></span></div>
+            <div class="ref-line"><span class="ref-prefix">8. Консультация окулиста (при АГ):</span> <span class="ref-text" id="p-ref-b8"></span></div>
+            <div class="ref-line"><span class="ref-prefix">9. Консультация невропатолога, уролога:</span> <span class="ref-text" id="p-ref-b9"></span></div>
+            <div class="ref-line"><span class="ref-prefix">10. ЭХО КГ (по показаниям):</span> <span class="ref-text" id="p-ref-b10"></span></div>
+            <div class="ref-line"><span class="ref-prefix">11. УЗИ почек, органов брюшной полости:</span> <span class="ref-text" id="p-ref-b11"></span></div>
+          </div>
+        </div>
+
+        <!-- СТРАНИЦА 2 -->
+        <div class="ref-page ref-page-2">
+          <div class="ref-list">
+            <div class="ref-line"><span class="ref-prefix">12. ВЭП (по показаниям):</span> <span class="ref-text" id="p-ref-b12"></span></div>
+            <div class="ref-line"><span class="ref-prefix">13. Указание факторов риска при ИБС:</span> <span class="ref-text" id="p-ref-r1"></span></div>
+            <div class="ref-line"><span class="ref-prefix">14. Объективизация степени риска при АГ:</span> <span class="ref-text" id="p-ref-r2"></span></div>
+            <div class="ref-line"><span class="ref-prefix">15. Данные анамнеза с указанием начала заболевания, характер его развития:</span> <span class="ref-text" id="p-ref-anamnesis"></span></div>
+            <div class="ref-line"><span class="ref-prefix">16. Лечение с указанием доз препаратов и длительность их приема:</span> <span class="ref-text" id="p-ref-treatment"></span></div>
+            <div class="ref-line"><span class="ref-prefix">17. Указание о госпитализации с приложением выписок:</span> <span class="ref-text" id="p-ref-hosp"></span></div>
+            <div class="ref-line"><span class="ref-prefix">18. Указание сроков и причин ВН за последние 12 месяцев:</span> <span class="ref-text" id="p-ref-vn"></span></div>
+            <div class="ref-line"><span class="ref-prefix">19. Дополнительные сведения:</span> <span class="ref-text" id="p-ref-extra"></span></div>
+          </div>
+          
+          <div class="ref-footer">
+            <div class="ref-sign-row">
+              <span class="lbl">Дата</span> <span class="val" id="p-ref-date" style="flex: 0 0 200px;"></span>
+            </div>
+            <div class="ref-sign-row">
+              <span class="lbl">Лечащий врач</span> <span class="val" id="p-ref-doc"></span>
+            </div>
+            <div class="ref-sign-row">
+              <span class="lbl">Зав. отделения</span> <span class="val" id="p-ref-head"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Модальное окно истории направления -->
+      <div id="ref-history-modal" class="modal-overlay" onclick="closeRefHistory(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+          <div class="modal-header">
+            <h3>История направлений</h3>
+            <button class="close-btn" onclick="closeRefHistory()">✖</button>
+          </div>
+          <div class="modal-body" id="ref-history-list"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script src="../js/meds.js"></script>
+<script src="../js/core.js"></script>
+<script src="../js/calculators.js"></script>
+<script src="../js/questionnaires.js"></script>
+<script src="../js/screening.js"></script>
+<script src="../js/documents.js"></script>
+</body>
+</html>
