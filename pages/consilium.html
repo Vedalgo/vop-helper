@@ -134,70 +134,89 @@
       <div class="consilium-print-view print-document" id="consilium-print-view">
         <div class="cons-page">
           <h1 class="cons-title">КОНСИЛИУМ</h1>
-          
+
           <div class="cons-header">
             <div class="cons-date-line">«<span id="p-cons-day"></span>» <span id="p-cons-month"></span> <span id="p-cons-year"></span> г.</div>
             <div class="cons-city-line"><span id="p-cons-city"></span></div>
           </div>
-          
-          <div class="cons-field-row">
-            <span class="cons-text"><b>Состав:</b> зам.главного врача по медицинской части</span>
-            <span class="cons-line"></span>
+
+          <!-- Состав (пустые линии под подпись) -->
+          <div class="cons-row">
+            <span class="cons-lab"><b>Состав:</b> зам.главного врача по медицинской части</span>
+            <span class="cons-fill" data-line="cons-sostav" data-idx="0"></span>
           </div>
-          <div class="cons-field-row">
-            <span class="cons-text">зав.отделениями:</span>
-            <span class="cons-line"></span>
+          <div class="cons-row">
+            <span class="cons-lab">зав.отделениями</span>
+            <span class="cons-fill" data-line="cons-sostav" data-idx="1"></span>
           </div>
-          <div class="cons-field-row"><span class="cons-line"></span></div>
-          <div class="cons-field-row"><span class="cons-line"></span></div>
-          
-          <div class="cons-field-row mt-10">
-            <span class="cons-lbl">Лечащий врач:</span> 
-            <span class="cons-val" id="p-cons-doctor-top"></span>
+          <div class="cons-empty" data-line="cons-sostav" data-idx="2"></div>
+          <div class="cons-empty" data-line="cons-sostav" data-idx="3"></div>
+
+          <div class="cons-row">
+            <span class="cons-lab">Лечащий врач</span>
+            <span class="cons-fill" id="p-cons-doctor-top"></span>
           </div>
-          
-          <div class="cons-field-row">
-            <span class="cons-lbl">Проведён осмотр больного:</span> 
-            <span class="cons-val" id="p-cons-exam"></span>
+
+          <div class="cons-row">
+            <span class="cons-lab">Проведён осмотр больного</span>
+            <span class="cons-fill" id="p-cons-exam"></span>
           </div>
-          
-          <div class="cons-block">
-            <span class="cons-lbl">Объективные данные:</span> <span class="cons-val multi" id="p-cons-objective"></span>
+          <div class="cons-empty"></div>
+
+          <!-- Объективные данные: 7 линий -->
+          <div class="cons-row">
+            <span class="cons-lab">Объективные данные</span>
+            <span class="cons-fill" data-line="cons-objective" data-idx="0"></span>
           </div>
-          
-          <div class="cons-block">
-            <span class="cons-lbl">Диагноз:</span> <span class="cons-val multi" id="p-cons-diagnosis"></span>
+          <div class="cons-empty" data-line="cons-objective" data-idx="1"></div>
+          <div class="cons-empty" data-line="cons-objective" data-idx="2"></div>
+          <div class="cons-empty" data-line="cons-objective" data-idx="3"></div>
+          <div class="cons-empty" data-line="cons-objective" data-idx="4"></div>
+          <div class="cons-empty" data-line="cons-objective" data-idx="5"></div>
+          <div class="cons-empty" data-line="cons-objective" data-idx="6"></div>
+
+          <!-- Диагноз: 4 линии -->
+          <div class="cons-row">
+            <span class="cons-lab">Диагноз:</span>
+            <span class="cons-fill" data-line="cons-diagnosis" data-idx="0"></span>
           </div>
-          
-          <div class="cons-block">
-            <span class="cons-lbl">Лечение:</span> <span class="cons-val multi" id="p-cons-treatment"></span>
+          <div class="cons-empty" data-line="cons-diagnosis" data-idx="1"></div>
+          <div class="cons-empty" data-line="cons-diagnosis" data-idx="2"></div>
+          <div class="cons-empty" data-line="cons-diagnosis" data-idx="3"></div>
+
+          <!-- Лечение: 5 линий -->
+          <div class="cons-row">
+            <span class="cons-lab">Лечение</span>
+            <span class="cons-fill" data-line="cons-treatment" data-idx="0"></span>
           </div>
-          
+          <div class="cons-empty" data-line="cons-treatment" data-idx="1"></div>
+          <div class="cons-empty" data-line="cons-treatment" data-idx="2"></div>
+          <div class="cons-empty" data-line="cons-treatment" data-idx="3"></div>
+          <div class="cons-empty" data-line="cons-treatment" data-idx="4"></div>
+
           <div class="cons-signatures">
             <div class="cons-sign-row">
               <div class="cons-sign-role">Зам.главного врача<br>по медицинской части</div>
               <div class="cons-sign-line"></div>
             </div>
-            
             <div class="cons-sign-row">
               <div class="cons-sign-role">Зав. отделениями</div>
               <div class="cons-sign-lines-group">
-                 <div class="cons-sign-line"></div>
-                 <div class="cons-sign-line"></div>
-                 <div class="cons-sign-line"></div>
+                <div class="cons-sign-line"></div>
+                <div class="cons-sign-line"></div>
+                <div class="cons-sign-line"></div>
               </div>
             </div>
-
             <div class="cons-sign-row">
               <div class="cons-sign-role">Лечащий врач</div>
-              <div class="cons-sign-line" style="display: flex; justify-content: flex-start; align-items: flex-end;">
-                <span id="p-cons-doctor-bottom" style="font-weight: normal; padding-left: 5px; font-size: 11pt; line-height: 1;"></span>
+              <div class="cons-sign-line" style="display:flex;align-items:flex-end;">
+                <span id="p-cons-doctor-bottom" style="padding-left:4px;font-size:11pt;"></span>
               </div>
             </div>
           </div>
         </div>
       </div>
-    
+
       <!-- Модальное окно истории консилиума -->
       <div id="cons-history-modal" class="modal-overlay" onclick="closeConsHistory(event)">
         <div class="modal-content" onclick="event.stopPropagation()">

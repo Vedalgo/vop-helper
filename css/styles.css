@@ -245,8 +245,8 @@ textarea.auto-resize{overflow:hidden;resize:none;}
 }
 
 /* Консилиум */
-.cons-title { text-align: center; font-size: 16pt; font-weight: bold; margin-bottom: 20px; letter-spacing: 2px; }
-.cons-header { display: flex; justify-content: space-between; margin-bottom: 20px; }
+.cons-title { text-align: center; font-size: 16pt; font-weight: bold; margin: 0 0 12px; letter-spacing: 2px; }
+.cons-header { display: flex; justify-content: space-between; margin-bottom: 10px; }
 .cons-date-line, .cons-city-line { font-size: 11pt; }
 
 /* Строки консилиума */
@@ -283,6 +283,49 @@ textarea.auto-resize{overflow:hidden;resize:none;}
 }
 
 /* Блок подписей */
+
+/* Консилиум — строки бланка */
+.cons-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  margin: 0;
+  min-height: 7mm;
+  font-size: 11pt;
+  line-height: 1.3;
+  page-break-inside: avoid;
+}
+.cons-row .cons-lab {
+  flex: 0 0 auto;
+  white-space: nowrap;
+  padding-bottom: 1px;
+}
+.cons-row .cons-fill {
+  flex: 1 1 auto;
+  border-bottom: 1px solid #000;
+  min-height: 5.5mm;
+  padding: 0 2px 1px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.cons-empty {
+  border-bottom: 1px solid #000;
+  min-height: 7mm;
+  height: 7mm;
+  margin: 0;
+  padding: 0 2px;
+  font-size: 11pt;
+  line-height: 7mm;
+  box-sizing: border-box;
+  white-space: nowrap;
+  overflow: hidden;
+}
+body.printing-consilium .cons-fill,
+body.printing-consilium .cons-empty {
+  white-space: nowrap !important;
+  overflow: hidden !important;
+}
+
 .cons-signatures { margin-top: 30px; display: flex; flex-direction: column; gap: 20px; }
 
 .cons-sign-row { 
@@ -324,36 +367,67 @@ textarea.auto-resize{overflow:hidden;resize:none;}
 .cons-sign-lines-group .cons-sign-line:nth-child(3) { top: 60px; } 
 
 /* Направление */
-.ref-title { text-align: center; font-size: 16pt; font-weight: bold; margin-bottom: 0; letter-spacing: 4px; }
-.ref-subtitle { text-align: center; font-size: 12pt; font-weight: bold; margin-bottom: 2px; }
-.ref-subtitle2 { text-align: center; font-size: 11pt; font-weight: bold; margin-bottom: 16px; }
+.ref-title { text-align: center; font-size: 15pt; font-weight: bold; margin: 0 0 2px; letter-spacing: 3px; }
+.ref-subtitle { text-align: center; font-size: 12pt; font-weight: bold; margin: 0 0 1px; }
+.ref-subtitle2 { text-align: center; font-size: 11pt; font-weight: bold; margin: 0 0 8px; }
 .ref-field { margin-bottom: 6px; display: flex; align-items: flex-end; gap: 5px; }
 .ref-field .lbl { white-space: nowrap; font-size: 10pt; }
 .ref-field .val { flex: 1; border-bottom: 1px solid #000; min-height: 16px; padding: 0 5px; font-size: 10pt; white-space: pre-wrap; overflow-wrap: break-word; }
-.ref-row { display: flex; gap: 20px; }
 .ref-lines { border-bottom: 1px solid #000; min-height: 40px; margin-bottom: 10px; white-space: pre-wrap; }
-.ref-center { text-align: center; font-weight: bold; font-size: 11pt; }
-.ref-list { font-size: 10pt; display: flex; flex-direction: column; gap: 3px; }
-/* Подпись (жирным + двоеточие) и текст в одном потоке, без подчёркивания */
-.ref-line {
-  border-bottom: none;
-  padding-bottom: 0;
-  margin-bottom: 2px;
-  font-size: 10pt;
+.ref-center { text-align: center; font-weight: bold; font-size: 11pt; margin: 6px 0 4px; }
+/* Строки бланка направления — как на бумажном бланке (высота под А4) */
+.ref-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  font-size: 10.5pt;
   line-height: 1.35;
   page-break-inside: avoid;
+  min-height: 7.2mm;
 }
-.ref-line .ref-prefix {
-  font-weight: 700;
-}
-.ref-line .ref-text {
+.ref-row .ref-lab {
+  flex: 0 0 auto;
+  white-space: nowrap;
   font-weight: 400;
-  white-space: pre-wrap;
-  overflow-wrap: break-word;
-  word-break: break-word;
+  padding-bottom: 1px;
 }
-.ref-line.ref-gap-after {
-  margin-bottom: 8px;
+.ref-row .ref-fill {
+  flex: 1 1 auto;
+  border-bottom: 1px solid #000;
+  min-height: 5.5mm;
+  padding: 0 2px 1px;
+  font-weight: 400;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: clip;
+}
+.ref-empty-line {
+  border-bottom: 1px solid #000;
+  min-height: 7.2mm;
+  height: 7.2mm;
+  margin: 0;
+  padding: 0 2px 1px;
+  font-size: 10.5pt;
+  line-height: 7.2mm;
+  box-sizing: border-box;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.ref-row-split {
+  display: flex;
+  gap: 14px;
+  align-items: flex-end;
+}
+.ref-row-split .ref-row { flex: 1; min-height: 7.2mm; }
+
+
+.ref-block-label {
+  font-size: 10.5pt;
+  line-height: 1.35;
+  margin: 2px 0 0;
+  page-break-inside: avoid;
 }
 .ref-multi {
   border-bottom: 1px solid #000;
@@ -367,7 +441,7 @@ textarea.auto-resize{overflow:hidden;resize:none;}
 }
 .ref-block { margin: 6px 0; }
 .ref-block .lbl { font-weight: bold; font-size: 10pt; }
-.ref-note { text-align: center; font-size: 8pt; margin: 2px 0 4px; color: #333; width: 100%; border-bottom: none; }
+.ref-note { text-align: center; font-size: 8pt; margin: 1px 0 3px; color: #333; width: 100%; border-bottom: none; font-style: italic; }
 .ref-footer { margin-top: 24px; display: flex; flex-direction: column; gap: 14px; }
 .ref-sign-row { display: flex; align-items: flex-end; gap: 10px; }
 .ref-sign-row .lbl { width: 110px; font-weight: bold; font-size: 10pt; flex-shrink: 0; }
@@ -394,24 +468,50 @@ textarea.auto-resize{overflow:hidden;resize:none;}
   /* Направление — строго 2 страницы А4 */
   body.printing-referral .referral-print-view { display: block !important; }
   body.printing-referral .ref-page {
-    display: block !important;
     width: 210mm;
+    height: 297mm;
     min-height: 297mm;
-    padding: 12mm 15mm;
+    max-height: 297mm;
+    padding: 10mm 14mm 12mm;
     box-sizing: border-box;
     page-break-after: always;
     break-after: page;
+    overflow: hidden;
     background: #fff;
     color: #000;
     font-family: "Times New Roman", Times, serif;
+    display: flex;
+    flex-direction: column;
+  }
+  body.printing-referral .ref-page-1 {
+    /* строки сами заполняют высоту за счёт min-height */
+  }
+  body.printing-referral .ref-footer {
+    margin-top: auto;
+    padding-top: 8mm;
+  }
+  body.printing-referral .ref-sign-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    min-height: 8mm;
+    margin-bottom: 3mm;
+  }
+  body.printing-referral .ref-sign-row .ref-lab {
+    width: 110px;
+    flex-shrink: 0;
+    font-size: 11pt;
+  }
+  body.printing-referral .ref-sign-row .ref-fill {
+    flex: 1;
+    border-bottom: 1px solid #000;
+    min-height: 6mm;
   }
   body.printing-referral .ref-page-2 { page-break-after: auto; break-after: auto; }
-  body.printing-referral .ref-multi,
-  body.printing-referral .ref-text,
-  body.printing-referral .ref-field .val {
-    white-space: pre-wrap !important;
-    overflow-wrap: break-word !important;
-    word-break: break-word !important;
+  body.printing-referral .ref-fill,
+  body.printing-referral .ref-empty-line {
+    white-space: nowrap !important;
+    overflow: hidden !important;
   }
 
   body.printing-acq .card, body.printing-vkk .card, body.printing-consilium .card, body.printing-referral .card, body.printing-chads-hasbled .card { box-shadow: none; padding: 0; margin: 0; border: none; background: transparent; }
@@ -433,6 +533,10 @@ textarea.auto-resize{overflow:hidden;resize:none;}
     text-align: left !important;
     text-indent: 0 !important;
     align-self: stretch !important;
+  }
+  body.printing-vkk .vkk-title {
+    text-align: center !important;
+    width: 100% !important;
   }
   body.printing-vkk .vkk-page-inner {
     align-items: stretch !important;
@@ -510,4 +614,54 @@ textarea.auto-resize{overflow:hidden;resize:none;}
   .hero-grid{grid-template-columns:1fr}
   .btn{width:100%;justify-content:center}
   .doctor-select{max-width:160px;font-size:12px;}
+}/* Строки бланка направления */
+.ref-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  font-size: 10.5pt;
+  line-height: 1.3;
+  page-break-inside: avoid;
+  min-height: 7mm;
+}
+.ref-row .ref-lab {
+  flex: 0 0 auto;
+  white-space: nowrap;
+  font-weight: 400;
+  padding-bottom: 1px;
+}
+.ref-row .ref-fill {
+  flex: 1 1 auto;
+  border-bottom: 1px solid #000;
+  min-height: 5.5mm;
+  padding: 0 2px 1px;
+  font-weight: 400;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.ref-empty-line {
+  border-bottom: 1px solid #000;
+  min-height: 7mm;
+  height: 7mm;
+  margin: 0;
+  padding: 0 2px;
+  font-size: 10.5pt;
+  line-height: 7mm;
+  box-sizing: border-box;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.ref-row-split {
+  display: flex;
+  gap: 14px;
+  align-items: flex-end;
+}
+.ref-row-split .ref-row { flex: 1; min-height: 7mm; }
+.ref-lab-block {
+  font-size: 10.5pt;
+  line-height: 1.3;
+  margin: 1px 0 0;
+  page-break-inside: avoid;
 }

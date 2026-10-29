@@ -101,7 +101,7 @@
       
       <div class="card no-print">
         <div class="grid-2">
-          <div class="field"><label>Наименование учреждения (направляющего)</label><input type="text" id="ref-inst" value="УЗ «Калинковичская ЦРБ» поликлиника"></div>
+          <div class="field"><label>Наименование учреждения (направляющего)</label><input type="text" id="ref-inst" value="УЗ «Калинковичская ЦРБ», филиал «Районная поликлиника»"></div>
           <div class="field"><label>Дата направления</label><input type="text" id="ref-date" placeholder="дд.мм.гггг" inputmode="numeric"></div>
         </div>
         <div class="grid-2">
@@ -156,63 +156,121 @@
 
       <!-- Печатная форма Направления — 2 страницы А4 -->
       <div class="referral-print-view print-document" id="referral-print-view">
-        <!-- СТРАНИЦА 1 -->
         <div class="ref-page ref-page-1">
-          <h1 class="ref-title">Н А П Р А В Л Е Н И Е</h1>
-          <div class="ref-subtitle"><span id="p-ref-to-phrase">на консультацию</span> в <span id="p-ref-to-org"></span></div>
-          <div class="ref-subtitle2">к <span id="p-ref-to-specialist"></span></div>
-          
-          <div class="ref-field"><span class="lbl">Наименование лечебного учреждения, направляющего больного</span> <span class="val" id="p-ref-inst"></span></div>
+          <div class="ref-title">НАПРАВЛЕНИЕ</div>
+          <div class="ref-subtitle"><span id="p-ref-to-phrase">на консультацию</span> в <span id="p-ref-to-org">ГОККД</span></div>
+          <div class="ref-subtitle2">к <span id="p-ref-to-specialist">кардиологу, кардиохирургу</span></div>
+
+          <div class="ref-row" id="ref-row-inst">
+            <span class="ref-lab">Наименование лечебного учреждения, направляющего больного</span>
+            <span class="ref-fill" data-line="inst" data-idx="0"></span>
+          </div>
+          <div class="ref-empty-line" data-line="inst" data-idx="1"></div>
+
+          <div class="ref-row-split">
+            <div class="ref-row" style="flex:2.2">
+              <span class="ref-lab">Фамилия, и., о.</span>
+              <span class="ref-fill" id="p-ref-fio"></span>
+            </div>
+            <div class="ref-row" style="flex:1">
+              <span class="ref-lab">Возраст</span>
+              <span class="ref-fill" id="p-ref-age"></span>
+            </div>
+          </div>
+
           <div class="ref-row">
-            <div class="ref-field" style="flex: 2;"><span class="lbl">Фамилия, и., о.</span> <span class="val" id="p-ref-fio"></span></div>
-            <div class="ref-field" style="flex: 1;"><span class="lbl">Возраст</span> <span class="val" id="p-ref-age"></span></div>
+            <span class="ref-lab">Домашний адрес</span>
+            <span class="ref-fill" id="p-ref-address"></span>
           </div>
-          <div class="ref-field"><span class="lbl">Домашний адрес</span> <span class="val" id="p-ref-address"></span></div>
-          
-          <div class="ref-line ref-gap-after"><span class="ref-prefix">Диагноз:</span> <span class="ref-text" id="p-ref-diagnosis"></span></div>
-          
-          <div class="ref-line"><span class="ref-prefix">Цель консультации:</span> <span class="ref-text" id="p-ref-purpose"></span></div>
-          
-          <div class="ref-center" style="margin: 12px 0 8px;">Данные обследования:</div>
-          
-          <div class="ref-list">
-            <div class="ref-line"><span class="ref-prefix">1. Общий ан. крови:</span> <span class="ref-text" id="p-ref-b1"></span></div>
-            <div class="ref-line"><span class="ref-prefix">2. Общ. ан. мочи:</span> <span class="ref-text" id="p-ref-b2"></span></div>
-            <div class="ref-line ref-gap-after"><span class="ref-prefix">3. Биохим. ан. крови:</span> <span class="ref-text" id="p-ref-b3"></span></div>
-            <div class="ref-note">(согласно Протоколам обследования и лечения больных в амбулаторных и поликлинических условиях)</div>
-            <div class="ref-line"><span class="ref-prefix">4. R-графия органов грудной клетки:</span> <span class="ref-text" id="p-ref-b4"></span></div>
-            <div class="ref-line"><span class="ref-prefix">5. Консультация гинеколога:</span> <span class="ref-text" id="p-ref-b5"></span></div>
-            <div class="ref-line"><span class="ref-prefix">6. Профиль АД (при АГ с указанием даты):</span> <span class="ref-text" id="p-ref-b6"></span></div>
-            <div class="ref-line"><span class="ref-prefix">7. Ан. мочи по Нечипоренко (при АГ):</span> <span class="ref-text" id="p-ref-b7"></span></div>
-            <div class="ref-line"><span class="ref-prefix">8. Консультация окулиста (при АГ):</span> <span class="ref-text" id="p-ref-b8"></span></div>
-            <div class="ref-line"><span class="ref-prefix">9. Консультация невропатолога, уролога:</span> <span class="ref-text" id="p-ref-b9"></span></div>
-            <div class="ref-line"><span class="ref-prefix">10. ЭХО КГ (по показаниям):</span> <span class="ref-text" id="p-ref-b10"></span></div>
-            <div class="ref-line"><span class="ref-prefix">11. УЗИ почек, органов брюшной полости:</span> <span class="ref-text" id="p-ref-b11"></span></div>
+
+          <div class="ref-row">
+            <span class="ref-lab">Диагноз:</span>
+            <span class="ref-fill" data-line="diagnosis" data-idx="0"></span>
           </div>
+          <div class="ref-empty-line" data-line="diagnosis" data-idx="1"></div>
+          <div class="ref-empty-line" data-line="diagnosis" data-idx="2"></div>
+
+          <div class="ref-row">
+            <span class="ref-lab">Цель консультации</span>
+            <span class="ref-fill" data-line="purpose" data-idx="0"></span>
+          </div>
+          <div class="ref-empty-line" data-line="purpose" data-idx="1"></div>
+
+          <div class="ref-center">Данные обследования:</div>
+
+          <div class="ref-row"><span class="ref-lab">1. Общий ан. крови</span><span class="ref-fill" data-line="b1" data-idx="0"></span></div>
+          <div class="ref-row"><span class="ref-lab">2. Общ. ан. мочи</span><span class="ref-fill" data-line="b2" data-idx="0"></span></div>
+          <div class="ref-row"><span class="ref-lab">3. Биохим. ан. крови</span><span class="ref-fill" data-line="b3" data-idx="0"></span></div>
+          <div class="ref-note">(согласно Протоколам обследования и лечения больных в амбулаторных и поликлинических условиях)</div>
+          <div class="ref-row"><span class="ref-lab">4. R-графия органов грудной клетки</span><span class="ref-fill" data-line="b4" data-idx="0"></span></div>
+
+          <div class="ref-row"><span class="ref-lab">5. Консультация гинеколога</span><span class="ref-fill" data-line="b5" data-idx="0"></span></div>
+          <div class="ref-empty-line" data-line="b5" data-idx="1"></div>
+
+          <div class="ref-row"><span class="ref-lab">6. Профиль АД (при АГ с указанием даты)</span><span class="ref-fill" data-line="b6" data-idx="0"></span></div>
+          <div class="ref-row"><span class="ref-lab">7. Ан. мочи по Нечипоренко (при АГ)</span><span class="ref-fill" data-line="b7" data-idx="0"></span></div>
+          <div class="ref-row"><span class="ref-lab">8. Консультация окулиста (при АГ)</span><span class="ref-fill" data-line="b8" data-idx="0"></span></div>
+
+          <div class="ref-row"><span class="ref-lab">9. Консультация невропатолога, уролога (по показаниям при АГ)</span><span class="ref-fill" data-line="b9" data-idx="0"></span></div>
+          <div class="ref-empty-line" data-line="b9" data-idx="1"></div>
+
+          <div class="ref-row"><span class="ref-lab">10. ЭХО КГ (по показаниям)</span><span class="ref-fill" data-line="b10" data-idx="0"></span></div>
+          <div class="ref-empty-line" data-line="b10" data-idx="1"></div>
+          <div class="ref-empty-line" data-line="b10" data-idx="2"></div>
+          <div class="ref-empty-line" data-line="b10" data-idx="3"></div>
+
+          <div class="ref-row"><span class="ref-lab">11. УЗИ почек, органов брюшной полости (по показаниям)</span><span class="ref-fill" data-line="b11" data-idx="0"></span></div>
+          <div class="ref-empty-line" data-line="b11" data-idx="1"></div>
+          <div class="ref-empty-line" data-line="b11" data-idx="2"></div>
+          <div class="ref-empty-line" data-line="b11" data-idx="3"></div>
         </div>
 
-        <!-- СТРАНИЦА 2 -->
         <div class="ref-page ref-page-2">
-          <div class="ref-list">
-            <div class="ref-line"><span class="ref-prefix">12. ВЭП (по показаниям):</span> <span class="ref-text" id="p-ref-b12"></span></div>
-            <div class="ref-line"><span class="ref-prefix">13. Указание факторов риска при ИБС:</span> <span class="ref-text" id="p-ref-r1"></span></div>
-            <div class="ref-line"><span class="ref-prefix">14. Объективизация степени риска при АГ:</span> <span class="ref-text" id="p-ref-r2"></span></div>
-            <div class="ref-line"><span class="ref-prefix">15. Данные анамнеза с указанием начала заболевания, характер его развития:</span> <span class="ref-text" id="p-ref-anamnesis"></span></div>
-            <div class="ref-line"><span class="ref-prefix">16. Лечение с указанием доз препаратов и длительность их приема:</span> <span class="ref-text" id="p-ref-treatment"></span></div>
-            <div class="ref-line"><span class="ref-prefix">17. Указание о госпитализации с приложением выписок:</span> <span class="ref-text" id="p-ref-hosp"></span></div>
-            <div class="ref-line"><span class="ref-prefix">18. Указание сроков и причин ВН за последние 12 месяцев:</span> <span class="ref-text" id="p-ref-vn"></span></div>
-            <div class="ref-line"><span class="ref-prefix">19. Дополнительные сведения:</span> <span class="ref-text" id="p-ref-extra"></span></div>
-          </div>
-          
+          <div class="ref-row"><span class="ref-lab">12. ВЭП (по показаниям)</span><span class="ref-fill" data-line="b12" data-idx="0"></span></div>
+          <div class="ref-empty-line" data-line="b12" data-idx="1"></div>
+          <div class="ref-empty-line" data-line="b12" data-idx="2"></div>
+          <div class="ref-empty-line" data-line="b12" data-idx="3"></div>
+
+          <div class="ref-row"><span class="ref-lab">13. Указание факторов риска при ИБС</span><span class="ref-fill" data-line="r1" data-idx="0"></span></div>
+          <div class="ref-empty-line" data-line="r1" data-idx="1"></div>
+
+          <div class="ref-lab-block">14. Объективизация степени риска при АГ (указание факторов риска, поражение органов-мишеней, сопутствующих клинических состояний)</div>
+          <div class="ref-empty-line" data-line="r2" data-idx="0"></div>
+          <div class="ref-empty-line" data-line="r2" data-idx="1"></div>
+
+          <div class="ref-row"><span class="ref-lab">15. Данные анамнеза с указанием начала заболевания, характер его развития</span><span class="ref-fill" data-line="anamnesis" data-idx="0"></span></div>
+          <div class="ref-empty-line" data-line="anamnesis" data-idx="1"></div>
+          <div class="ref-empty-line" data-line="anamnesis" data-idx="2"></div>
+          <div class="ref-empty-line" data-line="anamnesis" data-idx="3"></div>
+
+          <div class="ref-row"><span class="ref-lab">16. Лечение с указанием доз препаратов и длительность их приема</span><span class="ref-fill" data-line="treatment" data-idx="0"></span></div>
+          <div class="ref-empty-line" data-line="treatment" data-idx="1"></div>
+          <div class="ref-empty-line" data-line="treatment" data-idx="2"></div>
+
+          <div class="ref-row"><span class="ref-lab">17. Указание о госпитализации с приложением выписок</span><span class="ref-fill" data-line="hosp" data-idx="0"></span></div>
+          <div class="ref-empty-line" data-line="hosp" data-idx="1"></div>
+          <div class="ref-empty-line" data-line="hosp" data-idx="2"></div>
+
+          <div class="ref-row"><span class="ref-lab">18. Указание сроков и причин ВН за последние 12 месяцев</span><span class="ref-fill" data-line="vn" data-idx="0"></span></div>
+          <div class="ref-empty-line" data-line="vn" data-idx="1"></div>
+
+          <div class="ref-row"><span class="ref-lab">19. Дополнительные сведения</span><span class="ref-fill" data-line="extra" data-idx="0"></span></div>
+          <div class="ref-empty-line" data-line="extra" data-idx="1"></div>
+          <div class="ref-empty-line" data-line="extra" data-idx="2"></div>
+          <div class="ref-empty-line" data-line="extra" data-idx="3"></div>
+
           <div class="ref-footer">
             <div class="ref-sign-row">
-              <span class="lbl">Дата</span> <span class="val" id="p-ref-date" style="flex: 0 0 200px;"></span>
+              <span class="ref-lab">Дата</span>
+              <span class="ref-fill" id="p-ref-date" style="max-width:200px;flex:0 0 200px;"></span>
             </div>
             <div class="ref-sign-row">
-              <span class="lbl">Лечащий врач</span> <span class="val" id="p-ref-doc"></span>
+              <span class="ref-lab">Лечащий врач</span>
+              <span class="ref-fill" id="p-ref-doc"></span>
             </div>
             <div class="ref-sign-row">
-              <span class="lbl">Зав. отделения</span> <span class="val" id="p-ref-head"></span>
+              <span class="ref-lab">Зав. отделения</span>
+              <span class="ref-fill" id="p-ref-head"></span>
             </div>
           </div>
         </div>
