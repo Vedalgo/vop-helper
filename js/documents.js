@@ -157,22 +157,50 @@ function deleteVkkHistory(idx){
   renderVkkHistory();
 }
 
-/* ---------- 31. Счётчик символов ВКК ---------- */
+/* ---------- 31. Счётчик символов (ВКК / Направление / Консилиум) ---------- */
 (function initCharCounters(){
-  const LIMITS={'vkk-purpose':300,'vkk-complaints':600,'vkk-anamnesis':1200,'vkk-exam':1000,'vkk-diagnosis':600};
-  Object.keys(LIMITS).forEach(id=>{
-    const el=document.getElementById(id); if(!el) return;
+  // Лимиты ≈ число линий бланка × ~65–70 символов (с запасом)
+  const LIMITS = {
+    // ВКК
+    'vkk-purpose': 300,
+    'vkk-complaints': 600,
+    'vkk-anamnesis': 1200,
+    'vkk-exam': 1000,
+    'vkk-diagnosis': 600,
+    // Направление
+    'ref-inst': 90,
+    'ref-diagnosis': 200,
+    'ref-purpose': 130,
+    'ref-b5': 120,
+    'ref-b9': 120,
+    'ref-b10': 260,
+    'ref-b11': 250,
+    'ref-b12': 260,
+    'ref-r1': 130,
+    'ref-r2': 140,
+    'ref-anamnesis': 250,
+    'ref-treatment': 200,
+    'ref-hosp': 200,
+    'ref-vn': 130,
+    'ref-extra': 260,
+    // Консилиум
+    'cons-objective': 450,
+    'cons-diagnosis': 260,
+    'cons-treatment': 320
+  };
+  Object.keys(LIMITS).forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
     if (el.nextElementSibling && el.nextElementSibling.classList.contains('char-counter')) return;
-    
-    const limit=LIMITS[id];
-    const counter=document.createElement('span');
-    counter.className='char-counter';
+    const limit = LIMITS[id];
+    const counter = document.createElement('span');
+    counter.className = 'char-counter';
     el.insertAdjacentElement('afterend', counter);
-    const update=()=>{
-      const len=el.value.length;
-      counter.textContent=`${len} / ${limit} символов`;
-      counter.classList.toggle('warn', len>limit*0.85 && len<=limit);
-      counter.classList.toggle('over', len>limit);
+    const update = () => {
+      const len = el.value.length;
+      counter.textContent = len + ' / ' + limit + ' символов';
+      counter.classList.toggle('warn', len > limit * 0.85 && len <= limit);
+      counter.classList.toggle('over', len > limit);
     };
     el.addEventListener('input', update);
     update();
@@ -348,8 +376,8 @@ function fillBlankLines(key, text) {
   ctx.font = font;
 
   // ширина каждой линии: для .ref-fill берём clientWidth, для empty — ширину страницы-контента
-  // Ширина контента А4 ≈ 182mm ≈ 688px @96dpi
-  const FULL = 680;
+  // Ширина контента А4 с запасом (чтобы не обрезало справа)
+  const FULL = 600;
   const widths = nodes.map((n, i) => {
     let w = n.getBoundingClientRect().width;
     if (w < 30) {
@@ -361,7 +389,7 @@ function fillBlankLines(key, text) {
         w = FULL - labW - 6;
       }
     }
-    return Math.max(40, w - 2);
+    return Math.max(40, Math.floor(w * 0.92) - 2);
   });
 
   const words = raw.split(' ');
