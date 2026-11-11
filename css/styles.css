@@ -168,17 +168,17 @@ textarea.auto-resize{overflow:hidden;resize:none;}
 
 /* VKK (стили для экрана) */
 .vkk-print-view{display:none;font-family:"Times New Roman",Times,serif;color:var(--print-text);}
-.vkk-page-inner{font-size:9pt;line-height:1.3;}
+.vkk-page-inner{font-size:10pt;line-height:1.3;}
 .vkk-title{font-size:1.3em;font-weight:700;font-style:normal;text-align:center;line-height:1.25;margin:0 0 0.4em 0;}
 .vkk-num{display:inline-block;min-width:80pt;border-bottom:1px solid var(--print-border);vertical-align:baseline;height:1em;text-align:center;}
-.vkk-inline{display:flex;flex-wrap:wrap;align-items:flex-end;gap:3pt;margin:0;font-size:9pt;line-height:1.3;}
+.vkk-inline{display:flex;flex-wrap:wrap;align-items:flex-end;gap:3pt;margin:0;font-size:10pt;line-height:1.3;}
 .vkk-inline .vkk-lbl{flex-shrink:0;}
 .vkk-inline .vkk-val{flex:1 1 60pt;min-width:60pt;border-bottom:1px solid var(--print-border);min-height:1em;padding:0 3pt;white-space:pre-wrap;overflow-wrap:break-word;}
 .vkk-inline .vkk-sfx{flex-shrink:0;white-space:nowrap;}
 .vkk-inline-indent{padding-left:1.5em;}
-.vkk-label-own{font-size:9pt;line-height:1.3;margin:0.2em 0 0 0;font-weight:700;}
-.vkk-ruled-value{font-size:9pt;line-height:1.3;white-space:pre-wrap;overflow-wrap:break-word;}
-.vkk-ruled-field{font-size:9pt;line-height:1.3;white-space:pre-wrap;overflow-wrap:break-word;word-break:normal;margin:0.2em 0 0 0;}
+.vkk-label-own{font-size:10pt;line-height:1.3;margin:0.2em 0 0 0;font-weight:700;}
+.vkk-ruled-value{font-size:10pt;line-height:1.3;white-space:pre-wrap;overflow-wrap:break-word;}
+.vkk-ruled-field{font-size:10pt;line-height:1.3;white-space:pre-wrap;overflow-wrap:break-word;word-break:normal;margin:0.2em 0 0 0;}
 .vkk-ruled-field .vkk-lbl{font-weight:700;}
 .vkk-val,.vkk-sfx,.vkk-ruled-value,.vkk-ruled-value *{font-weight:400;}
 .vkk-lines-block{margin:0.15em 0 0 0;}
@@ -197,7 +197,7 @@ textarea.auto-resize{overflow:hidden;resize:none;}
 }
 .vkk-sign-line-name span {
   font-family: "Times New Roman", Times, serif;
-  font-size: 9pt;
+  font-size: 10pt;
   line-height: 1.2;
   padding-bottom: 1px;
 }
@@ -519,11 +519,12 @@ body.printing-consilium .cons-empty {
   .vkk-print-document, .acq-print-document, .consilium-print-view, .referral-print-view, .chads-hasbled-print-view { display: block !important; width: 210mm; margin: 0 auto; }
   .cons-page, .ref-page { display: block !important; }
   .vkk-page, .acq-print-document { width: 210mm; height: 148.5mm; padding: 5mm; box-sizing: border-box; page-break-after: always; break-after: page; overflow: hidden; position: relative; background: #fff; color: #000; }
+  body.printing-vkk .vkk-page { padding: 5mm 15mm 5mm 13mm; }
   .vkk-page:last-child, .acq-print-document:last-child { page-break-after: auto; break-after: auto; }
 
   /* ВКК */
   body.printing-vkk .vkk-print-document { font-family: "Times New Roman", Times, serif; }
-  body.printing-vkk .vkk-page-inner { display: flex; flex-direction: column; width: 100%; height: 100%; overflow: hidden; font-size: 9pt; line-height: 1.3; align-items: stretch; }
+  body.printing-vkk .vkk-page-inner { display: flex; flex-direction: column; width: 100%; height: 100%; overflow: hidden; font-size: 10pt; line-height: 1.3; align-items: stretch; }
   body.printing-vkk .vkk-page-inner > * {
     width: 100% !important;
     max-width: 100% !important;
@@ -543,7 +544,7 @@ body.printing-consilium .cons-empty {
   }
 
   body.printing-vkk .vkk-page:last-child .vkk-signs { margin-top: auto; padding-top: 10pt; }
-  body.printing-vkk .vkk-inline, body.printing-vkk .vkk-label-own, body.printing-vkk .vkk-ruled-value, body.printing-vkk .vkk-ruled-field, body.printing-vkk .vkk-val, body.printing-vkk .vkk-lbl, body.printing-vkk .vkk-sfx, body.printing-vkk .vkk-num { font-size: 9pt !important; line-height: 1.3 !important; }
+  body.printing-vkk .vkk-inline, body.printing-vkk .vkk-label-own, body.printing-vkk .vkk-ruled-value, body.printing-vkk .vkk-ruled-field, body.printing-vkk .vkk-val, body.printing-vkk .vkk-lbl, body.printing-vkk .vkk-sfx, body.printing-vkk .vkk-num { font-size: 10pt !important; line-height: 1.3 !important; }
   
   body.printing-vkk .vkk-diag,
   body.printing-vkk .vkk-ruled-field {
