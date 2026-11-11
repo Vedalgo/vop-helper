@@ -212,7 +212,7 @@ textarea.auto-resize{overflow:hidden;resize:none;}
   padding: 0;
 }
 
-.vkk-footer{margin-top:1em;font-size:0.8em;text-align:right;color:#333;}
+.vkk-footer{text-align:right;margin-top:1em;font-size:0.8em;text-align:right;color:#333;}
 .char-counter{display:block;margin-top:2px;font-size:12px;color:var(--muted);text-align:right;font-weight:500;transition:color .15s;}
 .char-counter.warn{color:var(--orange);}
 .char-counter.over{color:var(--red);font-weight:700;}
@@ -559,7 +559,8 @@ body.printing-consilium .cons-empty {
     min-height: 2.2em;
   }
 
-  body.printing-vkk .vkk-sign-cap, body.printing-vkk .vkk-footer { font-size: 0.8em !important; }
+  body.printing-vkk .vkk-sign-cap { font-size: 0.8em !important; }
+  body.printing-vkk .vkk-footer { font-size: 0.75em !important; text-align: right !important; width: 100% !important; margin-top: 0.4em; }
   body.printing-vkk .vkk-title { font-size: 1.3em !important; }
   body.printing-vkk .vkk-line-item { height: 6mm !important; }
 
