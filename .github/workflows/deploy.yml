@@ -1,0 +1,51 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]   # если основная ветка master — напишите master
+  workflow_dispatch:     # кнопка «запустить вручную» в Actions
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Подставить версию (хэш коммита) во все HTML
+        run: |
+          VER="${GITHUB_SHA::7}"
+          echo "Asset version: $VER"
+          # Заменяем ASSET_VER на короткий хэш во всех html
+          find . -name '*.html' -print0 | xargs -0 sed -i "s/ASSET_VER/${VER}/g"
+          # На всякий случай покажем пару строк
+          grep -r "styles.css?v=" --include='*.html' | head -5
+
+      - name: Настройка Pages
+        uses: actions/configure-pages@v5
+
+      - name: Собрать артефакт сайта
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # корень репозитория = корень сайта
+          path: '.'
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
