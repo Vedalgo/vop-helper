@@ -8,6 +8,14 @@
    ========================================================= */
 
 /* ---------- 1. Навигация и меню (multi-page) ---------- */
+document.addEventListener('DOMContentLoaded', () => {
+  const info = window.APP_INFO;
+  if (!info) return;
+  document.querySelectorAll('[data-app]').forEach(el => {
+    const key = el.getAttribute('data-app');
+    if (info[key] != null) el.textContent = info[key];
+  });
+});
 function go(id){
   const isSub = /\/pages\//.test(location.pathname) || location.pathname.endsWith('/pages');
   if (id === 'home') {

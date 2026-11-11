@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ВОП-Helper — CHA₂DS₂-VASc + HAS-BLED</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%232563eb'/%3E%3Cpath d='M26 14h12v12h12v12H38v12H26V38H14V26h12V14z' fill='%23fff'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="../css/styles.css?v=ASSET_VER">
 </head>
 <body>
 <header class="app-header no-print">
@@ -84,14 +84,15 @@
       </details>
     </nav>
     
-    <div class="author-plate">
-      <strong>ВОП-Helper</strong><br>
-      by Гринич Виталий<br>
-      для кабинета №302<br>
-      УЗ "Калинковичская ЦРБ"<br>
-      филиал "Районная поликлиника"<br>
-      2026
-    </div>
+    <div class="author-plate" id="author-plate">
+  <strong data-app="name"></strong><br>
+  by <span data-app="author"></span><br>
+  для <span data-app="cabinet"></span><br>
+  <span data-app="org"></span><br>
+  <span data-app="branch"></span><br>
+  <span data-app="year"></span><br>
+  Версия <span data-app="version"></span> от <span data-app="versionDate"></span> г.
+</div>
   </aside>
 
   <main>
@@ -171,11 +172,12 @@
 </section>
   </main>
 </div>
-<script src="../js/meds.js"></script>
-<script src="../js/core.js"></script>
-<script src="../js/calculators.js"></script>
-<script src="../js/questionnaires.js"></script>
-<script src="../js/screening.js"></script>
-<script src="../js/documents.js"></script>
+<script src="../js/meds.js?v=ASSET_VER"></script>
+<script src="../js/app-info.js?v=ASSET_VER"></script>
+<script src="../js/core.js?v=ASSET_VER"></script>
+<script src="../js/calculators.js?v=ASSET_VER"></script>
+<script src="../js/questionnaires.js?v=ASSET_VER"></script>
+<script src="../js/screening.js?v=ASSET_VER"></script>
+<script src="../js/documents.js?v=ASSET_VER"></script>
 </body>
 </html>
