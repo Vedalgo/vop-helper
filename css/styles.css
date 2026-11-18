@@ -766,7 +766,7 @@ body.printing-refgen .refgen-page {
   display: block !important;
   width: 148mm;
   height: 210mm;
-  float: left;
+  float: right;
   margin: 0;
   page-break-after: avoid;
   page-break-inside: avoid;
@@ -791,5 +791,6 @@ body.printing-refgen .refgen-empty {
   body.printing-refgen .refgen-page {
     width: 148mm !important;
     height: 210mm !important;
+    float: right !important;
   }
 }
