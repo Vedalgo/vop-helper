@@ -667,3 +667,129 @@ body.printing-consilium .cons-empty {
   margin: 1px 0 0;
   page-break-inside: avoid;
 }
+
+/* ===== Направление общее (А5 на половине А4) ===== */
+.refgen-print-view { display: none; }
+.refgen-page {
+  width: 148mm;
+  height: 210mm;
+  padding: 8mm 10mm 8mm 12mm;
+  box-sizing: border-box;
+  background: #fff;
+  color: #000;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 10pt;
+  line-height: 1.25;
+  position: relative;
+  overflow: hidden;
+}
+.refgen-title {
+  text-align: center;
+  font-size: 14pt;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin: 0 0 6mm;
+}
+.refgen-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  min-height: 5.5mm;
+  margin: 0;
+  page-break-inside: avoid;
+}
+.refgen-lab {
+  flex: 0 0 auto;
+  white-space: nowrap;
+  font-weight: 400;
+  padding-bottom: 1px;
+}
+.refgen-fill {
+  flex: 1 1 auto;
+  border-bottom: 1px solid #000;
+  min-height: 4.5mm;
+  padding: 0 2px 1px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.refgen-empty {
+  border-bottom: 1px solid #000;
+  min-height: 5.5mm;
+  height: 5.5mm;
+  margin: 0;
+  padding: 0 2px;
+  box-sizing: border-box;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.refgen-note {
+  text-align: center;
+  font-size: 8pt;
+  font-style: italic;
+  color: #333;
+  margin: 1px 0 2px;
+}
+.refgen-reasons {
+  margin: 3mm 0 2mm;
+  font-size: 10pt;
+  line-height: 1.45;
+}
+.refgen-reason { margin-left: 1em; }
+.refgen-reason.underlined {
+  text-decoration: underline;
+  font-weight: 600;
+}
+.refgen-row-gap { margin-top: 3mm; }
+.refgen-date-line {
+  margin-top: 4mm;
+  font-size: 10pt;
+}
+
+body.printing-refgen .no-print,
+body.printing-refgen .app-header,
+body.printing-refgen .sidebar,
+body.printing-refgen .btn-row {
+  display: none !important;
+}
+body.printing-refgen main { padding: 0; max-width: none; margin: 0; overflow: visible; }
+body.printing-refgen .section { display: none !important; }
+body.printing-refgen .section.active { display: block !important; }
+body.printing-refgen .card { box-shadow: none; padding: 0; margin: 0; border: none; background: transparent; }
+body.printing-refgen .refgen-print-view {
+  display: block !important;
+  width: 297mm;
+  height: 210mm;
+  margin: 0;
+  padding: 0;
+}
+body.printing-refgen .refgen-page {
+  display: block !important;
+  width: 148mm;
+  height: 210mm;
+  float: left;
+  margin: 0;
+  page-break-after: avoid;
+  page-break-inside: avoid;
+}
+body.printing-refgen .refgen-fill,
+body.printing-refgen .refgen-empty {
+  white-space: nowrap !important;
+  overflow: hidden !important;
+}
+
+@media print {
+  body.printing-refgen {
+    width: 297mm;
+    height: 210mm;
+    margin: 0;
+    padding: 0;
+  }
+  body.printing-refgen .refgen-print-view {
+    width: 297mm !important;
+    height: 210mm !important;
+  }
+  body.printing-refgen .refgen-page {
+    width: 148mm !important;
+    height: 210mm !important;
+  }
+}

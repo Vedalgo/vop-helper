@@ -5,7 +5,7 @@
 
 /* ---------- 29. Печать / ВКК ---------- */
 window.addEventListener('afterprint', ()=>{
-  document.body.classList.remove('printing-acq','printing-vkk','printing-consilium','printing-referral','printing-chads-hasbled');
+  document.body.classList.remove('printing-acq','printing-vkk','printing-consilium','printing-referral','printing-refgen','printing-chads-hasbled');
 });
 
 function fillRuledLines(){
@@ -376,15 +376,16 @@ function fillBlankLines(key, text) {
   ctx.font = font;
 
   // ширина каждой линии: для .ref-fill берём clientWidth, для empty — ширину страницы-контента
-  // Ширина контента А4 с запасом (чтобы не обрезало справа)
-  const FULL = 600;
+  // Ширина контента: А4 ~600px, А5 портрет ~420px
+  const isA5 = !!(nodes[0] && nodes[0].closest && nodes[0].closest('.refgen-page'));
+  const FULL = isA5 ? 420 : 600;
   const widths = nodes.map((n, i) => {
     let w = n.getBoundingClientRect().width;
     if (w < 30) {
-      if (n.classList.contains('ref-empty-line')) {
+      if (n.classList.contains('ref-empty-line') || n.classList.contains('refgen-empty')) {
         w = FULL;
       } else {
-        const lab = n.parentElement && n.parentElement.querySelector('.ref-lab');
+        const lab = n.parentElement && (n.parentElement.querySelector('.ref-lab') || n.parentElement.querySelector('.refgen-lab'));
         const labW = lab ? (lab.getBoundingClientRect().width || estimateTextWidth(lab.textContent, ctx)) : 0;
         w = FULL - labW - 6;
       }
@@ -630,4 +631,190 @@ function deleteConsHistory(idx) {
   history.splice(idx, 1);
   localStorage.setItem(CONS_HISTORY_KEY, JSON.stringify(history));
   renderConsHistory();
+}
+
+
+/* ---------- 40. Направление общее (А5) ---------- */
+function printRefGeneral() {
+  const v = id => { const el = document.getElementById(id); return el ? el.value.trim() : ''; };
+  const set = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val || ''; };
+
+  const docEl = document.getElementById('rg-doc');
+  if (docEl && !docEl.value.trim() && typeof getCurrentDoctor === 'function') {
+    const full = getCurrentDoctor();
+    docEl.value = (typeof getDoctorSurname === 'function' ? getDoctorSurname(full) : full);
+  }
+
+  const printView = document.getElementById('refgen-print-view');
+  let prevCss = '';
+  if (printView) {
+    prevCss = printView.getAttribute('style') || '';
+    printView.style.cssText = 'display:block!important;position:absolute;left:-10000px;top:0;width:297mm;visibility:hidden;';
+  }
+
+  fillBlankLines('rg-to', v('rg-doctor-to'));
+  fillBlankLines('rg-fio', v('rg-fio'));
+  fillBlankLines('rg-inst', v('rg-inst') || 'УЗ «Калинковичская ЦРБ», филиал «Районная поликлиника»');
+  fillBlankLines('rg-diagnosis', v('rg-diagnosis'));
+  fillBlankLines('rg-anamnesis', v('rg-anamnesis'));
+  fillBlankLines('rg-clinical', v('rg-clinical'));
+  fillBlankLines('rg-xray', v('rg-xray'));
+  fillBlankLines('rg-lab', v('rg-lab'));
+
+  // Причины — подчёркивание выбранных
+  ['a','b','c'].forEach(k => {
+    const el = document.getElementById('p-rg-reason-' + k);
+    const cb = document.getElementById('rg-reason-' + k);
+    if (el) el.classList.toggle('underlined', !!(cb && cb.checked));
+  });
+
+  const docVal = v('rg-doc');
+  const docPrint = docVal || (typeof getCurrentDoctor === 'function'
+    ? (typeof getDoctorSurname === 'function' ? getDoctorSurname(getCurrentDoctor()) : getCurrentDoctor())
+    : '');
+  set('p-rg-doc', docPrint);
+  set('p-rg-chief', v('rg-chief'));
+
+  const dateStr = v('rg-date');
+  const months = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
+  if (dateStr && dateStr.includes('.')) {
+    const parts = dateStr.split('.');
+    set('p-rg-day', parts[0] || '____');
+    set('p-rg-month', months[parseInt(parts[1], 10) - 1] || '____________');
+    set('p-rg-year', parts[2] || '20__');
+  } else {
+    set('p-rg-day', '____');
+    set('p-rg-month', '____________');
+    set('p-rg-year', '20__');
+  }
+
+  if (printView) printView.setAttribute('style', prevCss);
+
+  if (typeof saveRgHistory === 'function') saveRgHistory();
+
+  // А4 landscape — бланк А5 занимает левую половину листа
+  let pageStyle = document.getElementById('refgen-page-style');
+  if (!pageStyle) {
+    pageStyle = document.createElement('style');
+    pageStyle.id = 'refgen-page-style';
+    document.head.appendChild(pageStyle);
+  }
+  pageStyle.textContent = '@page { size: A4 landscape; margin: 0; }';
+
+  document.body.classList.add('printing-refgen');
+  window.print();
+
+  // вернуть @page после печати
+  window.addEventListener('afterprint', function _rg() {
+    if (pageStyle) pageStyle.textContent = '';
+    document.body.classList.remove('printing-refgen');
+    window.removeEventListener('afterprint', _rg);
+  });
+}
+
+function clearRefGeneral() {
+  if (!confirm('Очистить все поля направления?')) return;
+  ['rg-doctor-to','rg-fio','rg-diagnosis','rg-anamnesis','rg-clinical','rg-xray','rg-lab','rg-doc','rg-chief','rg-date'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) { el.value = ''; el.dispatchEvent(new Event('input', { bubbles: true })); }
+  });
+  const inst = document.getElementById('rg-inst');
+  if (inst) inst.value = 'УЗ «Калинковичская ЦРБ», филиал «Районная поликлиника»';
+  ['rg-reason-a','rg-reason-b','rg-reason-c'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.checked = false;
+  });
+  if (typeof saveToLocal === 'function') saveToLocal();
+}
+
+const RG_HISTORY_KEY = 'ref_general_history';
+function getRgData() {
+  const v = id => { const el = document.getElementById(id); return el ? el.value.trim() : ''; };
+  const c = id => { const el = document.getElementById(id); return el ? !!el.checked : false; };
+  return {
+    doctorTo: v('rg-doctor-to'), fio: v('rg-fio'), inst: v('rg-inst'),
+    diagnosis: v('rg-diagnosis'), anamnesis: v('rg-anamnesis'), clinical: v('rg-clinical'),
+    xray: v('rg-xray'), lab: v('rg-lab'),
+    reasonA: c('rg-reason-a'), reasonB: c('rg-reason-b'), reasonC: c('rg-reason-c'),
+    doc: v('rg-doc'), chief: v('rg-chief'), date: v('rg-date'),
+    savedAt: new Date().toISOString()
+  };
+}
+function saveRgHistory() {
+  const data = getRgData();
+  if (!data.fio && !data.diagnosis && !data.doctorTo) return;
+  let history = [];
+  try { history = JSON.parse(localStorage.getItem(RG_HISTORY_KEY) || '[]'); } catch (e) {}
+  history.unshift(data);
+  if (history.length > 30) history = history.slice(0, 30);
+  localStorage.setItem(RG_HISTORY_KEY, JSON.stringify(history));
+}
+function openRgHistory() {
+  renderRgHistory();
+  const modal = document.getElementById('rg-history-modal');
+  if (modal) modal.classList.add('active');
+}
+function closeRgHistory(e) {
+  if (e && e.target !== e.currentTarget) return;
+  const modal = document.getElementById('rg-history-modal');
+  if (modal) modal.classList.remove('active');
+}
+function renderRgHistory() {
+  const list = document.getElementById('rg-history-list');
+  if (!list) return;
+  let history = [];
+  try { history = JSON.parse(localStorage.getItem(RG_HISTORY_KEY) || '[]'); } catch (e) {}
+  if (!history.length) {
+    list.innerHTML = '<p style="color:var(--muted);text-align:center;">История пуста</p>';
+    return;
+  }
+  list.innerHTML = history.map((item, idx) => {
+    const date = item.date || '—';
+    const fio = item.fio || 'Без ФИО';
+    const to = item.doctorTo || '';
+    return `<div class="history-item">
+      <div class="meta"><b>${date}</b> — ${fio}${to ? ' → ' + to : ''}</div>
+      <div class="actions">
+        <button class="btn btn-sm btn-primary" onclick="loadRgHistory(${idx})">Загрузить</button>
+        <button class="btn btn-sm btn-secondary" style="color:var(--red);" onclick="deleteRgHistory(${idx})">Удалить</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+function loadRgHistory(idx) {
+  let history = [];
+  try { history = JSON.parse(localStorage.getItem(RG_HISTORY_KEY) || '[]'); } catch (e) {}
+  const item = history[idx];
+  if (!item) return;
+  const setVal = (id, val) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    if (el.type === 'checkbox') el.checked = !!val;
+    else { el.value = val || ''; el.dispatchEvent(new Event('input', { bubbles: true })); }
+  };
+  setVal('rg-doctor-to', item.doctorTo);
+  setVal('rg-fio', item.fio);
+  setVal('rg-inst', item.inst);
+  setVal('rg-diagnosis', item.diagnosis);
+  setVal('rg-anamnesis', item.anamnesis);
+  setVal('rg-clinical', item.clinical);
+  setVal('rg-xray', item.xray);
+  setVal('rg-lab', item.lab);
+  setVal('rg-reason-a', item.reasonA);
+  setVal('rg-reason-b', item.reasonB);
+  setVal('rg-reason-c', item.reasonC);
+  setVal('rg-doc', item.doc);
+  setVal('rg-chief', item.chief);
+  setVal('rg-date', item.date);
+  if (typeof saveToLocal === 'function') saveToLocal();
+  closeRgHistory();
+  alert('Направление общее загружено.');
+}
+function deleteRgHistory(idx) {
+  if (!confirm('Удалить эту запись из истории?')) return;
+  let history = [];
+  try { history = JSON.parse(localStorage.getItem(RG_HISTORY_KEY) || '[]'); } catch (e) {}
+  history.splice(idx, 1);
+  localStorage.setItem(RG_HISTORY_KEY, JSON.stringify(history));
+  renderRgHistory();
 }

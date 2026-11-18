@@ -88,6 +88,12 @@ function getShortDoctorName(fullName) {
   return fullName;
 }
 
+function getDoctorSurname(fullName) {
+  if (!fullName) return '';
+  const parts = fullName.trim().split(/\s+/);
+  return parts[0] || '';
+}
+
 function fillDoctorFields(){
   const docFull = getCurrentDoctor();
   
@@ -98,6 +104,10 @@ function fillDoctorFields(){
   // Лечащий врач в направлении — только если поле пустое (можно править вручную)
   const refDoc = document.getElementById('ref-doc');
   if(refDoc && !refDoc.value.trim()) refDoc.value = docFull;
+
+  // Фамилия направившего врача (только фамилия)
+  const rgDoc = document.getElementById('rg-doc');
+  if(rgDoc && !rgDoc.value.trim()) rgDoc.value = getDoctorSurname(docFull);
 
   ['acq-doctor-sign','chads-doctor-sign','findrisk-doctor-sign','hads-doctor-sign','auditc-doctor-sign','mmse-doctor-sign','bdi-doctor-sign','cat-doctor-sign'].forEach(id=>{
     const el = document.getElementById(id);
@@ -217,12 +227,12 @@ function attachDateMask(id, autoFill){
     if(!/^\d$/.test(e.key)) e.preventDefault();
   });
 }
-['vkk-date','acq-date','chads-date','hasbled-date','chads-hasbled-date','findrisk-date','hads-date','auditc-date','mmse-date','bdi-date','cat-date','sick-start','sick-start-2','sick-end','cons-date','ref-date'].forEach(id => attachDateMask(id, true));
+['vkk-date','acq-date','chads-date','hasbled-date','chads-hasbled-date','findrisk-date','hads-date','auditc-date','mmse-date','bdi-date','cat-date','sick-start','sick-start-2','sick-end','cons-date','ref-date','rg-date'].forEach(id => attachDateMask(id, true));
 attachDateMask('vkk-start', false);
 
 // Календари
 (function enhanceDateInputs() {
-  const ids = ['vkk-date','vkk-start','acq-date','chads-date','hasbled-date','chads-hasbled-date','findrisk-date','hads-date','auditc-date','mmse-date','bdi-date','cat-date','sick-start','sick-start-2','sick-end','cons-date','ref-date'];
+  const ids = ['vkk-date','vkk-start','acq-date','chads-date','hasbled-date','chads-hasbled-date','findrisk-date','hads-date','auditc-date','mmse-date','bdi-date','cat-date','sick-start','sick-start-2','sick-end','cons-date','ref-date','rg-date'];
   ids.forEach(id => {
     const textInput = document.getElementById(id);
     if (!textInput || textInput.parentElement.classList.contains('date-input-group')) return;
