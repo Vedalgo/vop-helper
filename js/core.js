@@ -105,9 +105,11 @@ function fillDoctorFields(){
   const refDoc = document.getElementById('ref-doc');
   if(refDoc && !refDoc.value.trim()) refDoc.value = docFull;
 
-  // Фамилия направившего врача — всегда только фамилия выбранного врача
+  // Фамилия направившего врача — инициалы + фамилия (без точки в конце)
   const rgDoc = document.getElementById('rg-doc');
-  if (rgDoc) rgDoc.value = getDoctorSurname(docFull);
+  if (rgDoc) {
+    rgDoc.value = getShortDoctorName(docFull);
+  }
 
   ['acq-doctor-sign','chads-doctor-sign','findrisk-doctor-sign','hads-doctor-sign','auditc-doctor-sign','mmse-doctor-sign','bdi-doctor-sign','cat-doctor-sign'].forEach(id=>{
     const el = document.getElementById(id);

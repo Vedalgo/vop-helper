@@ -370,15 +370,15 @@ function fillBlankLines(key, text) {
   const raw = String(text || '').replace(/\s+/g, ' ').trim();
   if (!raw) return;
 
-  const font = '10.5pt "Times New Roman", Times, serif';
+  const font = '9pt "Times New Roman", Times, serif';
   const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d');
   ctx.font = font;
 
   // ширина каждой линии: для .ref-fill берём clientWidth, для empty — ширину страницы-контента
-  // Ширина контента: А4 ~600px, А5 портрет ~420px
+  // Ширина контента: А5 портрет ~148mm ≈ 560px при 96dpi, но с учётом padding ~500px
   const isA5 = !!(nodes[0] && nodes[0].closest && nodes[0].closest('.refgen-page'));
-  const FULL = isA5 ? 420 : 600;
+  const FULL = isA5 ? 520 : 600;
   const widths = nodes.map((n, i) => {
     let w = n.getBoundingClientRect().width;
     if (w < 30) {
@@ -387,10 +387,11 @@ function fillBlankLines(key, text) {
       } else {
         const lab = n.parentElement && (n.parentElement.querySelector('.ref-lab') || n.parentElement.querySelector('.refgen-lab'));
         const labW = lab ? (lab.getBoundingClientRect().width || estimateTextWidth(lab.textContent, ctx)) : 0;
-        w = FULL - labW - 6;
+        w = FULL - labW - 4;
       }
     }
-    return Math.max(40, Math.floor(w * 0.92) - 2);
+    // меньше отступа справа — ближе к реальной ширине линии
+    return Math.max(40, Math.floor(w * 0.98) - 1);
   });
 
   const words = raw.split(' ');
@@ -642,7 +643,7 @@ function printRefGeneral() {
   const docEl = document.getElementById('rg-doc');
   if (docEl && !docEl.value.trim() && typeof getCurrentDoctor === 'function') {
     const full = getCurrentDoctor();
-    docEl.value = (typeof getDoctorSurname === 'function' ? getDoctorSurname(full) : full);
+    docEl.value = (typeof getShortDoctorName === 'function' ? getShortDoctorName(full) : full);
   }
 
   const printView = document.getElementById('refgen-print-view');
@@ -654,7 +655,13 @@ function printRefGeneral() {
 
   fillBlankLines('rg-to', v('rg-doctor-to'));
   fillBlankLines('rg-fio', v('rg-fio'));
-  fillBlankLines('rg-inst', v('rg-inst') || 'УЗ «Калинковичская ЦРБ», филиал «Районная поликлиника»');
+  // Учреждение — весь текст на нижней строке (вместе с «УЗ»)
+  const instText = v('rg-inst') || 'УЗ «Калинковичская ЦРБ», филиал «Районная поликлиника»';
+  const instNodes = Array.from(document.querySelectorAll('[data-line="rg-inst"]'))
+    .sort((a, b) => (+a.dataset.idx) - (+b.dataset.idx));
+  instNodes.forEach(n => { n.textContent = ''; });
+  if (instNodes[1]) instNodes[1].textContent = instText;
+  else if (instNodes[0]) instNodes[0].textContent = instText;
   fillBlankLines('rg-diagnosis', v('rg-diagnosis'));
   fillBlankLines('rg-anamnesis', v('rg-anamnesis'));
   fillBlankLines('rg-clinical', v('rg-clinical'));
@@ -669,9 +676,11 @@ function printRefGeneral() {
   });
 
   const docVal = v('rg-doc');
-  const docPrint = docVal || (typeof getCurrentDoctor === 'function'
-    ? (typeof getDoctorSurname === 'function' ? getDoctorSurname(getCurrentDoctor()) : getCurrentDoctor())
-    : '');
+  let docPrint = docVal;
+  if (!docPrint && typeof getCurrentDoctor === 'function') {
+    const full = getCurrentDoctor();
+    docPrint = (typeof getShortDoctorName === 'function' ? getShortDoctorName(full) : full);
+  }
   set('p-rg-doc', docPrint);
   set('p-rg-chief', v('rg-chief'));
 
